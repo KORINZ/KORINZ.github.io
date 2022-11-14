@@ -1,2 +1,2 @@
 ## GitHub Pages
-https://KORINZ.github.io
+https://korinz.github.io
