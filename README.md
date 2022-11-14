@@ -1,2 +1,2 @@
-## GitHub Pages
+## GitHub Pages (personal)
 https://korinz.github.io
