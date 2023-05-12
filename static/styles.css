@@ -14990,3 +14990,7 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
     justify-content: center;
     align-items: center;
 }
+
+body {
+    font-family: Roboto, sans-serif;
+}
