@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
     <title>Homepage - KORIN</title>
 </head>
 
@@ -20,18 +19,15 @@
         <div class="row">
             <aside class="col-lg">
                 <header>
-                    <h1><a href="">KORIN</h1>
+                    <h1><a href="">KORIN</a></h1>
 
                     <div class="top-bar">
-                        <span><a href="templates/ja/index.html" class="language-link">日本語</a></span>
+                        <span><a href="../ja/index.html" class="language-link">日本語</a></span>
 
                         <button id="theme-toggler" class="theme-button">
                             <i id="theme-icon" class="fas fa-moon"></i>
                         </button>
                     </div>
-
-
-
 
                     <ul style="list-style-type: none; padding: 0;">
                         <li>
@@ -66,14 +62,13 @@
                     <i id="sidebar-icon" class="fas fa-bars"></i>
                 </button>
 
-
                 <nav class="collapse d-lg-block" id="nav">
                     <hr>
                     <ul class="fa-ul">
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="templates/common/gallery.html">Gallery</a></li>
+                                href="../common/gallery.html">Gallery</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="templates/common/projects.html">Projects</a></li>
+                                href="../common/projects.html">Projects</a></li>
                     </ul>
                     <hr>
                     <div class="centered-container">
@@ -87,40 +82,36 @@
 
             <main class="col-lg">
 
-                <h1>About Me</a></h1>
-
-
+                <h2>About Me</h2>
                 <p>I am a graduate student at Osaka University, with a keen interest in computational fluid dynamics and
                     3D bioprinting. My academic journey began with a Mechanical Engineering degree from the University
                     of California, Santa Barbara, which ultimately led me to Japan as a MEXT scholar.</p>
                 <p>Outside of my research engagements, I support undergraduates at Osaka University's Main Library. My
                     skill set includes Python, OpenFOAM, JavaScript, HTML/CSS, and machine learning. I am particularly
                     intrigued by the convergence of machine learning and biotechnology.</p>
-
                 <p>Beyond my academic pursuits, I have a diverse range of hobbies. I'm an avid mountain climber and
                     enjoy the challenges it presents. Travel is another passion of mine, and I value the different
                     cultural perspectives it offers. Additionally, I engage in online learning to expand my skill set
                     and often unwind by reading a variety of books.</p>
 
                 <h2>Project Demonstration</h2>
-
                 <div id="newsBox"
                     style="width: 100%; height: 350px; overflow: auto; border: 1px solid black; padding: 10px;">
-                    <h1 style="font-size: 2.5rem; margin-bottom: 20px; text-align: center;"">NHK NEWS WEB EASY Scraper</h1>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: center;">NHK NEWS WEB EASY Scraper
+                    </h2>
                     <p style=" font-size: 1rem;">Welcome to the NHK NEWS WEB EASY Scraper. This tool helps you fetch
                         and
                         display simplified Japanese news articles from the NHK NEWS WEB EASY website. It not only
                         provides you with the news content, but also extracts key vocabulary and their pronunciations,
                         along with dictionary definitions where available.</p>
-                        <p style="font-size: 1rem;">To start, simply click on the 'Fetch News' button. You can also copy
-                            the content to your clipboard using the 'Copy Content' button.</p>
-                        <p style="font-size: 1rem;">Please note that news updates occur twice on weekdays, around 12 PM
-                            and 5 PM. During these update periods, the news fetching function may not work correctly. In
-                            addition, please be aware that the 'Fetch News' function extracts a random article from the
-                            four latest headlines on the NHK NEWS WEB EASY website.
-                        </p>
+                    <p style="font-size: 1rem;">To start, simply click on the 'Fetch News' button. You can also copy
+                        the content to your clipboard using the 'Copy Content' button.</p>
+                    <p style="font-size: 1rem;">Please note that news updates occur twice on weekdays, around 12 PM
+                        and 5 PM. During these update periods, the news fetching function may not work correctly. In
+                        addition, please be aware that the 'Fetch News' function extracts a random article from the
+                        four latest headlines on the NHK NEWS WEB EASY website.
+                    </p>
                 </div>
-
 
                 <button id="fetch-news-btn" class="news-button">Fetch News</button>
                 <button id="copy-news-btn" class="news-button">Copy Content</button>
@@ -136,9 +127,7 @@
                     The copyright of the dictionary belongs to Sanseido Co., Ltd., the creator of the dictionary.
                 </p>
 
-
-                <h2>Contact Information</a></h2>
-
+                <h2>Contact Information</h2>
                 <p>You can reach me by executing the following Python script, which uses ASCII-to-string conversion:</p>
                 <div class="language-plaintext highlighter-rouge">
                     <div class="highlight">
@@ -147,15 +136,11 @@
                     </div>
                 </div>
 
-                <h2>Research Interests</a></h2>
-
+                <h2>Research Interests</h2>
                 <p>lorem ipsum</p>
 
-                <h2>Courses</a></h2>
-
+                <h2>Courses</h2>
                 <p>lorem ipsum</p>
-
-
 
             </main>
         </div>
@@ -179,7 +164,6 @@
                 sidebarIcon.classList.add('fa-bars');
             });
         });
-
 
     </script>
 
