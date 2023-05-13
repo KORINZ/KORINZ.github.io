@@ -11,6 +11,7 @@ function createCalendar() {
     // Add time and timezone at the top of the calendar
     let timeRow = document.createElement('tr');
     let timeCell = document.createElement('th');
+
     timeCell.setAttribute('id', 'time');  // give the time cell an ID so we can update it later
     timeCell.setAttribute('colspan', '7');  // span all seven columns
     timeRow.appendChild(timeCell);
