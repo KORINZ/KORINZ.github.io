@@ -61,8 +61,8 @@
                     </ul>
                 </header>
 
-                <button id="sidebar-toggler" class="btn btn-sm collapsed d-lg-none btn-custom" data-bs-toggle="collapse"
-                    data-bs-target="#nav">
+                <button id="sidebar-toggler" class="btn btn-sm collapsed d-lg-none menu-button"
+                    data-bs-toggle="collapse" data-bs-target="#nav">
                     <i id="sidebar-icon" class="fas fa-bars"></i>
                 </button>
 
@@ -80,8 +80,9 @@
                         <div id="calendar"></div>
                     </div>
                     <hr>
+                    <footer>© 2023 KORIN</footer>
                 </nav>
-                <footer>© 2023 KORIN</footer>
+
             </aside>
 
             <main class="col-lg">
@@ -95,6 +96,22 @@
                 <p>When not immersed in research, I assist undergraduates at Osaka University's Main Library. My skills
                     encompass Python, OpenFOAM, TypeScript, HTML/CSS, and machine learning. Join me as we explore the
                     intersections of technology, biology, and language.</p>
+
+                <h2>NHK NEWS WEB EASY Scraper</h2>
+
+                <div id="newsBox"
+                    style="width: 100%; height: 350px; overflow: auto; border: 1px solid black; padding: 10px;">
+                    <!-- News content will be inserted here -->
+                </div>
+                <button id="fetch-news-btn" class="news-button">Fetch News</button>
+                <button id="copy-news-btn" class="news-button">Copy Content</button>
+                <p style="font-size: 0.8rem;">
+                    All news content is copyrighted by NHK (Japan Broadcasting Corporation).
+                    <br>
+                    The "NEWS WEB EASY" uses the "Reikai Elementary School Japanese Dictionary 5th Edition" by Sanseido.
+                    The copyright of the dictionary belongs to Sanseido Co., Ltd., the creator of the dictionary.
+                </p>
+
 
                 <h2>Contact</a></h2>
 
@@ -110,9 +127,9 @@
 
                 <p>lorem ipsum</p>
 
-                <h2>NHK NEWS WEB EASY</a></h2>
 
-                <p>Add the LINE news account</p>
+
+
 
                 <h2>Certificates</a></h2>
 
@@ -125,6 +142,7 @@
     </div>
     <script src="../../js/calender.js"></script>
     <script src="../../js/change-theme.js"></script>
+    <script src="../../js/get-nhk-news.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var sidebarToggler = document.getElementById('sidebar-toggler');
@@ -141,9 +159,6 @@
                 sidebarIcon.classList.add('fa-bars');
             });
         });
-
-
-
 
 
     </script>

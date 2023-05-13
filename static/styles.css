@@ -14963,7 +14963,25 @@ body {
 body.dark {
     background-color: #333;
     color: #fff;
+
 }
+
+body.dark #newsBox {
+    border-color: white !important;
+}
+
+body.dark .news-button {
+    background-color: #333 !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+body.dark .news-button:hover {
+    background-color: white !important;
+    color: #333 !important;
+    border-color: #333 !important;
+}
+
 
 .today {
     background-color: white !important;
@@ -14979,14 +14997,16 @@ body.dark {
 }
 
 @media (min-width: 992px) {
-
-    /* Apply only for screens wider than 992px */
     aside.col-lg {
-        height: 1080px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
     }
 }
 
-.btn-custom {
+
+.menu-button {
     color: white !important;
     background-color: black !important;
 }
@@ -14998,8 +15018,8 @@ body.dark {
 }
 
 .theme-button {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border: none;
     cursor: pointer;
     width: 25px;
@@ -15010,13 +15030,9 @@ body.dark {
     border-radius: 50%;
     transition: background-color 0.3s ease;
     padding: 0;
-    /* Reset padding */
     margin: 0;
-    /* Reset margin */
     outline: none;
-    /* Remove outline */
     overflow: hidden;
-    /* Prevents click on outer padding */
 }
 
 .theme-button:hover {
@@ -15049,4 +15065,36 @@ body.dark .language-plaintext code {
     /* dark gray */
     color: #f5f5f5;
     /* light text */
+}
+
+.news-button {
+    background-color: black;
+    border: 2px solid white;
+    /* Added a border */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.news-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    /* Change border color on hover */
+}
+
+a {
+    color: black;
+    /* Default color in light mode */
+}
+
+body.dark a {
+    color: white;
+    /* Color in dark mode */
 }
