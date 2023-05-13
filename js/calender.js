@@ -17,7 +17,7 @@ function createCalendar() {
     calendarTable.appendChild(timeRow);
 
     // Add year and month at the top of the calendar
-    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
     let yearMonthRow = document.createElement('tr');
     let yearMonthCell = document.createElement('th');
     yearMonthCell.textContent = monthNames[date.getMonth()] + ' ' + date.getFullYear();
