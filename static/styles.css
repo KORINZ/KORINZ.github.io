@@ -14954,6 +14954,17 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
 
 /*# sourceMappingURL=page.css.map */
 
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark {
+    background-color: #333;
+    color: #fff;
+}
+
 .today {
     background-color: white !important;
     color: black !important;
@@ -14984,22 +14995,6 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-body {
-    font-family: sans-serif;
-}
-
-/* Light mode styles (default) */
-body {
-    background-color: #fff;
-    color: #333;
-}
-
-/* Dark mode styles */
-body.dark {
-    background-color: #333;
-    color: #fff;
 }
 
 .theme-button {
