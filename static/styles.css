@@ -14988,6 +14988,15 @@ body.dark a {
 .today {
     background-color: white !important;
     color: black !important;
+    font-weight: bold;
+}
+
+#newsBox,
+body.dark #newsBox {
+    resize: vertical;
+    min-height: 200px;
+    max-height: 600px;
+    overflow: auto;
 }
 
 body.dark #newsBox {
@@ -15074,16 +15083,17 @@ body.dark .news-button:hover {
 body.dark .language-plaintext,
 body.dark .language-plaintext pre,
 body.dark .language-plaintext code {
-    background-color: #333;
+    background-color: #333 !important;
     color: #f5f5f5;
 }
 
 .language-plaintext,
 .language-plaintext pre,
 .language-plaintext code {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8 !important;
     color: #000;
 }
+
 
 .centered-container {
     display: flex;

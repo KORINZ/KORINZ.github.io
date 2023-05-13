@@ -23,8 +23,8 @@ async function printNewsArticleContent() {
 
     const newsBox = document.getElementById('newsBox');
     newsBox.innerHTML = `
-        <h2><a href="${url}" target="_blank">${title} <i class="fas fa-external-link-alt"></i></a></h2>
-        <p>${date}</p>
+        <h2><a style="text-decoration: none;" href="${url}" target="_blank">${title} <i class="fas fa-external-link-alt"></i></a></h2>
+        <p><strong>${date}</strong></p>
         <p>${articleContent}</p>
         <h3>単語</h3>
         <p>${vocab}</p>
