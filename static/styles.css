@@ -15050,7 +15050,7 @@ body.dark .news-button:hover {
 }
 
 .theme-button:hover {
-    background-color: #ddd;
+    background-color: rgba(51, 51, 51, 0.6);
 }
 
 .theme-button.dark {
@@ -15059,7 +15059,7 @@ body.dark .news-button:hover {
 }
 
 .theme-button.dark:hover {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.6);
 }
 
 #theme-toggler {
@@ -15091,4 +15091,19 @@ body.dark .language-plaintext code {
         height: 100vh;
         overflow-y: auto;
     }
+}
+
+#sidebar-toggler {
+    width: 30px;
+    /*adjust as needed*/
+    height: 30px;
+    /*adjust as needed*/
+}
+
+#sidebar-toggler:hover,
+#sidebar-toggler:active {
+    width: 30px;
+    /*adjust as needed*/
+    height: 30px;
+    /*adjust as needed*/
 }

@@ -224,8 +224,18 @@ document.getElementById('copy-news-btn').addEventListener('click', function () {
     navigator.clipboard.writeText(textToCopy)
         .then(() => {
             console.log('Text copied to clipboard');
+
+            // Display the "Copied!" message
+            const messageSpan = document.getElementById('copy-message');
+            messageSpan.innerText = 'Copied!';
+
+            // Clear the message after 2 seconds
+            setTimeout(() => {
+                messageSpan.innerText = '';
+            }, 2000);  // 2000 milliseconds = 2 seconds
         })
         .catch(err => {
             console.error('Failed to copy text: ', err);
         });
 });
+
