@@ -10,6 +10,8 @@
     <link href="../../static/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <title>Homepage - KORIN</title>
 </head>
 
@@ -20,7 +22,16 @@
                 <header>
                     <h1><a href="">KORIN</h1>
 
-                    <span><a href="" class="language-link">日本語</a></span>
+                    <div class="top-bar">
+                        <span><a href="" class="language-link">日本語</a></span>
+
+                        <button id="theme-toggler" class="theme-button">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                    </div>
+
+
+
 
                     <ul style="list-style-type: none; padding: 0;">
                         <li>
@@ -49,10 +60,13 @@
                         </li>
                     </ul>
                 </header>
-                <button class="btn btn-sm collapsed d-lg-none btn-custom" data-bs-target="aside > nav"
-                    data-bs-toggle="collapse">
-                    <i class="fas fa-bars"></i>
+
+                <button id="sidebar-toggler" class="btn btn-sm collapsed d-lg-none btn-custom" data-bs-toggle="collapse"
+                    data-bs-target="#nav">
+                    <i id="sidebar-icon" class="fas fa-bars"></i>
                 </button>
+
+
                 <nav class="collapse d-lg-block" id="nav">
                     <hr>
                     <ul class="fa-ul">
@@ -72,8 +86,7 @@
 
             <main class="col-lg">
 
-                <a data-id="" id="homepage"></a>
-                <h1><a data-id="" href="#homepage">Homepage</a></h1>
+                <h1>About</a></h1>
 
                 <p>Welcome! I'm a graduate student at Osaka University, specializing in computational fluid dynamics and
                     3D bioprinting. With a background in Basic Engineering and hands-on experience in thermal
@@ -83,10 +96,9 @@
                     encompass Python, OpenFOAM, TypeScript, HTML/CSS, and machine learning. Join me as we explore the
                     intersections of technology, biology, and language.</p>
 
-                <a data-id="" id="background""></a>
-                <h2><a data-id="" href=" #background">Background</a></h2>
+                <h2>Contact</a></h2>
 
-                <p>You can reach me by decoding the following Python script, which uses ASCII-to-string conversion:</p>
+                <p>You can reach me by executing the following Python script, which uses ASCII-to-string conversion:</p>
                 <div class="language-plaintext highlighter-rouge">
                     <div class="highlight">
                         <pre
@@ -94,31 +106,48 @@
                     </div>
                 </div>
 
-                <a data-id="" id="message"></a>
-                <h2><a data-id="" href="#message">Message</a></h2>
+                <h2>Message</a></h2>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima voluptatibus laboriosam sit quibusdam
-                    molestias sapiente culpa, perferendis in aspernatur unde consequatur? Doloremque molestiae in
-                    placeat culpa consequuntur ratione cum laboriosam.</p>
+                <p>lorem ipsum</p>
 
-                <a data-id="" id="NHK-NEWS-WEB-EASY"></a>
-                <h2><a data-id="" href="#NHK-NEWS-WEB-EASY">NHK NEWS WEB EASY</a></h2>
+                <h2>NHK NEWS WEB EASY</a></h2>
 
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur accusamus repellat qui
-                    necessitatibus ea quo in delectus tenetur, voluptate veniam dolorum omnis enim error aliquid
-                    exercitationem. Suscipit, quos asperiores. Ex?</p>
+                <p>Add the LINE news account</p>
 
-                <a data-id="" id="certificates"></a>
-                <h2><a data-id="" href="#certificates">Certificates</a></h2>
+                <h2>Certificates</a></h2>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, veniam obcaecati. Laborum est et, a
-                    dolore nesciunt eius doloremque corrupti nostrum cum quia molestiae nihil nisi ut recusandae
-                    aspernatur accusantium?</p>
+                <p>lorem ipsum</p>
+
+
 
             </main>
         </div>
     </div>
     <script src="../../js/calender.js"></script>
+    <script src="../../js/change-theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidebarToggler = document.getElementById('sidebar-toggler');
+            var sidebarIcon = document.getElementById('sidebar-icon');
+            var nav = document.getElementById('nav');
+
+            $(nav).on('shown.bs.collapse', function () {
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-times');
+            });
+
+            $(nav).on('hidden.bs.collapse', function () {
+                sidebarIcon.classList.remove('fa-times');
+                sidebarIcon.classList.add('fa-bars');
+            });
+        });
+
+
+
+
+
+    </script>
+
 </body>
 
 </html>

@@ -14980,11 +14980,6 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
     background-color: black !important;
 }
 
-.language-link {
-    display: inline-block;
-    padding-bottom: 20px;
-}
-
 .centered-container {
     display: flex;
     justify-content: center;
@@ -14992,5 +14987,62 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
 }
 
 body {
-    font-family: Roboto, sans-serif;
+    font-family: sans-serif;
+}
+
+/* Light mode styles (default) */
+body {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.theme-button {
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    padding: 0;
+    /* Reset padding */
+    margin: 0;
+    /* Reset margin */
+    outline: none;
+    /* Remove outline */
+    overflow: hidden;
+    /* Prevents click on outer padding */
+}
+
+.theme-button:hover {
+    background-color: #ddd;
+}
+
+.theme-button.dark {
+    background-color: black;
+    color: white;
+}
+
+.theme-button.dark:hover {
+    background-color: #333;
+}
+
+.top-bar {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+#theme-toggler {
+    margin-left: 10px;
+    /* Adjust this value to get the amount of space you want */
 }
