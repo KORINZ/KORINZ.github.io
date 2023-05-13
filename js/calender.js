@@ -1,9 +1,9 @@
 function createCalendar() {
+    // Clear any existing calendar first
+    let calendarDiv = document.getElementById('calendar');
+    calendarDiv.innerHTML = '';
     // Get the current date.
     let date = new Date();
-
-    // Get the calendar div.
-    let calendarDiv = document.getElementById('calendar');
 
     // Create a table for the calendar.
     let calendarTable = document.createElement('table');
@@ -97,6 +97,11 @@ function updateTime() {
     }
 
     timeCell.textContent = `${hours}:${minutes}:${seconds} (${timezoneString})`;
+
+    // Check if it's midnight and if so, update the calendar.
+    if (hours === '00' && minutes === '00' && seconds === '00') {
+        createCalendar();
+    }
 }
 
 // Call the function to create the calendar.
