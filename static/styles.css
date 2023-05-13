@@ -15078,6 +15078,13 @@ body.dark .language-plaintext code {
     color: #f5f5f5;
 }
 
+.language-plaintext,
+.language-plaintext pre,
+.language-plaintext code {
+    background-color: #f8f8f8;
+    color: #000;
+}
+
 .centered-container {
     display: flex;
     justify-content: center;
@@ -15095,15 +15102,11 @@ body.dark .language-plaintext code {
 
 #sidebar-toggler {
     width: 30px;
-    /*adjust as needed*/
     height: 30px;
-    /*adjust as needed*/
 }
 
 #sidebar-toggler:hover,
 #sidebar-toggler:active {
     width: 30px;
-    /*adjust as needed*/
     height: 30px;
-    /*adjust as needed*/
 }
