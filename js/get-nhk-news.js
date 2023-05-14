@@ -31,7 +31,7 @@ async function printNewsArticleContent() {
         <h3>辞書</h3>
         <p>${dictionaryText}</p>
     `;
-    newsBox.scrollTop = 0;  // Reset scroll bar to the top
+    newsBox.scrollTop = 0; // Reset scroll bar to the top
 }
 
 
@@ -72,7 +72,7 @@ function extractArticleContent(html) {
             const cleanedParagraph = paragraph.replace(/<ruby>(.*?)<rt>.*?<\/rt><\/ruby>/g, '$1').replace(/<[^>]*>/g, "");
             articleContent += cleanedParagraph;
             if (index < paragraphs.length - 1) {
-                articleContent += "<br><br>";  // replaced "\n\n" with "<br><br>"
+                articleContent += "<br><br>"; // replaced "\n\n" with "<br><br>"
             }
         });
 
@@ -172,43 +172,79 @@ async function getDictionaryEntries(url) {
         const entries = dictEntries[entryKey];
         const word = getDictWord(entries);
         const defs = getDictDefs(entries);
-        entriesArray.push({ word, defs });
+        entriesArray.push({
+            word,
+            defs
+        });
     }
 
     return entriesArray;
 }
 
+
 function getDictWord(entries) {
     return entries[0].hyouki[0];
 }
+
 
 function getDictDefs(entries) {
     return entries.map((entry, i) => {
         const defs = entry.def.replace(/<rt>.*?<\/rt>|<[^>]+>/g, '');
         return `${toRoman(i + 1)}) ${defs}`;
-    }).join('<br>');  // join definitions with a line break
+    }).join('<br>'); // join definitions with a line break
 }
 
 
-
-
 function toRoman(num) {
-    const romanMap = [
-        { value: 15, symbol: 'xv' },
-        { value: 14, symbol: 'xiv' },
-        { value: 13, symbol: 'xiii' },
-        { value: 12, symbol: 'xii' },
-        { value: 11, symbol: 'xi' },
-        { value: 10, symbol: 'x' },
-        { value: 9, symbol: 'ix' },
-        { value: 5, symbol: 'v' },
-        { value: 4, symbol: 'iv' },
-        { value: 1, symbol: 'i' },
+    const romanMap = [{
+        value: 15,
+        symbol: 'xv'
+    },
+    {
+        value: 14,
+        symbol: 'xiv'
+    },
+    {
+        value: 13,
+        symbol: 'xiii'
+    },
+    {
+        value: 12,
+        symbol: 'xii'
+    },
+    {
+        value: 11,
+        symbol: 'xi'
+    },
+    {
+        value: 10,
+        symbol: 'x'
+    },
+    {
+        value: 9,
+        symbol: 'ix'
+    },
+    {
+        value: 5,
+        symbol: 'v'
+    },
+    {
+        value: 4,
+        symbol: 'iv'
+    },
+    {
+        value: 1,
+        symbol: 'i'
+    },
     ];
 
     let roman = '';
 
-    for (const { value, symbol } of romanMap) {
+    for (const {
+        value,
+        symbol
+    }
+        of romanMap) {
         while (num >= value) {
             roman += symbol;
             num -= value;
@@ -219,23 +255,31 @@ function toRoman(num) {
 }
 
 
+let timeoutId = null; // Store the timeout ID here
+
 document.getElementById('copy-news-btn').addEventListener('click', function () {
     const textToCopy = document.getElementById('newsBox').innerText;
     navigator.clipboard.writeText(textToCopy)
         .then(() => {
             console.log('Text copied to clipboard');
 
-            // Display the "Copied!" message
+            // Display the "Copied!" message with check icon
             const messageSpan = document.getElementById('copy-message');
-            messageSpan.innerText = 'Copied!';
+            messageSpan.innerHTML = 'Copied <i class="fa-solid fa-check"></i>';
+            messageSpan.style.fontWeight = 'bold'; // Make the text bold
 
-            // Clear the message after 2 seconds
-            setTimeout(() => {
-                messageSpan.innerText = '';
-            }, 2000);  // 2000 milliseconds = 2 seconds
+            // Clear any previous timeout
+            if (timeoutId !== null) {
+                clearTimeout(timeoutId);
+            }
+
+            // Set a new timeout to clear the message after 2 seconds
+            timeoutId = setTimeout(() => {
+                messageSpan.innerHTML = '';
+                messageSpan.style.fontWeight = 'normal'; // Reset the font weight
+            }, 2000); // 2000 milliseconds = 2 seconds
         })
         .catch(err => {
             console.error('Failed to copy text: ', err);
         });
 });
-

@@ -12,8 +12,8 @@ function createCalendar() {
     let timeRow = document.createElement('tr');
     let timeCell = document.createElement('th');
 
-    timeCell.setAttribute('id', 'time');  // give the time cell an ID so we can update it later
-    timeCell.setAttribute('colspan', '7');  // span all seven columns
+    timeCell.setAttribute('id', 'time'); // give the time cell an ID so we can update it later
+    timeCell.setAttribute('colspan', '7'); // span all seven columns
     timeRow.appendChild(timeCell);
     calendarTable.appendChild(timeRow);
 
@@ -22,7 +22,7 @@ function createCalendar() {
     let yearMonthRow = document.createElement('tr');
     let yearMonthCell = document.createElement('th');
     yearMonthCell.textContent = monthNames[date.getMonth()] + ' ' + date.getFullYear();
-    yearMonthCell.setAttribute('colspan', '7');  // span all seven columns
+    yearMonthCell.setAttribute('colspan', '7'); // span all seven columns
     yearMonthRow.appendChild(yearMonthCell);
     calendarTable.appendChild(yearMonthRow);
 
@@ -44,9 +44,9 @@ function createCalendar() {
 
     // Add days of the month to the table.
     let day = 1;
-    for (let i = 0; i < 6; i++) {  // for each week
+    for (let i = 0; i < 6; i++) { // for each week
         let row = document.createElement('tr');
-        for (let j = 0; j < 7; j++) {  // for each day
+        for (let j = 0; j < 7; j++) { // for each day
             let cell = document.createElement('td');
             if ((i === 0 && j < firstDay) || day > numDays) {
                 // If the cell is before the start of the month or after the end, leave it empty.
