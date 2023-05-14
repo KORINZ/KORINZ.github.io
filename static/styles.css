@@ -15089,6 +15089,7 @@ body.dark .language-plaintext pre,
 body.dark .language-plaintext code {
     background-color: #333 !important;
     color: #f5f5f5;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .language-plaintext,
@@ -15096,6 +15097,7 @@ body.dark .language-plaintext code {
 .language-plaintext code {
     background-color: #f8f8f8 !important;
     color: #000;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 
