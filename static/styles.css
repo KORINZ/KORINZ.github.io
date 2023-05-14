@@ -15066,11 +15066,6 @@ body.dark .news-button:hover {
     background-color: rgba(51, 51, 51, 0.6);
 }
 
-.theme-button.dark {
-    background-color: black;
-    color: white;
-}
-
 .theme-button.dark:hover {
     background-color: rgba(51, 51, 51, 0.6);
 }
