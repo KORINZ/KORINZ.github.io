@@ -15123,3 +15123,7 @@ body.dark .language-plaintext code {
     width: 30px;
     height: 30px;
 }
+
+.command:before {
+    content: ">>> ";
+}
