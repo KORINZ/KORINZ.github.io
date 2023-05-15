@@ -264,8 +264,11 @@ document.getElementById('copy-news-btn').addEventListener('click', function () {
             console.log('Text copied to clipboard');
 
             // Display the "Copied!" message with check icon
+            // Display the "Copied!" message with check icon
             const messageSpan = document.getElementById('copy-message');
-            messageSpan.innerHTML = 'Copied <i class="fa-solid fa-check"></i>';
+            const path = window.location.pathname;
+            const isJapanese = path.includes('ja');
+            messageSpan.innerHTML = isJapanese ? 'コピーされました <i class="fa-solid fa-check"></i>' : 'Copied <i class="fa-solid fa-check"></i>';
             messageSpan.style.fontWeight = 'bold'; // Make the text bold
 
             // Clear any previous timeout
