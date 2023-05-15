@@ -89,9 +89,9 @@ function updateTime() {
     // Format timezone offset.
     let timezoneString = '';
     if (timezoneOffset < 0) {
-        timezoneString = `UTC+${Math.abs(timezoneOffset)}`;
+        timezoneString = `UTC+${Math.abs(timezoneOffset)}:00`;
     } else if (timezoneOffset > 0) {
-        timezoneString = `UTC-${Math.abs(timezoneOffset)}`;
+        timezoneString = `UTC-${Math.abs(timezoneOffset)}:00`;
     } else {
         timezoneString = 'UTC';
     }

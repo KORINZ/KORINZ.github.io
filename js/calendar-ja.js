@@ -23,7 +23,7 @@ function createCalendar() {
     let yearMonthCell = document.createElement('th');
     const year = date.getFullYear();
     const era = year - 2018;
-    yearMonthCell.textContent = year + '年' + `（令和${era}年）` + monthNames[date.getMonth()];
+    yearMonthCell.textContent = year + '年' + ` (令和${era}年) ` + monthNames[date.getMonth()];
     yearMonthCell.setAttribute('colspan', '7'); // span all seven columns
     yearMonthRow.appendChild(yearMonthCell);
     calendarTable.appendChild(yearMonthRow);
@@ -93,9 +93,9 @@ function updateTime() {
     // Format timezone offset.
     let timezoneString = '';
     if (timezoneOffset < 0) {
-        timezoneString = `UTC+${Math.abs(timezoneOffset)}`;
+        timezoneString = `UTC+${Math.abs(timezoneOffset)}:00`;
     } else if (timezoneOffset > 0) {
-        timezoneString = `UTC-${Math.abs(timezoneOffset)}`;
+        timezoneString = `UTC-${Math.abs(timezoneOffset)}:00`;
     } else {
         timezoneString = 'UTC';
     }
