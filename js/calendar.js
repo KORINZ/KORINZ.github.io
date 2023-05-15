@@ -98,9 +98,9 @@ function updateTime() {
 
     timeCell.textContent = `${hours}:${minutes}:${seconds} (${timezoneString})`;
 
-    // Check if it's midnight and if so, update the calendar.
+    // Check if it's midnight and if so, update the calendar after a delay.
     if (hours === '00' && minutes === '00' && seconds === '00') {
-        createCalendar();
+        setTimeout(createCalendar, 2000); // delay of 2 seconds
     }
 }
 
