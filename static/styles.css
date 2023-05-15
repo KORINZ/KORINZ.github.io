@@ -15157,5 +15157,5 @@ body.dark .back-to-top {
 }
 
 body.dark figure img {
-    filter: brightness(0.7) contrast(0.85);
+    filter: brightness(0.7) contrast(0.85) !important;
 }
