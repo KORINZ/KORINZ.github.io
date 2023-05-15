@@ -15095,7 +15095,11 @@ body.dark #newsBox {
 
 .language-link:hover {
     font-weight: bold;
+    transform: scale(1.1);
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
 }
+
 
 /* Language Plaintext Styles */
 .language-plaintext,
