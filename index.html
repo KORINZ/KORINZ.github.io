@@ -16,14 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Homepage - KORIN</title>
-    <script>
-        (function () {
-            // Check if the 'dark' state is stored in localStorage
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -174,9 +166,6 @@
                         dolorum reiciendis nobis ipsum eum ducimus perspiciatis rem illo provident.</figcaption>
                 </figure>
 
-
-
-
                 <h2>Course Certificates</h2>
                 <ul>
                     <li><a href="https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0">CS50x:
@@ -198,93 +187,12 @@
         </div>
     </div>
 
-
-
-
-
-
+    <script src="../../js/change-theme.js" defer></script>
+    <script src="../../js/theme-toggle.js"></script>
+    <script src="../../js/sidebar-toggle.js"></script>
     <script src="../../js/calender.js"></script>
-    <script src="../../js/change-theme.js"></script>
     <script src="../../js/get-nhk-news.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var sidebarToggler = document.getElementById('sidebar-toggler');
-            var sidebarIcon = document.getElementById('sidebar-icon');
-            var nav = document.getElementById('nav');
-
-            $(nav).on('shown.bs.collapse', function () {
-                sidebarIcon.classList.remove('fa-bars');
-                sidebarIcon.classList.add('fa-times');
-            });
-
-            $(nav).on('hidden.bs.collapse', function () {
-                sidebarIcon.classList.remove('fa-times');
-                sidebarIcon.classList.add('fa-bars');
-            });
-        });
-
-
-        var button = document.querySelector("#theme-toggler");
-
-        // Check if the 'flipped' state is stored in localStorage
-        if (localStorage.getItem('flipped') === 'true') {
-            button.classList.add('flipped');
-        }
-
-        button.addEventListener("click", function () {
-            this.classList.toggle('flipped');
-            // Save the 'flipped' state in localStorage
-            if (this.classList.contains('flipped')) {
-                localStorage.setItem('flipped', 'true');
-            } else {
-                localStorage.setItem('flipped', 'false');
-            }
-        });
-
-        // Check if the 'dark' state is stored in localStorage and set the class before the page loads
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark');
-            document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
-            document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
-        } else {
-            document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
-            document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
-        }
-
-        $(document).ready(function () {
-            var isAnimating = false;
-
-            $(window).on('scroll', function () {
-                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-                    $('#back-to-top').fadeIn();
-                } else {
-                    $('#back-to-top').fadeOut();
-                }
-            });
-
-            // Trigger the scroll event as soon as the page loads
-            $(window).trigger('scroll');
-
-            // scroll body to 0px on click
-            $('#back-to-top').click(function () {
-                if (isAnimating) return false;  // Do nothing if an animation is in progress
-
-                isAnimating = true;  // Set the flag to true to indicate that an animation has started
-
-                $('body,html').animate({
-                    scrollTop: 0
-                }, 400, function () {
-                    isAnimating = false;  // Reset the flag when the animation finishes
-                });
-
-                return false;
-            });
-        });
-
-
-
-
-    </script>
+    <script src="../../js/back-to-top-toggle.js"></script>
 
 </body>
 
