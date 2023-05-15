@@ -5,19 +5,108 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <meta property="og:description" content="KORIN's Gallery">
+    <meta property="og:image" content="static/web_screenshot.png">
     <meta property="og:title" content="Gallery - KORIN">
     <link href="https://upload.wikimedia.org/wikipedia/commons/3/34/Home-icon.svg" rel="icon">
     <link href="../../static/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap" rel="stylesheet">
     <title>Gallery - KORIN</title>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-lg">
+                <header>
+                    <h1><a href="">KORIN</a></h1>
+                    <div class="top-bar">
+                        <span>Gallery</span>
+                        <button id="theme-toggler" class="theme-button">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                    </div>
 
-    <h1>Preparing</h1>
+                    <ul style="list-style-type: none; padding: 0;" class="social-links">
+                        <li>
+                            <a class="mr-1" href="https://github.com/KORINZ">
+                                <i aria-hidden="true" class="fab fa-github" title="GitHub"></i>
+                                GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a class="mr-1" href="https://www.linkedin.com/in/colin-z/">
+                                <i aria-hidden="true" class="fab fa-linkedin" title="LinkedIn"></i>
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a class="mr-1" href="https://stackoverflow.com/users/19939086/%e3%82%b3%e3%83%aa%e3%83%b3">
+                                <i aria-hidden="true" class="fab fa-stack-overflow" title="Stack Overflow"></i>
+                                Stack Overflow
+                            </a>
+                        </li>
+                        <li>
+                            <a class="mr-1" href="https://twitter.com/japan_korin">
+                                <i aria-hidden="true" class="fab fa-twitter" title="Twitter"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a class="mr-1" href="https://www.strava.com/athletes/107165964">
+                                <i aria-hidden="true" class="fab fa-strava" title="Strava"></i>
+                                Strava
+                            </a>
+                        </li>
+                    </ul>
+                </header>
+
+                <button id="sidebar-toggler" class="btn btn-sm collapsed d-lg-none menu-button"
+                    data-bs-toggle="collapse" data-bs-target="#nav">
+                    <i id="sidebar-icon" class="fas fa-bars"></i>
+                </button>
+
+                <nav class="collapse d-lg-block" id="nav">
+                    <hr>
+                    <ul class="fa-ul">
+                        <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
+                                href="../../index.html">Homepage</a></li>
+                        <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
+                                href="projects.html">Projects</a></li>
+                    </ul>
+                    <hr>
+                    <div class="centered-container">
+                        <div id="calendar"></div>
+                    </div>
+                    <hr>
+                    <footer>© 2023 KORIN</footer>
+                </nav>
+
+            </aside>
+
+            <main class="col-lg">
+
+                <h2>Preparing (準備中)</h2>
+
+
+                <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/change-theme.js"></script>
+    <script src="../../js/theme-toggle.js"></script>
+    <script src="../../js/sidebar-toggle.js"></script>
+    <script src="../../js/calendar.js"></script>
+    <script src="../../js/back-to-top-toggle.js"></script>
 
 </body>
 
