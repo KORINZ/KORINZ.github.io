@@ -15048,6 +15048,10 @@ body.dark #newsBox {
     border: 2px solid black;
 }
 
+.custom-button:active {
+    transform: scale(0.90);
+}
+
 .menu-button {
     color: white !important;
     background-color: black !important;
