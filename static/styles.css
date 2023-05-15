@@ -15141,7 +15141,6 @@ body.dark #newsBox {
 }
 
 /* Back to Top Button Styles */
-/* Back to Top Button Styles */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -15155,4 +15154,8 @@ body.dark .back-to-top {
 
 .back-to-top.show {
     display: block;
+}
+
+body.dark figure img {
+    filter: brightness(0.7) contrast(0.85);
 }
