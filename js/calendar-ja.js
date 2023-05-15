@@ -18,10 +18,12 @@ function createCalendar() {
     calendarTable.appendChild(timeRow);
 
     // Add year and month at the top of the calendar
-    let monthNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+    let monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
     let yearMonthRow = document.createElement('tr');
     let yearMonthCell = document.createElement('th');
-    yearMonthCell.textContent = monthNames[date.getMonth()] + ' ' + date.getFullYear();
+    const year = date.getFullYear();
+    const era = year - 2018;
+    yearMonthCell.textContent = year + '年' + `（令和${era}年）` + monthNames[date.getMonth()];
     yearMonthCell.setAttribute('colspan', '7'); // span all seven columns
     yearMonthRow.appendChild(yearMonthCell);
     calendarTable.appendChild(yearMonthRow);
