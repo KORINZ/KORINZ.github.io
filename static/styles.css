@@ -14960,7 +14960,7 @@ aside button[data-bs-toggle=collapse]:not(.collapsed) {
 
 /* General Styles */
 body {
-    font-family: sans-serif;
+    font-family: 'PT Sans', sans-serif;
     background-color: #fff;
     color: #333;
     transition: background-color 0.2s ease, color 0.2s ease;
