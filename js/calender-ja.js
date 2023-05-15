@@ -18,7 +18,7 @@ function createCalendar() {
     calendarTable.appendChild(timeRow);
 
     // Add year and month at the top of the calendar
-    let monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+    let monthNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
     let yearMonthRow = document.createElement('tr');
     let yearMonthCell = document.createElement('th');
     yearMonthCell.textContent = monthNames[date.getMonth()] + ' ' + date.getFullYear();
@@ -27,14 +27,16 @@ function createCalendar() {
     calendarTable.appendChild(yearMonthRow);
 
     // Add table header for the days of the week.
-    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let days = ['日', '月', '火', '水', '木', '金', '土'];
     let headerRow = document.createElement('tr');
     for (let day of days) {
         let headerCell = document.createElement('th');
-        headerCell.innerHTML = '&nbsp;' + day + '&nbsp;';
+        headerCell.innerHTML = '&nbsp;&nbsp;' + day + '&nbsp;&nbsp;'; // Add two non-breaking spaces around the day
         headerRow.appendChild(headerCell);
     }
     calendarTable.appendChild(headerRow);
+
+
 
     // Get the first day of the month.
     let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
