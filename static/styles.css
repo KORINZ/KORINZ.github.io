@@ -14966,11 +14966,11 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-body:lang(en) {
+main:lang(en-us) {
     font-family: 'Roboto', sans-serif !important;
 }
 
-body:lang(ja) {
+main:lang(ja) {
     font-family: 'Noto Sans JP', sans-serif !important;
 }
 
