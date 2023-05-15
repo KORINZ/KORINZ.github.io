@@ -15167,3 +15167,12 @@ body.dark .back-to-top {
 body.dark figure img {
     filter: brightness(0.7) contrast(0.85) !important;
 }
+
+.social-links a i {
+    width: 10px;
+    /* Adjust the width as per your requirement */
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+    /* Adjust the margin for the desired space */
+}
