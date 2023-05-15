@@ -14967,11 +14967,11 @@ body {
 }
 
 body:lang(en) {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 body:lang(ja) {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 
