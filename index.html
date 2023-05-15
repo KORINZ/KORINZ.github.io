@@ -123,8 +123,8 @@
                     </p>
                 </div>
 
-                <button id="fetch-news-btn" class="news-button">Fetch News</button>
-                <button id="copy-news-btn" class="news-button">Copy Content</button>
+                <button id="fetch-news-btn" class="custom-button">Fetch News</button>
+                <button id="copy-news-btn" class="custom-button">Copy Content</button>
                 <span id="copy-message"></span>
                 <p style="font-size: 0.8rem;">
                     You can also explore a user-friendly graphical interface version of this tool, developed with
@@ -154,7 +154,8 @@
                     saepe, facilis fugiat, culpa vitae.</p>
                 <figure>
                     <p align="center">
-                        <img src="static/printability_setup.png" alt="printability_setup" width="350">
+                        <img src="static/printability_setup.png" alt="printability_setup" width="350" loading="lazy">
+
                     </p>
                     <figcaption align="center"><strong>Figure 1.</strong> Lorem ipsum dolor sit amet consectetur
                         adipisicing elit.
@@ -179,6 +180,12 @@
             </main>
         </div>
     </div>
+
+    <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+
     <script src="../../js/calender.js"></script>
     <script src="../../js/change-theme.js"></script>
     <script src="../../js/get-nhk-news.js"></script>
@@ -226,6 +233,26 @@
             document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
             document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
         }
+
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+
+            // scroll body to 0px on click
+            $('#back-to-top').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 400);
+                return false;
+            });
+        });
+
+
     </script>
 
 </body>
