@@ -244,13 +244,16 @@
         }
 
         $(document).ready(function () {
-            $(window).scroll(function () {
+            $(window).on('scroll', function () {
                 if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                     $('#back-to-top').fadeIn();
                 } else {
                     $('#back-to-top').fadeOut();
                 }
             });
+
+            // Trigger the scroll event as soon as the page loads
+            $(window).trigger('scroll');
 
             // scroll body to 0px on click
             $('#back-to-top').click(function () {
@@ -260,6 +263,7 @@
                 return false;
             });
         });
+
 
 
     </script>
