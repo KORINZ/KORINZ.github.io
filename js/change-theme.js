@@ -21,8 +21,7 @@ function changeTheme() {
   // Event listener for the button
   document.getElementById('theme-toggler').addEventListener('click', changeTheme);
   
-  // Apply the theme on DOMContentLoaded event
-  document.addEventListener('DOMContentLoaded', function () {
+  (function () {
     var button = document.getElementById('theme-toggler');
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark');
@@ -36,5 +35,6 @@ function changeTheme() {
       document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
       document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
     }
-  });
+  })();
+  
   
