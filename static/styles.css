@@ -15193,3 +15193,49 @@ body.dark figure img {
 img {
     image-rendering: auto;
 }
+
+#calculator {
+    width: 300px;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+}
+
+#display {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#buttons {
+    display: grid;
+    align-items: start;
+}
+
+#buttons .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    /* Adds a gap between the buttons in a row */
+}
+
+#buttons .row:first-child {
+    grid-template-columns: 1fr;
+}
+
+.calc-button {
+    padding: 0;
+    height: 50px;
+    box-sizing: border-box;
+    /* Ensures the border is included in the button's total width and height */
+}
+
+body.dark #display {
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
