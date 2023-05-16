@@ -14,13 +14,3 @@ button.addEventListener("click", function () {
         localStorage.setItem('flipped', 'false');
     }
 });
-
-// Check if the 'dark' state is stored in localStorage and set the class before the page loads
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark');
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
-} else {
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
-}
