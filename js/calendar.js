@@ -31,7 +31,7 @@ function createCalendar() {
     let headerRow = document.createElement('tr');
     for (let day of days) {
         let headerCell = document.createElement('th');
-        headerCell.innerHTML = '&nbsp;' + day + '&nbsp;';
+        headerCell.innerHTML = '&#8202;' + day + '&#8202;';
         headerRow.appendChild(headerCell);
     }
     calendarTable.appendChild(headerRow);

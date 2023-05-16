@@ -33,7 +33,7 @@ function createCalendar() {
     let headerRow = document.createElement('tr');
     for (let day of days) {
         let headerCell = document.createElement('th');
-        headerCell.innerHTML = '&nbsp;&nbsp;' + day + '&nbsp;&nbsp;'; // Add two non-breaking spaces around the day
+        headerCell.innerHTML = '&nbsp;&#8202;&#8202;' + day + '&nbsp;&#8202;&#8202;'; // Add two non-breaking spaces around the day
         headerRow.appendChild(headerCell);
     }
     calendarTable.appendChild(headerRow);
