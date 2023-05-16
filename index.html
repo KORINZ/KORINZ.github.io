@@ -18,6 +18,19 @@
     <script src="../../js/change-theme.js"></script>
     <script src="../../js/theme-toggle.js"></script>
     <title>Homepage - KORIN</title>
+    <script>
+        (function() {
+            // Try to get the theme from localStorage
+            const darkMode = localStorage.getItem('darkMode');
+            // Apply the theme before the browser renders the webpage
+            if (darkMode === 'true') {
+                document.documentElement.style.display = 'none';
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.display = '';
+            }
+        })();
+        </script>
+        
 </head>
 
 <body>
@@ -190,7 +203,6 @@
     </div>
 
     <script src="../../js/change-theme.js"></script>
-    <script src="../../js/theme-toggle.js"></script>
     <script src="../../js/sidebar-toggle.js"></script>
     <script src="../../js/calendar.js"></script>
     <script src="../../js/get-nhk-news.js"></script>
