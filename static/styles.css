@@ -15049,6 +15049,10 @@ body.dark #newsBox {
     margin: 10px 2px;
     cursor: pointer;
     transition-duration: 0.4s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .custom-button:hover {
