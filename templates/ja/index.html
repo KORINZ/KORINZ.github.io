@@ -17,22 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap" rel="stylesheet">
     <title>Homepage - KORIN</title>
-    <script>
-        // Check the local storage when the page loads
-        window.onload = function () {
-            var button = document.getElementById('theme-toggler');
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark');
-                button.classList.add('dark');
-                document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
-                document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
-            } else {
-                button.classList.remove('dark');
-                document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
-                document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
-            }
-        }
-    </script>
 </head>
 
 <body>

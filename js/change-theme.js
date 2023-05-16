@@ -21,7 +21,6 @@ function changeTheme() {
 // Event listener for the button
 document.getElementById('theme-toggler').addEventListener('click', changeTheme);
 
-<<<<<<< HEAD
 // Check the local storage when the page loads
 window.onload = function () {
     var button = document.getElementById('theme-toggler');
@@ -38,5 +37,3 @@ window.onload = function () {
         document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
     }
 }
-=======
->>>>>>> 74209029161a0c763a8d26e9237c8f31f7df281d
