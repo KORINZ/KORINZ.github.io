@@ -50,7 +50,7 @@ function calculate() {
             break
         case '/':
             if (current === 0) {
-                alert("Cannot divide by zero!")
+                alert("Cannot divide by zero!\n0で割ることはできません！");
                 clearDisplay()
                 return
             }
