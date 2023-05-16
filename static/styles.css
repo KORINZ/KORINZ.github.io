@@ -15185,3 +15185,7 @@ body.dark figure img {
     margin-right: 10px;
     /* Adjust the margin for the desired space */
 }
+
+img {
+    image-rendering: auto;
+}
