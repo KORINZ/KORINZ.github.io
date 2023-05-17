@@ -15196,12 +15196,15 @@ img {
 
 #calculator {
     width: 300px;
+    height: 425px;
     margin: auto;
     border: 2px solid;
-    padding: 20px;
+    padding: 20px 25px 20px 20px;
+    /* Adjusted the left and right padding */
     border-radius: 10px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 }
+
 
 #display {
     width: 100%;
@@ -15212,6 +15215,8 @@ img {
     background-color: #fff;
     color: #000;
     border: 2px solid;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
 }
 
 #buttons {

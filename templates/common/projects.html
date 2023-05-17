@@ -104,32 +104,49 @@
                     <input type="text" id="display" readonly>
                     <div id="buttons">
                         <div class="row">
-                            <button class="custom-button calc-button long-button" onclick="clearDisplay()">All
-                                Clear</button>
+                            <button class="custom-button calc-button long-button" onclick="clearDisplay()"><strong>All
+                                    Clear <i class="fa-solid fa-trash-can"></i></strong></button>
                         </div>
                         <div class="row">
-                            <button class="custom-button calc-button" onclick="appendNumber(7)">7</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(8)">8</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(9)">9</button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('/')">/</button>
+                            <button class="custom-button calc-button" onclick="appendNumber(7)"><i
+                                    class="fa-solid fa-7"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(8)"><i
+                                    class="fa-solid fa-8"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(9)"><i
+                                    class="fa-solid fa-9"></i></button>
+                            <button class="custom-button calc-button" onclick="chooseOperator('/')"><i
+                                    class="fa-solid fa-divide"></i></button>
                         </div>
                         <div class="row">
-                            <button class="custom-button calc-button" onclick="appendNumber(4)">4</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(5)">5</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(6)">6</button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('*')">*</button>
+                            <button class="custom-button calc-button" onclick="appendNumber(4)"><i
+                                    class="fa-solid fa-4"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(5)"><i
+                                    class="fa-solid fa-5"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(6)"><i
+                                    class="fa-solid fa-6"></i></button>
+                            <button class="custom-button calc-button" onclick="chooseOperator('*')"><i
+                                    class="fa-solid fa-xmark"></i></button>
                         </div>
                         <div class="row">
-                            <button class="custom-button calc-button" onclick="appendNumber(1)">1</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(2)">2</button>
-                            <button class="custom-button calc-button" onclick="appendNumber(3)">3</button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('-')">-</button>
+                            <button class="custom-button calc-button" onclick="appendNumber(1)"><i
+                                    class="fa-solid fa-1"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(2)"><i
+                                    class="fa-solid fa-2"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber(3)"><i
+                                    class="fa-solid fa-3"></i></button>
+                            <button class="custom-button calc-button" onclick="chooseOperator('-')"><i
+                                    class="fa-solid fa-minus"></i></button>
                         </div>
                         <div class="row">
-                            <button class="custom-button calc-button" onclick="appendNumber(0)">0</button>
-                            <button class="custom-button calc-button" onclick="appendNumber('.')">.</button>
-                            <button class="custom-button calc-button" onclick="calculate()">=</button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('+')">+</button>
+                            <button class="custom-button calc-button" onclick="appendNumber(0)"><i
+                                    class="fa-solid fa-0"></i></button>
+                            <button class="custom-button calc-button" onclick="appendNumber('.')"><span
+                                    style="font-size:2em;">.</span></button>
+
+                            <button class="custom-button calc-button" onclick="calculate()"><i
+                                    class="fa-solid fa-equals"></i></button>
+                            <button class="custom-button calc-button" onclick="chooseOperator('+')"><i
+                                    class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
