@@ -15240,7 +15240,6 @@ textarea:focus {
     background-color: #fff;
     color: #000 !important;
     border-color: #000 !important;
-    border-radius: 0px !important;
 }
 
 @media (max-width: 700px) {
@@ -15318,6 +15317,5 @@ body.dark #calculation-log {
     background-color: #333 !important;
     color: #fff !important;
     border-color: #fff !important;
-    border-radius: 0px !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
