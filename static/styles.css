@@ -15237,7 +15237,7 @@ textarea:focus {
 #calculation-log {
     margin-left: 15px;
     transition: background-color 0.2s ease, color 0.2s ease;
-    background-color: #fff !important;
+    background-color: #fff;
 }
 
 @media (max-width: 700px) {
@@ -15312,7 +15312,7 @@ body.dark .operator-button.calc-button-highlight {
 
 body.dark #display,
 body.dark #calculation-log {
-    background-color: #333 !important;
+    background-color: #333;
     color: #fff;
     border-color: #fff;
     transition: background-color 0.2s ease, color 0.2s ease;
