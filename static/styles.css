@@ -15284,13 +15284,19 @@ textarea:focus {
 
 #buttons .row {
     display: grid;
+    -webkit-grid-template-columns: repeat(4, 1fr);
+    /* Vendor prefix for Safari */
+
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
     /* Adds a gap between the buttons in a row */
 }
 
 #buttons .row:first-child {
-    grid-template-columns: 3fr 1fr !important;
+    -webkit-grid-template-columns: 3fr 1fr;
+    /* Vendor prefix for Safari */
+
+    grid-template-columns: 3fr 1fr;
 }
 
 
