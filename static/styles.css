@@ -15237,6 +15237,7 @@ textarea:focus {
 #calculation-log {
     margin-left: 15px;
     transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: #fff;
 }
 
 @media (max-width: 700px) {
