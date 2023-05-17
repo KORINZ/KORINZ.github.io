@@ -15030,6 +15030,7 @@ body.dark #newsBox {
     min-height: 200px;
     max-height: 600px;
     overflow: auto;
+    border: 2px solid !important;
 }
 
 body.dark #newsBox {
