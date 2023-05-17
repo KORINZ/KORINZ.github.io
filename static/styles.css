@@ -15202,16 +15202,60 @@ img {
     image-rendering: auto;
 }
 
-#calculator {
+#calculator,
+#calculation-log {
     width: 300px;
     height: 425px;
-    margin: auto;
     border: 2px solid;
     padding: 20px 25px 20px 20px;
     /* Adjusted the left and right padding */
-    border-radius: 10px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 }
+
+textarea.calculation-log {
+    resize: none;
+}
+
+textarea:focus {
+    outline: 1px solid;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    width: fit-content;
+    margin: auto;
+}
+
+#calculator {
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+#calculation-log {
+    margin-left: 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (max-width: 700px) {
+    #wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #calculator {
+        margin-right: 0;
+        margin-bottom: 30px;
+        /* Adjust as needed */
+    }
+
+    #calculation-log {
+        margin-left: 0;
+    }
+}
+
 
 
 #display {
@@ -15265,9 +15309,10 @@ body.dark .operator-button.calc-button-highlight {
 }
 
 
-
-body.dark #display {
+body.dark #display,
+body.dark #calculation-log {
     background-color: #333;
     color: #fff;
     border-color: #fff;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }

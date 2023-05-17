@@ -1,6 +1,7 @@
 let currentInput = ''
 let operator = null
 let firstInput = ''
+let previousAnswer = null
 
 function appendNumber(number) {
     if (number === '.' && currentInput.includes('.')) return
@@ -76,17 +77,23 @@ function calculate() {
         default:
             return
     }
-    let resultStr = result.toString()
-    let decimalIndex = resultStr.indexOf('.')
-    if (decimalIndex !== -1 && resultStr.length > decimalIndex + 10) {
-        resultStr = resultStr.substring(0, decimalIndex + 10)
-    }
-    currentInput = resultStr
+    // Round the result to 6 decimal places
+    result = parseFloat(result.toFixed(6))
+    currentInput = result.toString()
+
+    // Check if the firstInput is the same as the previous answer
+    const logFirstInput = (firstInput === previousAnswer) ? 'Ans' : firstInput;
+
+    // Add the calculation to the log before clearing the operator and first input
+    addToLog(logFirstInput + ' ' + operator + ' ' + current, currentInput);
+
+    // Update the previousAnswer variable with the new result
+    previousAnswer = currentInput;
+
     operator = null
     firstInput = ''
     updateDisplay()
 }
-
 
 
 function updateDisplay() {
@@ -118,4 +125,10 @@ window.onload = function () {
         });
     });
 };
+
+function addToLog(calculation, result) {
+    var log = document.getElementById('calculation-log');
+    log.value += calculation + ' = ' + result + '\n';
+    log.scrollTop = log.scrollHeight; // Scroll to the bottom
+}
 
