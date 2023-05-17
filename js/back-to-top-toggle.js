@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $('#back-to-top').hide();  // Hide the button when the page loads
+
     var isAnimating = false;
 
     $(window).on('scroll', function () {
