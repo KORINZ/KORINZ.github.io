@@ -15177,6 +15177,14 @@ body.dark .back-to-top {
     display: block;
 }
 
+figure img {
+    transition: transform 0.3s ease-in-out;
+}
+
+figure img:hover {
+    transform: scale(1.05);
+}
+
 body.dark figure img {
     filter: brightness(0.7) contrast(0.85) !important;
 }
