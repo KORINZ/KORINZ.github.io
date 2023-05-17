@@ -15314,6 +15314,6 @@ body.dark #display,
 body.dark #calculation-log {
     background-color: #333 !important;
     color: #fff;
-    border-color: #fff;
+    border-color: #fff !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
