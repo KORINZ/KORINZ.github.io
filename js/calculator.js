@@ -13,13 +13,20 @@ function appendNumber(number) {
     updateDisplay()
 }
 
-
 function clearDisplay() {
-    currentInput = ''
-    operator = null
-    firstInput = ''
-    updateDisplay()
+    currentInput = '';
+    operator = null;
+    firstInput = '';
+    // Get current log content
+    var log = document.getElementById('calculation-log');
+    var logContent = log.value.trim().split('\n');
+    // Check if the last line is already a dashed line
+    if (logContent[logContent.length - 1] !== '-----------------') {
+        addToLog('-----------------', ''); // Add a dashed line to the log when 'All Clear' is pressed
+    }
+    updateDisplay();
 }
+
 
 function chooseOperator(op) {
     if (currentInput === '.' || firstInput === '.') {
@@ -50,6 +57,48 @@ function chooseOperator(op) {
         operator = op;
     }
 }
+
+function calculateSquareRoot() {
+    let inputValue;
+    let logInput;
+    if (currentInput === '') {
+        if (previousAnswer === null) {
+            // No action if there's no previous answer
+            return;
+        } else {
+            inputValue = parseFloat(previousAnswer);
+            logInput = 'Ans'; // Use 'Ans' when calculating square root of previous answer
+        }
+    } else {
+        inputValue = parseFloat(currentInput);
+        logInput = currentInput; // Use the actual input value otherwise
+    }
+
+    if (inputValue < 0) {
+        alert("Cannot take square root of a negative number!\n負の数の平方根は取れません！");
+        return;
+    }
+
+    let result = Math.sqrt(inputValue);
+    // Round the result to 6 decimal places
+    result = parseFloat(result.toFixed(6));
+
+    if (previousAnswer === currentInput) {
+        logInput = 'Ans';
+    }
+
+    // Add the calculation to the log before updating the current input
+    addToLog('√' + logInput, result);
+
+    // Update the currentInput and previousAnswer variable with the new result
+    currentInput = result.toString();
+    previousAnswer = currentInput;
+
+    operator = null;
+    firstInput = '';
+    updateDisplay();
+}
+
 
 function calculate() {
     let result
@@ -128,7 +177,10 @@ window.onload = function () {
 
 function addToLog(calculation, result) {
     var log = document.getElementById('calculation-log');
-    log.value += calculation + ' = ' + result + '\n';
+    log.value += calculation + (result ? ' = ' + result : '') + '\n';
     log.scrollTop = log.scrollHeight; // Scroll to the bottom
 }
 
+// TODO make = works again and again
+// TODO add delete right most number button
+// TODO after click =, click a number should reset the display and put the new number

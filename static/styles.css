@@ -15206,7 +15206,7 @@ img {
 #calculator,
 #calculation-log {
     width: 300px;
-    height: 425px;
+    height: 435px;
     border: 2px solid;
     padding: 20px 25px 20px 20px;
     /* Adjusted the left and right padding */
@@ -15290,8 +15290,9 @@ textarea:focus {
 }
 
 #buttons .row:first-child {
-    grid-template-columns: 1fr;
+    grid-template-columns: 3fr 1fr;
 }
+
 
 .calc-button {
     padding: 0;
