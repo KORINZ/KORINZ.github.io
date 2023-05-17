@@ -15256,6 +15256,8 @@ textarea:focus {
 
     #calculation-log {
         margin-left: 0;
+        -webkit-appearance: none;
+        border-radius: 0;
     }
 }
 
