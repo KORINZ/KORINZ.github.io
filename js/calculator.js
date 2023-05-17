@@ -26,22 +26,29 @@ function chooseOperator(op) {
         clearDisplay();
         return;
     }
-    if (currentInput !== '') {
-        if (firstInput !== '') {
-            calculate();
-        }
-    }
     if (op === '-' && currentInput === '') {
         currentInput += op;
         updateDisplay();
         return;
     }
-    firstInput = currentInput;
-    currentInput = '';
-    operator = op;
+    if (op === '+' && currentInput === '-') {
+        currentInput = '';
+        updateDisplay();
+        return;
+    }
+    if (currentInput !== '') {
+        if (firstInput !== '') {
+            calculate();
+        }
+    }
+    if (currentInput === '') {
+        operator = op; // Overwrite the operator if a new one is selected
+    } else {
+        firstInput = currentInput;
+        currentInput = '';
+        operator = op;
+    }
 }
-
-
 
 function calculate() {
     let result
@@ -85,3 +92,30 @@ function calculate() {
 function updateDisplay() {
     document.getElementById('display').value = currentInput
 }
+
+
+window.onload = function () {
+    // Get all buttons with the 'calc-button' class
+    const buttons = document.querySelectorAll('.calc-button');
+    // Get all buttons with the 'operator-button' class
+    const operatorButtons = document.querySelectorAll('.operator-button');
+
+    // Add the 'click' event listener to all buttons
+    buttons.forEach((button) => {
+        button.addEventListener('click', function (event) {
+            // Remove the 'calc-button-highlight' class from all operator buttons
+            operatorButtons.forEach((button) => {
+                button.classList.remove('calc-button-highlight');
+            });
+        });
+    });
+
+    // Add the 'click' event listener to operator buttons
+    operatorButtons.forEach((button) => {
+        button.addEventListener('click', function (event) {
+            // Add the 'calc-button-highlight' class to the clicked operator button
+            event.currentTarget.classList.add('calc-button-highlight');
+        });
+    });
+};
+

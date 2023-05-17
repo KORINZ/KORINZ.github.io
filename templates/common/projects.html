@@ -114,7 +114,7 @@
                                     class="fa-solid fa-8"></i></button>
                             <button class="custom-button calc-button" onclick="appendNumber(9)"><i
                                     class="fa-solid fa-9"></i></button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('/')"><i
+                            <button class="custom-button calc-button operator-button" onclick="chooseOperator('/')"><i
                                     class="fa-solid fa-divide"></i></button>
                         </div>
                         <div class="row">
@@ -124,7 +124,7 @@
                                     class="fa-solid fa-5"></i></button>
                             <button class="custom-button calc-button" onclick="appendNumber(6)"><i
                                     class="fa-solid fa-6"></i></button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('*')"><i
+                            <button class="custom-button calc-button operator-button" onclick="chooseOperator('*')"><i
                                     class="fa-solid fa-xmark"></i></button>
                         </div>
                         <div class="row">
@@ -134,7 +134,7 @@
                                     class="fa-solid fa-2"></i></button>
                             <button class="custom-button calc-button" onclick="appendNumber(3)"><i
                                     class="fa-solid fa-3"></i></button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('-')"><i
+                            <button class="custom-button calc-button operator-button" onclick="chooseOperator('-')"><i
                                     class="fa-solid fa-minus"></i></button>
                         </div>
                         <div class="row">
@@ -145,12 +145,27 @@
 
                             <button class="custom-button calc-button" onclick="calculate()"><i
                                     class="fa-solid fa-equals"></i></button>
-                            <button class="custom-button calc-button" onclick="chooseOperator('+')"><i
+                            <button class="custom-button calc-button operator-button" onclick="chooseOperator('+')"><i
                                     class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
 
+                <br>
+
+                <p style="font-size: 0.9rem;">This calculator performs basic arithmetic. The "<i
+                        class="fa-solid fa-minus"></i>" button can be used to
+                    either subtract numbers or
+                    denote a negative input, while "<i class="fa-solid fa-plus"></i>" can add numbers or cancel a
+                    preceding negative sign. Click "<i class="fa-solid fa-equals"></i>"
+                    for results and "All Clear <i class="fa-solid fa-trash-can"></i>" to reset.</p>
+                <p style="font-size: 0.9rem;">この電卓は基本的な算術を実行します。 『<i
+                        class="fa-solid fa-minus"></i>』ボタンは数字を引くか、負の入力を示すために使用できます。
+                    『<i class="fa-solid fa-plus"></i>』は数字を追加するか、前の負の符号をキャンセルするために使用できます。結果を表示するには 『<i
+                        class="fa-solid fa-equals"></i>』を、リセットするには
+                    『All Clear <i class="fa-solid fa-trash-can"></i>』をクリックしてください。
+
+                </p>
                 <br>
 
                 <h2><a href="https://www.python.org/" style="text-decoration: none;"><i class="fa-brands fa-python"></i>

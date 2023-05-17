@@ -15250,6 +15250,22 @@ img {
     /* Ensures the border is included in the button's total width and height */
 }
 
+.operator-button.calc-button-highlight {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+    /* Adjust this color as needed */
+}
+
+body.dark .operator-button.calc-button-highlight {
+    background-color: #fff !important;
+    color: #333 !important;
+    border-color: #333 !important;
+    /* Adjust this color as needed */
+}
+
+
+
 body.dark #display {
     background-color: #333;
     color: #fff;
