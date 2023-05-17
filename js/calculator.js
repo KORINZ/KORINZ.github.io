@@ -21,16 +21,26 @@ function clearDisplay() {
 }
 
 function chooseOperator(op) {
+    if (currentInput === '.' || firstInput === '.') {
+        alert("Invalid input! Please enter a valid number.\n無効な入力です！有効な数値を入力してください。");
+        clearDisplay();
+        return;
+    }
     if (currentInput !== '') {
         if (firstInput !== '') {
-            calculate()
-        } else {
-            firstInput = currentInput
-            currentInput = ''
+            calculate();
         }
     }
-    operator = op
+    if (op === '-' && currentInput === '') {
+        currentInput += op;
+        updateDisplay();
+        return;
+    }
+    firstInput = currentInput;
+    currentInput = '';
+    operator = op;
 }
+
 
 
 function calculate() {
@@ -59,11 +69,17 @@ function calculate() {
         default:
             return
     }
-    currentInput = Number(result.toFixed(10)).toString()
+    let resultStr = result.toString()
+    let decimalIndex = resultStr.indexOf('.')
+    if (decimalIndex !== -1 && resultStr.length > decimalIndex + 10) {
+        resultStr = resultStr.substring(0, decimalIndex + 10)
+    }
+    currentInput = resultStr
     operator = null
     firstInput = ''
     updateDisplay()
 }
+
 
 
 function updateDisplay() {
