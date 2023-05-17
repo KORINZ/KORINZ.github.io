@@ -15277,6 +15277,7 @@ textarea:focus {
 
 }
 
+/* CSS Grid styles */
 #buttons {
     display: grid;
     align-items: start;
@@ -15284,20 +15285,35 @@ textarea:focus {
 
 #buttons .row {
     display: grid;
-    -webkit-grid-template-columns: repeat(4, 1fr);
-    /* Vendor prefix for Safari */
-
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
     /* Adds a gap between the buttons in a row */
 }
 
 #buttons .row:first-child {
-    -webkit-grid-template-columns: 3fr 1fr;
-    /* Vendor prefix for Safari */
-
     grid-template-columns: 3fr 1fr;
 }
+
+/* Flexbox fallback styles */
+@supports not (display: grid) {
+    #buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #buttons .row {
+        display: flex;
+        flex-basis: 25%;
+        /* Adjust this value as per your needs */
+        gap: 5px;
+    }
+
+    #buttons .row:first-child {
+        flex-basis: 75%;
+        /* Adjust this value as per your needs */
+    }
+}
+
 
 
 .calc-button {
