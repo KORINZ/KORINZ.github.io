@@ -5,6 +5,8 @@ let previousAnswer = null;
 let lastOperation = null;
 let lastNumber = null;
 let isSubtraction = false;
+let newInputAfterEquals = false;
+
 
 
 function updateDisplay() {
@@ -12,6 +14,8 @@ function updateDisplay() {
 }
 
 function appendNumber(number) {
+    newInputAfterEquals = true;
+
     // Check if the current input is "-" or empty
     if (currentInput === '-' || !currentInput) {
         if (number === '0.' && currentInput.includes('.')) return;
@@ -32,9 +36,9 @@ function clearDisplay() {
     firstInput = '';
     // Get current log content
     var log = document.getElementById('calculation-log');
-    var logContent = log.value.trim().split('\n');
-    // Check if the last line is already a dashed line
-    if (logContent[logContent.length - 1] !== '-----------------') {
+    var logContent = log.value.trim();
+    // Check if the log is not empty and if the last line is not already a dashed line
+    if (logContent !== '' && logContent.split('\n')[logContent.split('\n').length - 1] !== '-----------------') {
         addToLog('-----------------', ''); // Add a dashed line to the log when 'All Clear' is pressed
     }
     updateDisplay();
@@ -42,6 +46,11 @@ function clearDisplay() {
 
 
 function chooseOperator(op) {
+    if (newInputAfterEquals) {
+        firstInput = currentInput;
+        currentInput = '';
+        newInputAfterEquals = false;
+    }
     if (op === '-' && currentInput === '' && !isSubtraction) {
         operator = op;
         isSubtraction = true;
@@ -117,6 +126,13 @@ function calculateSquareRoot() {
 
 
 function calculate() {
+    // If newInputAfterEquals is true, start a new calculation
+    if (newInputAfterEquals) {
+        lastOperation = null;
+        lastNumber = null;
+        newInputAfterEquals = false;
+    }
+
     let result;
     const prev = parseFloat(firstInput);
     let current = parseFloat(currentInput);
@@ -163,7 +179,7 @@ function calculate() {
     // Check if the firstInput is the same as the previous answer
     const logFirstInput = (firstInput === previousAnswer) ? 'Ans' : firstInput;
     // Add parentheses around negative numbers in a subtraction operation
-    const logCurrent = (operator === '-' && current < 0) ? '(' + current + ')' : current;
+    const logCurrent = (operator === '-' || operator === '+' && current < 0) ? '(' + current + ')' : current;
 
     // Add the calculation to the log before clearing the operator and first input
     addToLog(logFirstInput + ' ' + operator + ' ' + logCurrent, currentInput);
@@ -173,9 +189,10 @@ function calculate() {
 
     // Store first input as the result of the operation for continuous operations
     firstInput = currentInput;
+    updateDisplay();
     currentInput = '';
     isSubtraction = false;
-    updateDisplay();
+
 }
 
 
