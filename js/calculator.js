@@ -4,13 +4,19 @@ let firstInput = '';
 let previousAnswer = null;
 let lastOperation = null;
 let lastNumber = null;
-let isSubtraction = false;
 let newInputAfterEquals = false;
 
 
 
 function updateDisplay() {
     document.getElementById('display').value = currentInput
+}
+
+function deleteNumber() {
+    if (currentInput) {
+        currentInput = currentInput.slice(0, -1);
+        updateDisplay();
+    }
 }
 
 function appendNumber(number) {
@@ -23,11 +29,10 @@ function appendNumber(number) {
         if (number === '0.') number = '.';
     }
 
-    currentInput = currentInput + number;
+    currentInput += number;
 
     updateDisplay();
 }
-
 
 
 function clearDisplay() {
@@ -45,27 +50,17 @@ function clearDisplay() {
 }
 
 
+function changeSign() {
+    currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
+    updateDisplay();
+}
+
+
 function chooseOperator(op) {
     if (newInputAfterEquals) {
         firstInput = currentInput;
         currentInput = '';
         newInputAfterEquals = false;
-    }
-    if (op === '-' && currentInput === '' && !isSubtraction) {
-        operator = op;
-        isSubtraction = true;
-        return;
-    }
-    if (op === '-' && currentInput === '' && isSubtraction) {
-        currentInput += op;
-        isSubtraction = false;
-        updateDisplay();
-        return;
-    }
-    if (op === '+' && currentInput === '-') {
-        currentInput = '';
-        updateDisplay();
-        return;
     }
     if (currentInput !== '') {
         if (firstInput !== '') {
@@ -80,7 +75,6 @@ function chooseOperator(op) {
         operator = op;
     }
 }
-
 
 
 function calculateSquareRoot() {
@@ -178,8 +172,9 @@ function calculate() {
 
     // Check if the firstInput is the same as the previous answer
     const logFirstInput = (firstInput === previousAnswer) ? 'Ans' : firstInput;
-    // Add parentheses around negative numbers in a subtraction operation
-    const logCurrent = (operator === '-' || operator === '+' && current < 0) ? '(' + current + ')' : current;
+
+    // Add parentheses around negative numbers
+    const logCurrent = (current < 0) ? '(' + current + ')' : current;
 
     // Add the calculation to the log before clearing the operator and first input
     addToLog(logFirstInput + ' ' + operator + ' ' + logCurrent, currentInput);
@@ -191,11 +186,13 @@ function calculate() {
     firstInput = currentInput;
     updateDisplay();
     currentInput = '';
-    isSubtraction = false;
-
 }
 
-
+function addToLog(calculation, result) {
+    let log = document.getElementById('calculation-log');
+    log.value += calculation + (result ? ' = ' + result : '') + '\n';
+    log.scrollTop = log.scrollHeight; // Scroll to the bottom
+}
 
 window.onload = function () {
     // Get all buttons with the 'calc-button' class
@@ -222,12 +219,3 @@ window.onload = function () {
     });
 };
 
-function addToLog(calculation, result) {
-    let log = document.getElementById('calculation-log');
-    log.value += calculation + (result ? ' = ' + result : '') + '\n';
-    log.scrollTop = log.scrollHeight; // Scroll to the bottom
-}
-
-// TODO make = works again and again
-// TODO add delete right most number button
-// TODO after click =, click a number should reset the display and put the new number

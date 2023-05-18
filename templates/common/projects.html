@@ -105,11 +105,17 @@
                         <input type="text" id="display" readonly>
                         <div id="buttons">
                             <div class="row">
-                                <button class="custom-button calc-button long-button" onclick="clearDisplay()">
-                                    <strong>All Clear <i class="fa-solid fa-trash-can"></i></strong>
+                                <button class="custom-button calc-button" onclick="clearDisplay()">
+                                    <strong>AC <i class="fa-solid fa-trash-can"></i></strong>
+                                </button>
+                                <button class="custom-button calc-button" onclick="deleteNumber()">
+                                    <i class="fa-solid fa-delete-left"></i>
+                                </button>
+                                <button class="custom-button calc-button" onclick="changeSign()">
+                                    <i class="fa-solid fa-plus-minus"></i>
                                 </button>
                                 <button class="custom-button calc-button" onclick="calculateSquareRoot()">
-                                    <i class="fa-solid fa-square-root-variable"></i></i>
+                                    <i class="fa-solid fa-square-root-variable"></i>
                                 </button>
                             </div>
                             <div class="row">
@@ -159,18 +165,12 @@
                 </div>
                 <br>
 
-                <p style="font-size: 0.9rem;">This calculator performs basic arithmetic. The "<i
-                        class="fa-solid fa-minus"></i>" button can be used to either subtract numbers or denote a
-                    negative input. The first press after an operator or equals sign will act as a subtraction operator.
-                    If pressed again without entering a number, it will denote a negative input. The "<i
-                        class="fa-solid fa-plus"></i>" button can be used to add numbers or cancel a preceding negative
-                    sign. Click "<i class="fa-solid fa-equals"></i>" for results and "All Clear <i
-                        class="fa-solid fa-trash-can"></i>" to reset. Reload the page to clear the calculation log.</p>
+                <p style="font-size: 0.9rem;">This calculator performs basic arithmetic. Click "<i
+                        class="fa-solid fa-equals"></i>" for results and "AC <i class="fa-solid fa-trash-can"></i>" to
+                    reset. Reload the page to clear the calculation log.</p>
 
-                <p style="font-size: 0.9rem;">この電卓は基本的な算術を実行します。『<i
-                        class="fa-solid fa-minus"></i>』ボタンは数字を引くか、負の入力を示すために使用できます。オペレータまたは等号の後の最初の押下は、減算オペレータとして機能します。番号を入力せずに再度押すと、負の入力を示します。『<i
-                        class="fa-solid fa-plus"></i>』ボタンは数字を追加するか、前の負の記号をキャンセルするために使用できます。結果を表示するには『<i
-                        class="fa-solid fa-equals"></i>』を、リセットするには『All Clear <i
+                <p style="font-size: 0.9rem;">この電卓は基本的な算術を実行します。結果を表示するには『<i
+                        class="fa-solid fa-equals"></i>』を、リセットするには『AC <i
                         class="fa-solid fa-trash-can"></i>』をクリックしてください。計算ログを消去する場合は、ページを再読み込みしてください。</p>
 
                 <br>

@@ -15290,32 +15290,6 @@ textarea:focus {
     /* Adds a gap between the buttons in a row */
 }
 
-#buttons .row:first-child {
-    grid-template-columns: 3fr 1fr;
-}
-
-/* Flexbox fallback styles */
-@supports not (display: grid) {
-    #buttons {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #buttons .row {
-        display: flex;
-        flex-basis: 25%;
-        /* Adjust this value as per your needs */
-        gap: 5px;
-    }
-
-    #buttons .row:first-child {
-        flex-basis: 75%;
-        /* Adjust this value as per your needs */
-    }
-}
-
-
-
 .calc-button {
     padding: 0;
     height: 50px;
