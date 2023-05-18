@@ -1,17 +1,26 @@
-let currentInput = ''
-let operator = null
-let firstInput = ''
-let previousAnswer = null
+let currentInput = '';
+let operator = null;
+let firstInput = '';
+let previousAnswer = null;
+
+function updateDisplay() {
+    document.getElementById('display').value = currentInput
+}
 
 function appendNumber(number) {
-    if (number === '.' && currentInput.includes('.')) return
-    if (currentInput === '0' && number !== '.') {
-        currentInput = number.toString()
-    } else {
-        currentInput = currentInput.toString() + number.toString()
+    // Check if the current input is "-" or empty
+    if (currentInput === '-' || !currentInput) {
+        if (number === '0.' && currentInput.includes('.')) return;
+    } else if (currentInput) {
+        if (number === '0.') number = '.';
     }
-    updateDisplay()
+
+    currentInput = currentInput + number;
+
+    updateDisplay();
 }
+
+
 
 function clearDisplay() {
     currentInput = '';
@@ -29,11 +38,6 @@ function clearDisplay() {
 
 
 function chooseOperator(op) {
-    if (currentInput === '.' || firstInput === '.') {
-        alert("Invalid input! Please enter a valid number.\n無効な入力です！有効な数値を入力してください。");
-        clearDisplay();
-        return;
-    }
     if (op === '-' && currentInput === '') {
         currentInput += op;
         updateDisplay();
@@ -132,9 +136,11 @@ function calculate() {
 
     // Check if the firstInput is the same as the previous answer
     const logFirstInput = (firstInput === previousAnswer) ? 'Ans' : firstInput;
+    // Add parentheses around negative numbers in a subtraction operation
+    const logCurrent = (operator === '-' && current < 0) ? '(' + current + ')' : current;
 
     // Add the calculation to the log before clearing the operator and first input
-    addToLog(logFirstInput + ' ' + operator + ' ' + current, currentInput);
+    addToLog(logFirstInput + ' ' + operator + ' ' + logCurrent, currentInput);
 
     // Update the previousAnswer variable with the new result
     previousAnswer = currentInput;
@@ -142,11 +148,6 @@ function calculate() {
     operator = null
     firstInput = ''
     updateDisplay()
-}
-
-
-function updateDisplay() {
-    document.getElementById('display').value = currentInput
 }
 
 
