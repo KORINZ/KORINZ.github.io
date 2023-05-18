@@ -66,6 +66,11 @@ function changeSign() {
     if (currentInput) {
         currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
         updateDisplay();
+    } else if (previousAnswer) {
+        currentInput = previousAnswer.includes('-') ? previousAnswer.replace('-', '') : '-' + previousAnswer;
+        firstInput = null;
+        previousAnswer = null;
+        updateDisplay();
     }
 }
 
