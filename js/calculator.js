@@ -2,6 +2,10 @@ let currentInput = '';
 let operator = null;
 let firstInput = '';
 let previousAnswer = null;
+let lastOperation = null;
+let lastNumber = null;
+let isSubtraction = false;
+
 
 function updateDisplay() {
     document.getElementById('display').value = currentInput
@@ -38,8 +42,14 @@ function clearDisplay() {
 
 
 function chooseOperator(op) {
-    if (op === '-' && currentInput === '') {
+    if (op === '-' && currentInput === '' && !isSubtraction) {
+        operator = op;
+        isSubtraction = true;
+        return;
+    }
+    if (op === '-' && currentInput === '' && isSubtraction) {
         currentInput += op;
+        isSubtraction = false;
         updateDisplay();
         return;
     }
@@ -61,6 +71,8 @@ function chooseOperator(op) {
         operator = op;
     }
 }
+
+
 
 function calculateSquareRoot() {
     let inputValue;
@@ -105,34 +117,48 @@ function calculateSquareRoot() {
 
 
 function calculate() {
-    let result
-    const prev = parseFloat(firstInput)
-    const current = parseFloat(currentInput)
-    if (isNaN(prev) || isNaN(current)) return
+    let result;
+    const prev = parseFloat(firstInput);
+    let current = parseFloat(currentInput);
+
+    if (isNaN(prev)) return;
+
+    // If current is not a number (empty input) and lastOperation and lastNumber are set,
+    // use them for the calculation
+    if (isNaN(current) && lastOperation !== null && lastNumber !== null) {
+        current = lastNumber;
+        operator = lastOperation;
+    } else {
+        // Otherwise, if it's a legitimate calculation, save the operator and the second number
+        lastOperation = operator;
+        lastNumber = current;
+    }
+
     switch (operator) {
         case '+':
-            result = prev + current
-            break
+            result = prev + current;
+            break;
         case '-':
-            result = prev - current
-            break
+            result = prev - current;
+            break;
         case '*':
-            result = prev * current
-            break
+            result = prev * current;
+            break;
         case '/':
             if (current === 0) {
                 alert("Cannot divide by zero!\n0で割ることはできません！");
-                clearDisplay()
-                return
+                clearDisplay();
+                return;
             }
-            result = prev / current
-            break
+            result = prev / current;
+            break;
         default:
-            return
+            return;
     }
+
     // Round the result to 6 decimal places
-    result = parseFloat(result.toFixed(6))
-    currentInput = result.toString()
+    result = parseFloat(result.toFixed(6));
+    currentInput = result.toString();
 
     // Check if the firstInput is the same as the previous answer
     const logFirstInput = (firstInput === previousAnswer) ? 'Ans' : firstInput;
@@ -145,10 +171,13 @@ function calculate() {
     // Update the previousAnswer variable with the new result
     previousAnswer = currentInput;
 
-    operator = null
-    firstInput = ''
-    updateDisplay()
+    // Store first input as the result of the operation for continuous operations
+    firstInput = currentInput;
+    currentInput = '';
+    isSubtraction = false;
+    updateDisplay();
 }
+
 
 
 window.onload = function () {
@@ -177,7 +206,7 @@ window.onload = function () {
 };
 
 function addToLog(calculation, result) {
-    var log = document.getElementById('calculation-log');
+    let log = document.getElementById('calculation-log');
     log.value += calculation + (result ? ' = ' + result : '') + '\n';
     log.scrollTop = log.scrollHeight; // Scroll to the bottom
 }
