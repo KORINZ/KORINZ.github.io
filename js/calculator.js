@@ -7,26 +7,38 @@ let lastNumber = null;
 let newInputAfterEquals = false;
 
 
-
 function updateDisplay() {
-    document.getElementById('display').value = currentInput
+    document.getElementById('display').value = currentInput;
 }
+
 
 function deleteNumber() {
     if (currentInput) {
         currentInput = currentInput.slice(0, -1);
         updateDisplay();
+    } else if (previousAnswer) {
+        currentInput = previousAnswer.slice(0, -1);
+        firstInput = null;
+        previousAnswer = null;
+        updateDisplay();
     }
 }
+
 
 function appendNumber(number) {
     newInputAfterEquals = true;
 
-    // Check if the current input is "-" or empty
-    if (currentInput === '-' || !currentInput) {
-        if (number === '0.' && currentInput.includes('.')) return;
-    } else if (currentInput) {
-        if (number === '0.') number = '.';
+    if (number === '0.') {
+        // If current input is empty, append '0.'
+        // If current input is not empty and already contains '.', prevent adding '0.'
+        // If current input is not empty and does not contain '.', append only '.'
+        if (currentInput === '') {
+            number = '0.';
+        } else if (currentInput.includes('.')) {
+            return;
+        } else {
+            number = '.';
+        }
     }
 
     currentInput += number;
@@ -51,9 +63,12 @@ function clearDisplay() {
 
 
 function changeSign() {
-    currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
-    updateDisplay();
+    if (currentInput) {
+        currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
+        updateDisplay();
+    }
 }
+
 
 
 function chooseOperator(op) {
@@ -138,6 +153,9 @@ function calculate() {
     if (isNaN(current) && lastOperation !== null && lastNumber !== null) {
         current = lastNumber;
         operator = lastOperation;
+    } else if (isNaN(current)) {
+        // If no second number entered, simply return and do nothing.
+        return;
     } else {
         // Otherwise, if it's a legitimate calculation, save the operator and the second number
         lastOperation = operator;
