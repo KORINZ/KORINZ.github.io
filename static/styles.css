@@ -15241,7 +15241,6 @@ textarea:focus {
     background-color: #fff;
     color: #000 !important;
     border-color: #000 !important;
-    -webkit-appearance: none !important;
     border-radius: 0 !important;
 }
 
@@ -15278,12 +15277,30 @@ textarea:focus {
 }
 
 /* CSS Grid styles */
+#buttons {
+    display: grid;
+    align-items: start;
+}
 
 #buttons .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
     /* Adds a gap between the buttons in a row */
+}
+
+@supports not (display: grid) {
+    #buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #buttons .row {
+        display: flex;
+        flex-basis: 25%;
+        /* Adjust this value as per your needs */
+        gap: 5px;
+    }
 }
 
 .calc-button {
@@ -15313,7 +15330,6 @@ body.dark #calculation-log {
     background-color: #333 !important;
     color: #fff !important;
     border-color: #fff !important;
-    -webkit-appearance: none !important;
     border-radius: 0 !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
