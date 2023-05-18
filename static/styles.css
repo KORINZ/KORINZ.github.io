@@ -15278,10 +15278,6 @@ textarea:focus {
 }
 
 /* CSS Grid styles */
-#buttons {
-    display: grid;
-    align-items: start;
-}
 
 #buttons .row {
     display: grid;
