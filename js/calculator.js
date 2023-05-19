@@ -26,8 +26,6 @@ function deleteNumber() {
 
 
 function appendNumber(number) {
-    newInputAfterEquals = true;
-
     if (number === '0.') {
         // If current input is empty, append '0.'
         // If current input is not empty and already contains '.', prevent adding '0.'
@@ -152,7 +150,7 @@ function calculate() {
     }
 
     let result;
-    const prev = parseFloat(firstInput);
+    let prev = parseFloat(firstInput);
     let current = parseFloat(currentInput);
 
     if (isNaN(prev)) return;
