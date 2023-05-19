@@ -32,10 +32,7 @@ function deleteNumber() {
 
 function appendNumber(number) {
     if (number === '0.') {
-        // If current input is empty, append '0.'
-        // If current input is not empty and already contains '.', prevent adding '0.'
-        // If current input is not empty and does not contain '.', append only '.'
-        if (currentInput === '') {
+        if (currentInput === '' || currentInput === '0') {
             number = '0.';
         } else if (currentInput.includes('.')) {
             return;
@@ -43,11 +40,17 @@ function appendNumber(number) {
             number = '.';
         }
     }
-
-    currentInput += number;
-
+    if (number === '0' && currentInput === '0' && !currentInput.includes('.')) {
+        return;
+    }
+    if (number !== '0' && currentInput === '0' && !currentInput.includes('.')) {
+        currentInput = number;
+    } else {
+        currentInput += number;
+    }
     updateDisplay();
 }
+
 
 
 function clearDisplay() {
