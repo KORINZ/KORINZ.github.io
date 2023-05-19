@@ -51,6 +51,10 @@ function clearDisplay() {
     currentInput = '';
     operator = null;
     firstInput = '';
+    previousAnswer = null;
+    lastOperation = null;
+    lastNumber = null;
+    newInputAfterEquals = false;
     // Get current log content
     var log = document.getElementById('calculation-log');
     var logContent = log.value.trim();
