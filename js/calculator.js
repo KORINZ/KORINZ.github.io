@@ -13,6 +13,11 @@ function updateDisplay() {
 
 
 function deleteNumber() {
+    if (newInputAfterEquals) {
+        firstInput = '';
+        operator = null;
+        newInputAfterEquals = false;
+    }
     if (currentInput) {
         currentInput = currentInput.slice(0, -1);
         updateDisplay();
@@ -31,6 +36,12 @@ function deleteNumber() {
 
 
 function appendNumber(number) {
+    if (newInputAfterEquals) {
+        currentInput = '';
+        firstInput = '';
+        operator = null;
+        newInputAfterEquals = false;
+    }
     if (number === '0.') {
         if (currentInput === '' || currentInput === '0') {
             number = '0.';
@@ -88,11 +99,23 @@ function changeSign() {
     }
 }
 
+function equalsPressed() {
+    if (currentInput !== '') {
+        calculate();
+    } else if (lastOperation && lastNumber) {
+        firstInput = previousAnswer;
+        currentInput = lastNumber.toString();
+        operator = lastOperation;
+        calculate();
+    }
+    newInputAfterEquals = true;
+}
+
 
 
 function chooseOperator(op) {
-    if (newInputAfterEquals) {
-        firstInput = currentInput;
+    if (newInputAfterEquals && previousAnswer) {
+        firstInput = previousAnswer;
         currentInput = '';
         newInputAfterEquals = false;
     }
