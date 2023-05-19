@@ -18,8 +18,13 @@ function deleteNumber() {
         updateDisplay();
     } else if (previousAnswer) {
         currentInput = previousAnswer.slice(0, -1);
-        firstInput = null;
+        firstInput = '';
         previousAnswer = null;
+        updateDisplay();
+    }
+    else if (firstInput) {
+        operator = null;
+        currentInput = firstInput.slice(0, -1);
         updateDisplay();
     }
 }
@@ -68,11 +73,15 @@ function changeSign() {
     if (currentInput) {
         currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
         updateDisplay();
-    } else if (previousAnswer) {
+    }
+    else if (previousAnswer) {
         currentInput = previousAnswer.includes('-') ? previousAnswer.replace('-', '') : '-' + previousAnswer;
         firstInput = null;
         previousAnswer = null;
         updateDisplay();
+    }
+    else {
+        return;
     }
 }
 
