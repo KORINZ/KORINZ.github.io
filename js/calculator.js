@@ -1,10 +1,11 @@
-let currentInput = '';
-let operator = null;
-let firstInput = '';
-let previousAnswer = null;
-let lastOperation = null;
-let lastNumber = null;
-let newInputAfterEquals = false;
+let currentInput = ''; // Represents the current numerical input value that's being typed by the user.
+let operator = null; // Stores the current mathematical operator (e.g., '+', '-', '*', '/') selected by the user.
+let firstInput = ''; // Stores the first numerical input provided by the user before an operator is chosen.
+let previousAnswer = null; // Holds the result of the previous calculation, allowing it to be used in the next operation if desired.
+let lastOperation = null; // Stores the last operation performed. Useful for repeating the last operation when the equals button is pressed multiple times.
+let lastNumber = null; // Holds the last number used in an operation. Useful for repeating the last operation when the equals button is pressed multiple times.
+let newInputAfterEquals = false; // A boolean flag that is set to `true` right after an equals operation. It helps in managing the flow of calculation, especially when a new operation is started after pressing equals.
+
 
 
 function updateDisplay() {
@@ -23,6 +24,24 @@ function updateDisplay() {
     }
 }
 
+
+function clearDisplay() {
+    currentInput = '';
+    operator = null;
+    firstInput = '';
+    previousAnswer = null;
+    lastOperation = null;
+    lastNumber = null;
+    newInputAfterEquals = false;
+    // Get current log content
+    var log = document.getElementById('calculation-log');
+    var logContent = log.value.trim();
+    // Check if the log is not empty and if the last line is not already a dashed line
+    if (logContent !== '' && logContent.split('\n')[logContent.split('\n').length - 1] !== '-----------------') {
+        addToLog('-----------------', ''); // Add a dashed line to the log when 'All Clear' is pressed
+    }
+    updateDisplay();
+}
 
 
 function deleteNumber() {
@@ -55,8 +74,6 @@ function deleteNumber() {
 }
 
 
-
-
 function appendNumber(number) {
     if (newInputAfterEquals) {
         currentInput = '';
@@ -85,26 +102,6 @@ function appendNumber(number) {
 }
 
 
-
-function clearDisplay() {
-    currentInput = '';
-    operator = null;
-    firstInput = '';
-    previousAnswer = null;
-    lastOperation = null;
-    lastNumber = null;
-    newInputAfterEquals = false;
-    // Get current log content
-    var log = document.getElementById('calculation-log');
-    var logContent = log.value.trim();
-    // Check if the log is not empty and if the last line is not already a dashed line
-    if (logContent !== '' && logContent.split('\n')[logContent.split('\n').length - 1] !== '-----------------') {
-        addToLog('-----------------', ''); // Add a dashed line to the log when 'All Clear' is pressed
-    }
-    updateDisplay();
-}
-
-
 function changeSign() {
     if (currentInput) {
         currentInput = currentInput.includes('-') ? currentInput.replace('-', '') : '-' + currentInput;
@@ -121,6 +118,7 @@ function changeSign() {
     }
 }
 
+
 function equalsPressed() {
     if (currentInput !== '') {
         calculate();
@@ -132,7 +130,6 @@ function equalsPressed() {
     }
     newInputAfterEquals = true;
 }
-
 
 
 function chooseOperator(op) {
@@ -270,6 +267,7 @@ function calculate() {
     currentInput = '';
 }
 
+
 function addToLog(calculation, result) {
     let log = document.getElementById('calculation-log');
     log.value += calculation + (result ? ' = ' + result : '') + '\n';
@@ -300,4 +298,3 @@ window.onload = function () {
         });
     });
 };
-
