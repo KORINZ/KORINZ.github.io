@@ -15277,6 +15277,10 @@ textarea:focus {
     color: #000;
     border: 2px solid;
     transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    /* added to prevent line breaks */
+    overflow: hidden;
+    /* added to handle overflow */
 }
 
 /* CSS Grid styles */
