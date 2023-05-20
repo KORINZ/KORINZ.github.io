@@ -17,7 +17,7 @@ function updateDisplay() {
         display.innerHTML = '<i class="fa-solid fa-infinity"></i>';
     } else if (currentInput === '-Infinity') {
         // Set the innerHTML of the display to a negative infinity symbol
-        display.innerHTML = '-<i class="fa-solid fa-infinity"></i>';
+        display.innerHTML = '<i class="fa-solid fa-minus"></i> <i class="fa-solid fa-infinity"></i>';
     } else {
         // Set the text content of the display to the current input
         display.textContent = currentInput;
