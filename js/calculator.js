@@ -282,9 +282,26 @@ function loadLog() {
 
 function clearLog() {
     let log = document.getElementById('calculation-log');
-    log.value = '';
-    localStorage.removeItem('calculationLog');
+
+    // If log is already empty, do nothing
+    if (log.value === '') {
+        return;
+    }
+
+    // Show a confirmation dialog to the user
+    let userConfirmation = confirm("Are you sure you want to clear the log? This action cannot be undone.\n本当にログを消去していいのですか？この操作は元に戻せません。");
+
+    // If user clicks "OK", clear the log
+    if (userConfirmation == true) {
+        log.value = '';
+        localStorage.removeItem('calculationLog');
+    }
+    // If user clicks "Cancel", do nothing
+    else {
+        return;
+    }
 }
+
 
 function addToLog(calculation, result) {
     let log = document.getElementById('calculation-log');
@@ -292,6 +309,30 @@ function addToLog(calculation, result) {
     log.scrollTop = log.scrollHeight; // Scroll to the bottom
     storeLog();
 }
+
+function downloadLog() {
+    let log = document.getElementById('calculation-log');
+    let logContent = log.value;
+
+    // check if the log content is empty
+    if (logContent.trim() === '') {
+        alert('The log file is empty. There is nothing to download!\nログファイルが空っぽです。ダウンロードするものはありません！');
+        return;
+    }
+
+    let a = document.createElement('a');
+    a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(logContent);
+    a.download = 'calculation-log.txt';
+
+    a.style.display = 'none';
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+}
+
+
 
 window.onload = function () {
     loadLog();
