@@ -207,18 +207,19 @@
     <script src="../../js/sidebar-toggle.js"></script>
     <script src="../../js/calendar.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+    <script>document.addEventListener('DOMContentLoaded', function () {
             let lastTouchEnd = 0;
-            let calculatorDiv = document.querySelector('#calculator');
+            let buttons = document.querySelectorAll('.calc-button');
 
-            calculatorDiv.addEventListener('touchend', function (event) {
-                let now = (new Date()).getTime();
-                if (now - lastTouchEnd <= 185) {
-                    event.preventDefault();
-                }
-                lastTouchEnd = now;
-            }, false);
+            buttons.forEach(button => {
+                button.addEventListener('touchend', function (event) {
+                    let now = (new Date()).getTime();
+                    if (now - lastTouchEnd <= 180) {
+                        event.preventDefault();
+                    }
+                    lastTouchEnd = now;
+                }, false);
+            });
         });
     </script>
 
