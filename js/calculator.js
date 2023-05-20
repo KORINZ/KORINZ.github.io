@@ -14,11 +14,15 @@ function updateDisplay() {
     if (currentInput === 'Infinity') {
         // Set the innerHTML of the display to an infinity symbol
         display.innerHTML = '<i class="fa-solid fa-infinity"></i>';
+    } else if (currentInput === '-Infinity') {
+        // Set the innerHTML of the display to a negative infinity symbol
+        display.innerHTML = '-<i class="fa-solid fa-infinity"></i>';
     } else {
         // Set the text content of the display to the current input
         display.textContent = currentInput;
     }
 }
+
 
 
 function deleteNumber() {
@@ -31,9 +35,11 @@ function deleteNumber() {
         newInputAfterEquals = false;
     }
 
-    if (display.innerHTML === '<i class="fa-solid fa-infinity"></i>') {
+    if (display.innerHTML.includes('<i class="fa-solid fa-infinity"></i>')) {
         display.innerHTML = '';
+        currentInput = '';
         firstInput = '';
+        previousAnswer = null;
     } else if (currentInput) {
         currentInput = currentInput.slice(0, -1);
     } else if (previousAnswer && !currentInput) {
