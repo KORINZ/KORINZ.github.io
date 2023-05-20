@@ -97,7 +97,7 @@
             <main class="col-lg">
 
                 <h2><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript" style="text-decoration: none;"><i
-                            class="fa-brands fa-square-js"></a></i> Basic Calculator (電卓)</h2>
+                            class="fa-brands fa-square-js"></i></a> Basic Calculator (電卓)</h2>
                 <div id="wrapper">
                     <div id="calculator">
                         <div id="display"></div>
@@ -159,7 +159,13 @@
                             </div>
                         </div>
                     </div>
-                    <textarea id="calculation-log" class="calculation-log" rows="10" cols="30" readonly></textarea>
+                    <div id="log-wrapper">
+                        <textarea id="calculation-log" class="calculation-log" rows="10" cols="30" readonly></textarea>
+                        <div class="clear-log-button-container">
+                            <button class="custom-button" onclick="clearLog()">Clear Log <i
+                                    class="fa-solid fa-eraser"></i></button>
+                        </div>
+                    </div>
                 </div>
                 <br>
 
@@ -167,12 +173,15 @@
                         class="fa-solid fa-delete-left"></i>" to
                     delete the right-most digit, "<i class="fa-solid fa-equals"></i>" for results, and "AC <i
                         class="fa-solid fa-trash-can"></i>" to
-                    start a new session. Reload the page to clear the calculation log.</p>
+                    start a new session. Use "Clear Log <i class="fa-solid fa-eraser"></i>" button to clear the
+                    calculation
+                    log.</p>
 
                 <p style="font-size: 0.9rem;">この電卓は四則演算を行います。"<i
                         class='fa-solid fa-delete-left'></i>"をクリックすると、最右端の数字が削除され、"<i
                         class='fa-solid fa-equals'></i>"で結果が表示され、"AC <i
-                        class='fa-solid fa-trash-can'></i>"で新しいセッションを開始できます。計算ログをクリアするには、ページを再読み込みしてください。</p>
+                        class='fa-solid fa-trash-can'></i>"で新しいセッションを開始できます。計算ログをクリアするには、"Clear Log <i
+                        class="fa-solid fa-eraser"></i>"をクリックしてください。</p>
 
                 <br>
 
@@ -184,31 +193,34 @@
                         <pre class="highlight"><code class="command">from __future__ import braces</code></pre>
                     </div>
                 </div>
+            </main>
+        </div>
+    </div>
 
 
-                <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
+    <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
-                <script src="../../js/calculator.js"></script>
-                <script src="../../js/change-theme.js"></script>
-                <script src="../../js/sidebar-toggle.js"></script>
-                <script src="../../js/calendar.js"></script>
-                <script src="../../js/back-to-top-toggle.js"></script>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        let lastTouchEnd = 0;
-                        let calculatorDiv = document.querySelector('#calculator');
+    <script src="../../js/calculator.js"></script>
+    <script src="../../js/change-theme.js"></script>
+    <script src="../../js/sidebar-toggle.js"></script>
+    <script src="../../js/calendar.js"></script>
+    <script src="../../js/back-to-top-toggle.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastTouchEnd = 0;
+            let calculatorDiv = document.querySelector('#calculator');
 
-                        calculatorDiv.addEventListener('touchend', function (event) {
-                            let now = (new Date()).getTime();
-                            if (now - lastTouchEnd <= 185) {
-                                event.preventDefault();
-                            }
-                            lastTouchEnd = now;
-                        }, false);
-                    });
-                </script>
+            calculatorDiv.addEventListener('touchend', function (event) {
+                let now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 185) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+    </script>
 
 
 </body>

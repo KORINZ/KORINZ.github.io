@@ -267,14 +267,34 @@ function calculate() {
     currentInput = '';
 }
 
+function storeLog() {
+    let log = document.getElementById('calculation-log');
+    localStorage.setItem('calculationLog', log.value);
+}
+
+function loadLog() {
+    let storedLog = localStorage.getItem('calculationLog');
+    let log = document.getElementById('calculation-log');
+    if (storedLog) {
+        log.value = storedLog;
+    }
+}
+
+function clearLog() {
+    let log = document.getElementById('calculation-log');
+    log.value = '';
+    localStorage.removeItem('calculationLog');
+}
 
 function addToLog(calculation, result) {
     let log = document.getElementById('calculation-log');
     log.value += calculation + (result ? ' = ' + result : '') + '\n';
     log.scrollTop = log.scrollHeight; // Scroll to the bottom
+    storeLog();
 }
 
 window.onload = function () {
+    loadLog();
     // Get all buttons with the 'calc-button' class
     const buttons = document.querySelectorAll('.calc-button');
     // Get all buttons with the 'operator-button' class

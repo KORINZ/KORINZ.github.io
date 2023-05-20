@@ -15310,6 +15310,13 @@ textarea:focus {
     }
 }
 
+#log-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers children horizontally */
+}
+
 .calc-button {
     padding: 0;
     height: 50px;
