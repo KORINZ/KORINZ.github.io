@@ -15235,11 +15235,10 @@ textarea:focus {
 
 #calculator {
     border-radius: 10px;
-    margin-right: 15px;
+    margin-right: 40px;
 }
 
 #calculation-log {
-    margin-left: 15px;
     transition: background-color 0.2s ease, color 0.2s ease;
     background-color: #fff;
     color: #000 !important;
@@ -15316,6 +15315,11 @@ textarea:focus {
     align-items: center;
     /* Centers children horizontally */
 }
+
+.clear-log-button-container {
+    margin-left: 10px;
+}
+
 
 .calc-button {
     padding: 0;
