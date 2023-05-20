@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta property="og:description" content="KORIN's Projects">
     <meta property="og:image" content="static/web_screenshot.png">
     <meta property="og:title" content="Projects - KORIN">
@@ -195,21 +195,6 @@
                 <script src="../../js/sidebar-toggle.js"></script>
                 <script src="../../js/calendar.js"></script>
                 <script src="../../js/back-to-top-toggle.js"></script>
-                <script>document.addEventListener('DOMContentLoaded', function () {
-                        let lastTouchEnd = 0;
-                        let buttons = document.querySelectorAll('.calc-button');
-
-                        buttons.forEach(button => {
-                            button.addEventListener('touchend', function (event) {
-                                let now = (new Date()).getTime();
-                                if (now - lastTouchEnd <= 200) {
-                                    event.preventDefault();
-                                }
-                                lastTouchEnd = now;
-                            }, false);
-                        });
-                    });
-                </script>
 
 </body>
 
