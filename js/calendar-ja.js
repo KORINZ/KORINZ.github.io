@@ -1,9 +1,12 @@
+let currentDay = null;
+
 function createCalendar() {
     // Clear any existing calendar first
     let calendarDiv = document.getElementById('calendar');
     calendarDiv.innerHTML = '';
     // Get the current date.
     let date = new Date();
+    currentDay = date.getDate();
 
     // Create a table for the calendar.
     let calendarTable = document.createElement('table');
@@ -79,6 +82,9 @@ function createCalendar() {
 function updateTime() {
     // Get the current date.
     let date = new Date();
+    if (date.getDate() !== currentDay) {
+        setTimeout(createCalendar, 2000); // delay of 2 seconds
+    }
 
     // Get the time cell.
     let timeCell = document.getElementById('time');
@@ -102,10 +108,6 @@ function updateTime() {
 
     timeCell.textContent = `${hours}:${minutes}:${seconds} (${timezoneString})`;
 
-    // Check if it's midnight and if so, update the calendar after a delay.
-    if (hours === '00' && minutes === '00' && seconds === '00') {
-        setTimeout(createCalendar, 2000); // delay of 2 seconds
-    }
 }
 
 // Call the function to create the calendar.
