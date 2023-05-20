@@ -8,31 +8,47 @@ let newInputAfterEquals = false;
 
 
 function updateDisplay() {
-    document.getElementById('display').value = currentInput;
+    // Get your display element
+    let display = document.getElementById('display');
+
+    if (currentInput === 'Infinity') {
+        // Set the innerHTML of the display to an infinity symbol
+        display.innerHTML = '<i class="fa-solid fa-infinity"></i>';
+    } else {
+        // Set the text content of the display to the current input
+        display.textContent = currentInput;
+    }
 }
 
 
 function deleteNumber() {
+    // Get your display element
+    let display = document.getElementById('display');
+
     if (newInputAfterEquals) {
         firstInput = '';
         operator = null;
         newInputAfterEquals = false;
     }
-    if (currentInput) {
+
+    if (display.innerHTML === '<i class="fa-solid fa-infinity"></i>') {
+        display.innerHTML = '';
+        firstInput = '';
+    } else if (currentInput) {
         currentInput = currentInput.slice(0, -1);
-        updateDisplay();
-    } else if (previousAnswer) {
+    } else if (previousAnswer && !currentInput) {
         currentInput = previousAnswer.slice(0, -1);
         firstInput = '';
         previousAnswer = null;
-        updateDisplay();
-    }
-    else if (firstInput) {
+    } else if (firstInput && !currentInput) {
         operator = null;
         currentInput = firstInput.slice(0, -1);
-        updateDisplay();
     }
+
+    updateDisplay();
 }
+
+
 
 
 function appendNumber(number) {

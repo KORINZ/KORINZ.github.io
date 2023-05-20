@@ -15268,6 +15268,7 @@ textarea:focus {
 
 #display {
     width: 100%;
+    height: 45px;
     padding: 10px;
     text-align: center;
     margin-bottom: 10px;
@@ -15276,7 +15277,6 @@ textarea:focus {
     color: #000;
     border: 2px solid;
     transition: background-color 0.2s ease, color 0.2s ease;
-
 }
 
 /* CSS Grid styles */
