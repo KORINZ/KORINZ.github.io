@@ -202,7 +202,7 @@
                         buttons.forEach(button => {
                             button.addEventListener('touchend', function (event) {
                                 let now = (new Date()).getTime();
-                                if (now - lastTouchEnd <= 150) {
+                                if (now - lastTouchEnd <= 180) {
                                     event.preventDefault();
                                 }
                                 lastTouchEnd = now;
