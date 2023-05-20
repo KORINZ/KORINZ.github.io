@@ -30,10 +30,10 @@ document.getElementById('theme-toggler').addEventListener('click', changeTheme);
     document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
     document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
   } else {
+    document.body.classList.remove('dark');
     button.classList.remove('dark');
     button.classList.remove('flipped');
     document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
     document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
   }
 })();
-
