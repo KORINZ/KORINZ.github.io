@@ -15349,3 +15349,42 @@ body.dark #calculation-log {
     border-radius: 0 !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#board {
+    margin-bottom: 10px;
+    /* adjust this to change the space above and below the board */
+}
+
+.row>div {
+    box-sizing: border-box;
+    /* include border in width and height calculations */
+    border: 3px solid;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 75px;
+    font-size: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.row {
+    margin-bottom: 0;
+}
+
+#game-result-container {
+    height: 20px;
+    /* this makes sure the game result div always takes up space */
+}

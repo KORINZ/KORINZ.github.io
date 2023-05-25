@@ -98,7 +98,8 @@
             <main class="col-lg">
 
                 <h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" style="text-decoration: none;"><i
-                            class="fa-brands fa-square-js"></i></a> Yet Another Web-based Basic Calculator (再びWEB電卓)
+                            class="fa-brands fa-square-js"></i></a> Yet Another
+                    Web-based Basic Calculator (再びWEB電卓)
                 </h2>
                 <div id="wrapper">
                     <div id="calculator">
@@ -166,80 +167,162 @@
                         <div class="clear-log-button-container">
                             <button class="custom-button" onclick="clearLog()">Clear Log <i
                                     class="fa-solid fa-eraser"></i></button>
-                            <button class="custom-button" id="download-log-button" onclick="downloadLog()">Download <i
-                                    class="fa-solid fa-file-lines"></i></button>
+                            <button class="custom-button" id="download-log-button" onclick="downloadLog()">Download
+                                <i class="fa-solid fa-file-lines"></i></button>
 
                         </div>
                     </div>
                 </div>
                 <br>
 
-                <p>This calculator performs basic arithmetic. Click "<i class="fa-solid fa-delete-left"></i>" to
-                    delete the right-most digit, "<i class="fa-solid fa-equals"></i>" for results, and "AC <i
-                        class="fa-solid fa-trash-can"></i>" to
-                    start a new session. Use "Clear Log <i class="fa-solid fa-eraser"></i>" button to clear the
-                    calculation log. Please note that results are rounded to the 6th decimal place.
-                </p>
-                <p>
-                    After obtaining a
-                    result, you can immediately select another operator to start a new calculation with the previous
-                    result. If "<i class="fa-solid fa-equals"></i>" is pressed multiple times, the calculator repeats
-                    the
-                    last operation
-                    with the last number and the result of the previous calculation. You can change the sign of the
-                    current input number using "<i class="fa-solid fa-plus-minus"></i>". This
-                    calculator uses local storage to save the log data and also allows users to download the calculation
-                    log as a text file.
-                </p>
+                <div class="explanation">
+                    <details open>
+                        <summary><span style="font-size: 1.17em; font-weight: bold;">Instruction</span></summary>
+                        <p>This calculator performs basic arithmetic. Click "<i class='fa-solid fa-delete-left'></i>" to
+                            delete the right-most digit, "<i class='fa-solid fa-equals'></i>" for results, and "AC <i
+                                class='fa-solid fa-trash-can'></i>" to start a new session. Use "Clear Log <i
+                                class='fa-solid fa-eraser'></i>" button to clear the calculation log. Please note that
+                            results are rounded to the 6th decimal place.</p>
+                        <p>After obtaining a result, you can immediately select another operator to start a new
+                            calculation with the previous result. If "<i class='fa-solid fa-equals'></i>" is pressed
+                            multiple times, the calculator repeats the last operation with the last number and the
+                            result of the previous calculation. You can change the sign of the current input number
+                            using "<i class='fa-solid fa-plus-minus'></i>". This calculator uses local storage to save
+                            the log data and also allows users to download the calculation log as a text file.</p>
+                    </details>
 
-                <p style="font-family: 'Noto Sans JP', sans-serif">この電卓は四則演算を行います。『<i
-                        class='fa-solid fa-delete-left'></i>』をクリックすると、最右端の数字が削除され、『<i
-                        class='fa-solid fa-equals'></i>』で結果が表示され、『AC <i
-                        class='fa-solid fa-trash-can'></i>』で新しいセッションを開始できます。計算ログをクリアするには、『Clear Log <i
-                        class="fa-solid fa-eraser"></i>』をクリックしてください。結果は6番目の小数位まで四捨五入されます。
-                </p>
-                <p style="font-family: 'Noto Sans JP', sans-serif">
-                    結果を得た後、前回の結果を使ってすぐに別の演算子を選択し、新しい計算を開始することができます。『<i
-                        class="fa-solid fa-equals"></i>』を何度も押すと、計算機は最後の操作を前回の結果と最後の数字で繰り返します。現在の入力数字の符号を変更する関数『<i
-                        class="fa-solid fa-plus-minus"></i>』も用意しています。この計算機はローカルストレージを使用してログデータを保存し、ユーザーが計算ログをテキストファイルとしてダウンロードすることも可能です。
-                </p>
+                    <details>
+                        <summary><span style="font-size: 1.17em; font-weight: bold;">取扱説明書</span></summary>
+                        <p style="font-family: 'Noto Sans JP', sans-serif">この電卓は四則演算を行います。『<i
+                                class='fa-solid fa-delete-left'></i>』をクリックすると、最右端の数字が削除され、『<i
+                                class='fa-solid fa-equals'></i>』で結果が表示され、『AC <i
+                                class='fa-solid fa-trash-can'></i>』で新しいセッションを開始できます。計算ログをクリアするには、『Clear Log <i
+                                class='fa-solid fa-eraser'></i>』をクリックしてください。結果は6番目の小数位まで四捨五入されます。</p>
+                        <p style="font-family: 'Noto Sans JP', sans-serif">
+                            結果を得た後、前回の結果を使ってすぐに別の演算子を選択し、新しい計算を開始することができます。『<i
+                                class='fa-solid fa-equals'></i>』を何度も押すと、計算機は最後の操作を前回の結果と最後の数字で繰り返します。現在の入力数字の符号を変更する関数『<i
+                                class='fa-solid fa-plus-minus'></i>』も用意しています。この計算機はローカルストレージを使用してログデータを保存し、ユーザーが計算ログをテキストファイルとしてダウンロードすることも可能です。
+                        </p>
+                    </details>
+                </div>
 
+                <br>
+
+                <h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" style="text-decoration: none;"><i
+                            class="fa-brands fa-square-js"></i></a> Tic-Tac-Toe AI (三目並べ AI)</h2>
+                <div class="game-container">
+                    <div id="board"></div>
+                    <div id="game-result-container">
+                        <p id="game-result"></p>
+                    </div>
+                    <button class="custom-button" onClick="resetBoard()">Restart <i
+                            class="fa-solid fa-rotate-left"></i></button>
+                </div>
+                <div class="explanation">
+                    <details>
+                        <summary><span style="font-size: 1.17em; font-weight: bold;">How does this game work?</span>
+                        </summary>
+                        <p>This game uses a popular board game, Tic-Tac-Toe, to demonstrate an artificial intelligence
+                            algorithm called Minimax. In Tic-Tac-Toe, two players take turns marking spaces in a 3x3
+                            grid with their symbol (either 'X' or 'O'). The goal is to be the first to get three of your
+                            symbols in a row, either horizontally, vertically, or diagonally.</p>
+                        <p>Here, you play as 'X', and your opponent, the AI, plays as 'O'. You start the game by
+                            clicking on any empty square to place your 'X'. The AI then calculates its move and places
+                            an 'O' on the board. It's worth noting that the AI uses a technique called Alpha-Beta
+                            pruning as part of the Minimax algorithm. This technique assumes optimal play from both
+                            players. With 255,168 possible valid completed games, but only 3,638 unique ones due to
+                            symmetry, the AI is capable of analyzing all scenarios and responding with the best move.
+                            Consequently, you can never win against this perfect AI; the best outcome you can achieve is
+                            a draw if you play optimally. Good luck!</p>
+                    </details>
+
+                    <details>
+                        <summary><span style="font-size: 1.17em; font-weight: bold;">What is Minimax?</span>
+                        </summary>
+                        <p>Minimax is a type of decision-making algorithm in artificial intelligence (AI) and game
+                            theory, often used for making decisions in turn-based, adversarial games like
+                            Tic-Tac-Toe or
+                            Chess.</p>
+                        <p>Here's a brief rundown of how the Minimax algorithm works in this game:</p>
+                        <ul>
+                            <li><b>Terminal state:</b> The algorithm checks if the current game state is a terminal
+                                state, meaning the game has ended either with a win for 'X' or 'O', or a draw. If it
+                                is,
+                                the game's utility (value) is calculated: 'X' wins give a utility of 1, 'O' wins
+                                give a
+                                utility of -1, and a draw gives a utility of 0.</li>
+                            <li><b>Maximizing and Minimizing:</b> The algorithm alternates between the maximizing
+                                player
+                                ('X') and the minimizing player ('O'). The maximizing player aims for the highest
+                                score,
+                                and the minimizing player aims for the lowest score.</li>
+                            <li><b>Recursion:</b> The algorithm recurses through each possible action, generating a
+                                game
+                                tree. Each node in the tree represents a possible state of the game after a number
+                                of
+                                moves. The algorithm evaluates each possible future state until it reaches a
+                                terminal
+                                state or the maximum search depth.</li>
+                            <li><b>Pruning:</b> To speed up the search process, the algorithm uses a technique
+                                called
+                                alpha-beta pruning. This technique avoids exploring branches of the game tree that
+                                we
+                                already know are not going to be selected. It also assumes that the opponent (the
+                                human player, in this case) will always make the optimal blocking move if given the
+                                opportunity.</li>
+                        </ul>
+                        <p>After considering all possible future states up to a certain depth, the algorithm chooses
+                            the
+                            move that leads to the best possible outcome.</p>
+                    </details>
+                </div>
+
+                <br>
 
                 <h2><a href="https://www.python.org/" style="text-decoration: none;"><i class="fa-brands fa-python"></i>
                     </a>Selected Projects (主なプロジェクト)
                 </h2>
                 <ol>
                     <li><a href="https://github.com/KORINZ/nhk-news-scraper-gui">NHK News Web Easy Scraper
-                            <i class="fas fa-external-link-alt"></i></a>: 📰 Scraping news articles from NHK News Web
-                        Easy and sending a customized quiz to students via LINE Messaging API. It also came with GUI.
+                            <i class="fas fa-external-link-alt"></i></a>: 📰 Scraping news articles from NHK News
+                        Web
+                        Easy and sending a customized quiz to students via LINE Messaging API. It also came with
+                        GUI.
                     </li>
-                    <li><a href="https://github.com/KORINZ/sudoku-backtracking-animation">Sudoku Game with Backtracking
+                    <li><a href="https://github.com/KORINZ/sudoku-backtracking-animation">Sudoku Game with
+                            Backtracking
                             Algorithm Animation
                             <i class="fas fa-external-link-alt"></i></a>: 🔢 ナンプレ×バックトラッキング A classic Sudoku game
                         implementation in Python using the Pygame library that can play a backtracking animation.
                     </li>
                     <li><a href="https://github.com/KORINZ/athlete-numbers-generator">Athlete Numbers Generator
-                            <i class="fas fa-external-link-alt"></i></a>: 🏃‍♀️ (ゼッケンジェネレーター) A program automatically
-                        generates competition numbers for athletes based on their names, numberings, starting times, and
+                            <i class="fas fa-external-link-alt"></i></a>: 🏃‍♀️ (ゼッケンジェネレーター) A program
+                        automatically
+                        generates competition numbers for athletes based on their names, numberings, starting times,
+                        and
                         sponsors.
                     </li>
                     <li><a href="https://github.com/KORINZ/screen-region-ocr-gui">
                             Screen Region OCR GUI
                             <i class="fas fa-external-link-alt"></i></a>: 📸 This Python application allows users to
-                        perform Optical Character Recognition (OCR) on a selected region of the screen or an imported
+                        perform Optical Character Recognition (OCR) on a selected region of the screen or an
+                        imported
                         image.
                     </li>
                     <li><a href="https://github.com/KORINZ/entry-sheet-auto-filler">Entry Sheet Auto Filler
                             <i class="fas fa-external-link-alt"></i></a>: 📝 (エントリーシートオートフィラー) A program that
                         automatically fills entry sheet with personal information.
                     </li>
-                    <li><a href="https://github.com/KORINZ/translator-deepl-gtts">Translation and Text-to-Speech Tool
+                    <li><a href="https://github.com/KORINZ/translator-deepl-gtts">Translation and Text-to-Speech
+                            Tool
                             <i class="fas fa-external-link-alt"></i></a>: 🔊 This project contains a script for
                         translating text or documents from one language to another using the DeepL API, and a
-                        text-to-speech tool for converting translated text to audio using Google Text-to-Speech (gTTS).
+                        text-to-speech tool for converting translated text to audio using Google Text-to-Speech
+                        (gTTS).
                     </li>
                 </ol>
 
+                <br>
 
                 <h2><i class="fa-solid fa-code"></i>
                     </a>Preparing (準備中)
@@ -257,7 +340,7 @@
     <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
         <i class="fas fa-chevron-up"></i>
     </a>
-
+    <script src="../../js/tic-tac-toe.js"></script>
     <script src="../../js/calculator.js"></script>
     <script src="../../js/change-theme.js"></script>
     <script src="../../js/sidebar-toggle.js"></script>
