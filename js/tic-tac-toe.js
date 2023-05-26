@@ -2,6 +2,7 @@ let board = [['', '', ''], ['', '', ''], ['', '', '']];
 let currentPlayer = 'X';
 let maxDepth = 9; // depth for the minimax algorithm
 let gameOver = false;
+let winningLine = null;
 
 function drawBoard() {
     const boardElement = document.getElementById('board');
@@ -12,7 +13,6 @@ function drawBoard() {
         for (let j = 0; j < 3; j++) {
             const cellElement = document.createElement('div');
 
-            // Check the board value and create corresponding icon
             if (board[i][j] === 'X') {
                 const icon = document.createElement('i');
                 icon.className = 'fa-solid fa-x';
@@ -22,22 +22,28 @@ function drawBoard() {
                 icon.className = 'fa-solid fa-o';
                 cellElement.appendChild(icon);
             }
+
+            if (gameOver && winningLine && winningLine.some(coord => coord[0] === i && coord[1] === j)) {
+                cellElement.style.backgroundColor = '#B71C1C';
+            }
             cellElement.addEventListener('click', () => {
-                if (board[i][j] === '' && currentPlayer === 'X' && !gameOver) { // check for gameOver here
+                if (board[i][j] === '' && currentPlayer === 'X' && !gameOver) {
                     board[i][j] = currentPlayer;
                     currentPlayer = 'O';
-                    drawBoard();
-                    if (!terminal(board)) {
+                    if (terminal(board)) {
+                        gameOver = true;
+                    }
+                    else {
                         const { move } = minimax(board, maxDepth, currentPlayer === 'X', -Infinity, Infinity);
                         if (move) {
                             board[move[0]][move[1]] = currentPlayer;
                             currentPlayer = 'X';
-                            drawBoard();
+                            if (terminal(board)) {
+                                gameOver = true;
+                            }
                         }
                     }
-                    if (terminal(board)) {
-                        gameOver = true; // set gameOver to true here
-                    }
+                    drawBoard();
                 }
             });
             rowElement.appendChild(cellElement);
@@ -52,6 +58,7 @@ function resetBoard() {
     const resultElement = document.getElementById('game-result');
     resultElement.textContent = ''; // clear game result
     gameOver = false;
+    winningLine = null;
     drawBoard();
 }
 
@@ -71,20 +78,39 @@ function getLines(board) {
 function terminal(board) {
     const lines = getLines(board);
     const resultElement = document.getElementById('game-result');
-    if (lines.some(line => line.every(cell => cell === 'X'))) {
-        resultElement.innerHTML = '<strong>You are the winner! Wait, what? That\'s impossible!</strong>';
-        return true;
-    }
-    if (lines.some(line => line.every(cell => cell === 'O'))) {
-        resultElement.innerHTML = '<strong>AI is the winner!</strong>';
-        return true;
+    for (let i = 0; i < lines.length; i++) {
+        if (lines[i].every(cell => cell === 'X')) {
+            winningLine = getWinningLineCoordinates(i);
+            resultElement.innerHTML = '<strong>You are the winner! Wait, what? That\'s impossible!</strong>';
+            return true;
+        }
+        if (lines[i].every(cell => cell === 'O')) {
+            winningLine = getWinningLineCoordinates(i);
+            resultElement.innerHTML = '<strong>AI is the winner!</strong>';
+            return true;
+        }
     }
     if (board.every(row => row.every(cell => cell !== ''))) {
+        winningLine = []; // Clear the winningLine variable
         resultElement.innerHTML = '<strong>The game is a draw!</strong>';
         return true;
     }
     resultElement.textContent = '';
     return false;
+}
+
+
+function getWinningLineCoordinates(index) {
+    switch (index) {
+        case 0: return [[0, 0], [0, 1], [0, 2]];
+        case 1: return [[1, 0], [1, 1], [1, 2]];
+        case 2: return [[2, 0], [2, 1], [2, 2]];
+        case 3: return [[0, 0], [1, 0], [2, 0]];
+        case 4: return [[0, 1], [1, 1], [2, 1]];
+        case 5: return [[0, 2], [1, 2], [2, 2]];
+        case 6: return [[0, 0], [1, 1], [2, 2]];
+        case 7: return [[0, 2], [1, 1], [2, 0]];
+    }
 }
 
 function winner(board) {
