@@ -55,8 +55,8 @@ function resetBoard() {
     drawBoard();
 }
 
-function terminal(board) {
-    const lines = [
+function getLines(board) {
+    return [
         [board[0][0], board[0][1], board[0][2]],
         [board[1][0], board[1][1], board[1][2]],
         [board[2][0], board[2][1], board[2][2]],
@@ -66,6 +66,10 @@ function terminal(board) {
         [board[0][0], board[1][1], board[2][2]],
         [board[0][2], board[1][1], board[2][0]]
     ];
+}
+
+function terminal(board) {
+    const lines = getLines(board);
     const resultElement = document.getElementById('game-result');
     if (lines.some(line => line.every(cell => cell === 'X'))) {
         resultElement.innerHTML = '<strong>You are the winner! Wait, what? That\'s impossible!</strong>';
@@ -84,16 +88,7 @@ function terminal(board) {
 }
 
 function winner(board) {
-    const lines = [
-        [board[0][0], board[0][1], board[0][2]],
-        [board[1][0], board[1][1], board[1][2]],
-        [board[2][0], board[2][1], board[2][2]],
-        [board[0][0], board[1][0], board[2][0]],
-        [board[0][1], board[1][1], board[2][1]],
-        [board[0][2], board[1][2], board[2][2]],
-        [board[0][0], board[1][1], board[2][2]],
-        [board[0][2], board[1][1], board[2][0]]
-    ];
+    const lines = getLines(board);
     if (lines.some(line => line.every(cell => cell === 'X'))) {
         return 'X';
     }
