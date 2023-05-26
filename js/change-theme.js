@@ -1,6 +1,6 @@
 // Function to change the theme
 function changeTheme() {
-  var button = document.getElementById('theme-toggler');
+  const button = document.getElementById('theme-toggler');
   document.body.classList.toggle('dark');
   button.classList.toggle('dark');
   button.classList.toggle('flipped');
@@ -22,7 +22,7 @@ function changeTheme() {
 document.getElementById('theme-toggler').addEventListener('click', changeTheme);
 
 (function () {
-  var button = document.getElementById('theme-toggler');
+  const button = document.getElementById('theme-toggler');
   if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark');
     button.classList.add('dark');

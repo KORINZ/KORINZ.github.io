@@ -34,8 +34,8 @@ function clearDisplay() {
     lastNumber = null;
     newInputAfterEquals = false;
     // Get current log content
-    var log = document.getElementById('calculation-log');
-    var logContent = log.value.trim();
+    const log = document.getElementById('calculation-log');
+    const logContent = log.value.trim();
     // Check if the log is not empty and if the last line is not already a dashed line
     if (logContent !== '' && logContent.split('\n')[logContent.split('\n').length - 1] !== '-----------------') {
         addToLog('-----------------', ''); // Add a dashed line to the log when 'All Clear' is pressed
