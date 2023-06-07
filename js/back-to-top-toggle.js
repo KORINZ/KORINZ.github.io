@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#back-to-top').hide();  // Hide the button when the page loads
 
-    var isAnimating = false;
+    let isAnimating = false;
 
     $(window).on('scroll', function () {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {

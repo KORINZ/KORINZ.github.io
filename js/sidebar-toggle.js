@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var sidebarToggler = document.getElementById('sidebar-toggler');
-    var sidebarIcon = document.getElementById('sidebar-icon');
-    var nav = document.getElementById('nav');
+    const sidebarToggler = document.getElementById('sidebar-toggler');
+    const sidebarIcon = document.getElementById('sidebar-icon');
+    const nav = document.getElementById('nav');
 
     $(nav).on('shown.bs.collapse', function () {
         sidebarIcon.classList.remove('fa-bars');
