@@ -264,7 +264,6 @@ document.getElementById('copy-news-btn').addEventListener('click', function () {
             console.log('Text copied to clipboard');
 
             // Display the "Copied!" message with check icon
-            // Display the "Copied!" message with check icon
             const messageSpan = document.getElementById('copy-message');
             const path = window.location.pathname;
             const isJapanese = path.includes('ja');

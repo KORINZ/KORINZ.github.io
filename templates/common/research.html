@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <meta property="og:description" content="KORIN's Gallery">
     <meta property="og:image" content="static/web_screenshot.png">
-    <meta property="og:title" content="Gallery - KORIN">
+    <meta property="og:title" content="Research - KORIN">
     <link href="https://upload.wikimedia.org/wikipedia/commons/3/34/Home-icon.svg" rel="icon">
     <link href="../../static/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,7 +16,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap" rel="stylesheet">
-    <title>Gallery - KORIN</title>
+    <title>Research - KORIN</title>
+
 </head>
 
 <body
@@ -27,7 +28,7 @@
                 <header>
                     <h1><a href="../../index.html">KORIN</a></h1>
                     <div class="top-bar">
-                        <span>Gallery</span>
+                        <span>Research</span>
                         <button id="theme-toggler" class="theme-button">
                             <i id="theme-icon" class="fas fa-moon"></i>
                         </button>
@@ -80,7 +81,7 @@
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
                                 href="projects.html">Projects</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="research.html">Research</a></li>
+                                href="gallery.html">Gallery</a></li>
                     </ul>
                     <hr>
                     <div class="centered-container">
@@ -99,37 +100,18 @@
             </aside>
 
             <main class="col-lg">
-
-                <h2><i class="fa-solid fa-mountain"></i> 山登り (Hiking)</h2>
-
-                <figure style="text-align: center;">
-                    <p>
-                        <img src="../../static/gallery/nijou.png" alt="Mount Nijō" style="width: 50%;">
-                    </p>
-                    <figcaption>二上山 (Mount Nijō)</figcaption>
-                </figure>
-
-                <h2><i class="fa-solid fa-fish-fins"></i> 動物 (Animals)</h2>
-                <figure style="text-align: center;">
-                    <p>
-                        <img src="../../static/gallery/dolphin.png" alt="dolphin" style="width: 50%;">
-                    </p>
-                    <figcaption>イルカ (dolphin)</figcaption>
-                </figure>
-
-
-                <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
-
+                <h2>Research Topic</h2>
+                <div class="pdf-container">
+                    <iframe class="pdf-viewer" src="../../assets/research_summary.pdf#view=Fit"></iframe>
+                </div>
             </main>
-        </div>
-    </div>
 
-    <script src="../../js/change-theme.js"></script>
-    <script src="../../js/sidebar-toggle.js"></script>
-    <script src="../../js/calendar.js"></script>
-    <script src="../../js/back-to-top-toggle.js"></script>
+
+            <script src="../../js/change-theme.js"></script>
+            <script src="../../js/sidebar-toggle.js"></script>
+            <script src="../../js/calendar.js"></script>
+            <script src="../../js/back-to-top-toggle.js"></script>
+
 
 </body>
 
