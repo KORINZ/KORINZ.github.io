@@ -15388,15 +15388,3 @@ body.dark #calculation-log {
     height: 20px;
     /* this makes sure the game result div always takes up space */
 }
-
-.pdf-container {
-    position: relative;
-    height: 80vh !important;
-    width: 100%;
-}
-
-.pdf-viewer {
-    border: none;
-    width: 100%;
-    height: 100%;
-}
