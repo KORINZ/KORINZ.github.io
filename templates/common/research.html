@@ -17,7 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap" rel="stylesheet">
     <title>Research - KORIN</title>
-
+    <style>
+        #pdf-viewer {
+            width: 100%;
+            height: 800px;
+        }
+    </style>
 </head>
 
 <body
@@ -105,9 +110,9 @@
                     Open in new tab
                     <i class="fas fa-external-link-alt ms-1"></i>
                 </a>
-                <div class="pdf-container">
-                    <iframe class="pdf-viewer" src="../../assets/research_summary.pdf#view=Fit"></iframe>
-                </div>
+                <iframe id="pdf-viewer"
+                    src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://raw.githubusercontent.com/KORINZ/KORINZ.github.io/main/assets/research_summary.pdf"
+                    width="100%" height="100%" style="border: none;"></iframe>
             </main>
 
 
