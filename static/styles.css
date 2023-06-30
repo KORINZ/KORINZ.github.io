@@ -15389,6 +15389,10 @@ body.dark #calculation-log {
     /* this makes sure the game result div always takes up space */
 }
 
+.pdf-viewer {
+    border: 1px solid black;
+}
+
 body.dark .pdf-viewer {
     filter: brightness(0.7) !important;
 }
