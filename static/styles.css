@@ -15390,5 +15390,5 @@ body.dark #calculation-log {
 }
 
 body.dark #pdf-viewer {
-    filter: brightness(0.7);
+    filter: brightness(0.7) !important;
 }
