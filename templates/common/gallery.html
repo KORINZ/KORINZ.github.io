@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/viewerjs@latest/dist/viewer.css" rel="stylesheet">
     <title>Gallery - KORIN</title>
 </head>
 
@@ -102,21 +103,47 @@
 
                 <h2><i class="fa-solid fa-mountain"></i> 山登り (Hiking)</h2>
 
-                <figure style="text-align: center;">
-                    <p>
-                        <img src="../../static/gallery/nijou.png" alt="Mount Nijō" style="width: 50%;">
-                    </p>
-                    <figcaption>二上山 (Mount Nijō)</figcaption>
+                <figure class="gallery-image figure-container">
+                    <ul class="figure-ul">
+                        <li class="figure-li">
+                            <img src="../../static/gallery/nijou.png" alt="Mount Nijō" class="figure-img">
+                        </li>
+                        <li class="figure-li">
+                            <img src="../../static/gallery/rokko.jpeg" alt="Mount Rokkō" class="figure-img">
+                        </li>
+
+
+                    </ul>
                 </figure>
 
                 <h2><i class="fa-solid fa-fish-fins"></i> 動物 (Animals)</h2>
-                <figure style="text-align: center;">
-                    <p>
-                        <img src="../../static/gallery/dolphin.png" alt="dolphin" style="width: 50%;">
-                    </p>
-                    <figcaption>イルカ (dolphin)</figcaption>
+                <figure class="gallery-image figure-container">
+                    <ul class="figure-ul">
+                        <li class="figure-li">
+                            <img src="../../static/gallery/dolphin.png" alt="dolphin" class="figure-img">
+                        </li>
+                        <li class="figure-li">
+                            <img src="../../static/gallery/whale.jpeg" alt="whale" class="figure-img">
+                        </li>
+
+                    </ul>
                 </figure>
 
+                <h2><i class="fa-solid fa-compass"></i></i> 旅行 (Traveling)</h2>
+                <figure class="gallery-image figure-container">
+                    <ul class="figure-ul">
+                        <li class="figure-li">
+                            <img src="../../static/gallery/himeji.jpeg" alt="himeji-jo" class="figure-img">
+                        </li>
+                        <li class="figure-li">
+                            <img src="../../static/gallery/wakayama.jpeg" alt="wakayama ramen" class="figure-img">
+                        </li>
+                        <li class="figure-li">
+                            <img src="../../static/gallery/kaisen-don.jpeg" alt="kaisen don" class="figure-img">
+                        </li>
+
+                    </ul>
+                </figure>
 
                 <a href="#" id="back-to-top" style="display: none;" class="back-to-top custom-button" role="button">
                     <i class="fas fa-chevron-up"></i>
@@ -126,11 +153,17 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/viewerjs@latest/dist/viewer.min.js"></script>
     <script src="../../js/change-theme.js"></script>
     <script src="../../js/sidebar-toggle.js"></script>
     <script src="../../js/calendar.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
-
+    <script>
+        var galleryImages = document.querySelectorAll('.gallery-image');
+        galleryImages.forEach(function (elem) {
+            new Viewer(elem);
+        });
+    </script>
 </body>
 
 </html>

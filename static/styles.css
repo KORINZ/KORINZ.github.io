@@ -15396,3 +15396,27 @@ body.dark #calculation-log {
 body.dark .pdf-viewer {
     filter: brightness(0.7) !important;
 }
+
+.figure-ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+.figure-li {
+    width: 33.33%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.figure-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.figure-container {
+    text-align: center;
+}
