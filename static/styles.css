@@ -15391,7 +15391,7 @@ body.dark #calculation-log {
 
 .pdf-container {
     position: relative;
-    height: 80vh;
+    height: 80vh !important;
     width: 100%;
 }
 
