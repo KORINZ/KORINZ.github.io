@@ -15420,3 +15420,13 @@ body.dark .pdf-viewer {
 .figure-container {
     text-align: center;
 }
+
+/* Hide the scrollbar for side menu */
+aside::-webkit-scrollbar {
+    display: none;
+}
+
+aside {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
