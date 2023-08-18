@@ -72,7 +72,7 @@ function extractArticleContent(html) {
             const cleanedParagraph = paragraph.replace(/<ruby>(.*?)<rt>.*?<\/rt><\/ruby>/g, '$1').replace(/<[^>]*>/g, "");
             articleContent += cleanedParagraph;
             if (index < paragraphs.length - 1) {
-                articleContent += "<br><br>"; // replaced "\n\n" with "<br><br>"
+                articleContent += "<br><br>";
             }
         });
 
