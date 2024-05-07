@@ -49,19 +49,19 @@ async function getRandomNewsUrl() {
 }
 
 function extractTitle(html) {
-    const titleMatch = html.match(/<h1[^>]*class="article-main__title"[^>]*>((.|\n)*?)<\/h1>/i);
+    const titleMatch = html.match(/<h1[^>]*class="article-title"[^>]*>((.|\n)*?)<\/h1>/i);
     return titleMatch ? titleMatch[1].trim().replace(/<ruby>(.*?)<rt>.*?<\/rt><\/ruby>/g, '$1') : "Title not found";
 }
 
 function extractDate(html) {
-    const dateMatch = html.match(/<p[^>]*class="article-main__date"[^>]*>(.*?)<\/p>/i);
+    const dateMatch = html.match(/<p[^>]*class="article-date"[^>]*>(.*?)<\/p>/i);
     return dateMatch ? dateMatch[1] : "Date not found";
 }
 
 function extractArticleContent(html) {
     html = html.replace(/<div class="playerWrapper"[^>]*>((.|\n)*?)<\/div>/i, '');
 
-    const articleMatch = html.match(/<div[^>]*class="article-main__body article-body"[^>]*>((.|\n)*?)<\/div>/i);
+    const articleMatch = html.match(/<div[^>]*class="article-body"[^>]*>((.|\n)*?)<\/div>/i);
 
     if (articleMatch) {
         const articleBody = articleMatch[1];
