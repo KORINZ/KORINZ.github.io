@@ -15430,3 +15430,7 @@ aside {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
+
+body {
+    transition: background-color 0.25s, color 0.25s;
+}
