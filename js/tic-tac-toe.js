@@ -81,7 +81,7 @@ function terminal(board) {
     for (let i = 0; i < lines.length; i++) {
         if (lines[i].every(cell => cell === 'X')) {
             winningLine = getWinningLineCoordinates(i);
-            resultElement.innerHTML = '<strong>You are the winner! Wait, what? That\'s impossible!</strong>';
+            resultElement.innerHTML = '<strong>You are the cheater!</strong>';
             return true;
         }
         if (lines[i].every(cell => cell === 'O')) {
