@@ -129,6 +129,51 @@
 
                 <p>どうぞよろしくお願いいたします。</p>
 
+                <h2>日本語ニュース スクレイピング</h2>
+                <div id="newsBox"
+                    style="width: 100%; height: 350px; overflow: auto; border: 1px solid black; padding: 10px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: center;">NHK NEWS WEB EASY スクレイパー
+                    </h2>
+                    <p style=" font-size: 1rem;">このツールは、NHK NEWS WEB
+                        EASYのウェブサイトから簡易化された日本語のニュース記事を取得し表示するのに役立ちます。ニュースの内容だけでなく、重要な語彙とその発音を抽出し、可能な場合には辞書の定義も提供します。</p>
+                    <p style="font-size: 1rem;">始めるには、『作成』ボタンをクリックするだけです。また、『コピー』ボタンを使って内容をクリップボードにコピーすることもできます。</p>
+                    <p style="font-size: 1rem;">
+                        なお、ニュースの更新は平日に2回、おおよそ午後12時と午後5時に行われます。これらの更新期間中は、ニュース取得機能が正しく動作しない場合があります。また、『作成』機能は、NHK
+                        NEWS WEB EASYウェブサイトの最新のヘッドライン4つからランダムに記事を抽出することにご注意ください。
+                    </p>
+                </div>
+
+                <button id="fetch-news-btn" class="custom-button">作成</button>
+                <button id="copy-news-btn" class="custom-button">コピー</button>
+                <span id="copy-message"></span>
+                <p style="font-size: 0.8rem;">
+                    また、このツールのPythonで開発された使いやすいグラフィカルインターフェース版もご覧いただけます。この<a
+                        href="https://github.com/KORINZ/nhk-news-scraper-gui">GitHubリポジトリ</a>でチェックしてみてください。
+                    <br>
+                    すべてのニュースコンテンツは、NHK（日本放送協会）によって著作権が保護されています。
+                    <br>
+                    「NEWS WEB EASY」では、三省堂の『例解小学国語辞典第5版』を使っています。
+                    辞書の著作権は、辞書を作った株式会社三省堂にあります。
+                </p>
+
+                <h2>研究分野 <a
+                        href="https://ja.wikipedia.org/wiki/3D%E3%83%90%E3%82%A4%E3%82%AA%E3%83%97%E3%83%AA%E3%83%B3%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><i
+                            class="fa-brands fa-wikipedia-w"></i></a></h2>
+                <p>
+                    3D押出式バイオプリンティングは、組織工学の分野で急速に発展しており、複雑で生物学的に構造化されたカスタマイズ可能な構造物を高精度で作製することを可能にしています。このプロセスにおける主な課題は、針の形状や押出パラメータの最適化、および細胞の生存率の維持です。数値解析や機械学習は、流体せん断応力、インクのレオロジー特性、押出速度などの要素を制御するためにますます活用されており、印刷適性の向上と印刷された構造内での細胞の生存率向上を目指しています。これらの計算手法と実験的検証の組み合わせは、組織再生や治療応用に向けた、より効果的なバイオプリンティングソリューションへの道を開くことが期待されています。
+                </p>
+
+                <figure style="text-align: center;">
+                    <p><a href="https://doi.org/10.1080/17452759.2024.2400330">
+                            <img src="../../static/GraphicalAbstract1.png" alt="GraphicalAbstract1" width="650">
+                        </a>
+                    </p>
+                    <figcaption><strong>Figure
+                            0. </strong>バイオプリンティング最適化のためのワークフロー:
+                        レオロジー試験で得られたインクの特性を基に、針の押出しプロセスの数値シミュレーションが行われ、その後、ライブ/デッド細胞生存率解析が実施されます。機械学習モデルは、細胞の種類、インクの粘度、押出しパラメータを統合し、細胞生存率を予測・最適化します。
+                    </figcaption>
+                </figure>
+
                 <h2>論文</h2>
                 <ol>
                     <li><b>Colin Zhang</b>, Kelum C. M. L. Elvitigala, Wildan Mubarok, Yasunori Okano, and Shinji Sakai.
@@ -166,51 +211,6 @@
                     </li>
                 </ol>
 
-
-
-                <h2>日本語ニュース スクレイピング</h2>
-                <div id="newsBox"
-                    style="width: 100%; height: 350px; overflow: auto; border: 1px solid black; padding: 10px;">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: center;">NHK NEWS WEB EASY スクレイパー
-                    </h2>
-                    <p style=" font-size: 1rem;">このツールは、NHK NEWS WEB
-                        EASYのウェブサイトから簡易化された日本語のニュース記事を取得し表示するのに役立ちます。ニュースの内容だけでなく、重要な語彙とその発音を抽出し、可能な場合には辞書の定義も提供します。</p>
-                    <p style="font-size: 1rem;">始めるには、『作成』ボタンをクリックするだけです。また、『コピー』ボタンを使って内容をクリップボードにコピーすることもできます。</p>
-                    <p style="font-size: 1rem;">
-                        なお、ニュースの更新は平日に2回、おおよそ午後12時と午後5時に行われます。これらの更新期間中は、ニュース取得機能が正しく動作しない場合があります。また、『作成』機能は、NHK
-                        NEWS WEB EASYウェブサイトの最新のヘッドライン4つからランダムに記事を抽出することにご注意ください。
-                    </p>
-                </div>
-
-                <button id="fetch-news-btn" class="custom-button">作成</button>
-                <button id="copy-news-btn" class="custom-button">コピー</button>
-                <span id="copy-message"></span>
-                <p style="font-size: 0.8rem;">
-                    また、このツールのPythonで開発された使いやすいグラフィカルインターフェース版もご覧いただけます。この<a
-                        href="https://github.com/KORINZ/nhk-news-scraper-gui">GitHubリポジトリ</a>でチェックしてみてください。
-                    <br>
-                    すべてのニュースコンテンツは、NHK（日本放送協会）によって著作権が保護されています。
-                    <br>
-                    「NEWS WEB EASY」では、三省堂の『例解小学国語辞典第5版』を使っています。
-                    辞書の著作権は、辞書を作った株式会社三省堂にあります。
-                </p>
-
-                <h2>研究分野 <a
-                        href="https://ja.wikipedia.org/wiki/3D%E3%83%90%E3%82%A4%E3%82%AA%E3%83%97%E3%83%AA%E3%83%B3%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><i
-                            class="fa-brands fa-wikipedia-w"></i></a></h2>
-                <p>
-                    3D押出式バイオプリンティングは、組織工学の分野で急速に発展しており、複雑で生物学的に構造化されたカスタマイズ可能な構造物を高精度で作製することを可能にしています。このプロセスにおける主な課題は、針の形状や押出パラメータの最適化、および細胞の生存率の維持です。数値解析や機械学習は、流体せん断応力、インクのレオロジー特性、押出速度などの要素を制御するためにますます活用されており、印刷適性の向上と印刷された構造内での細胞の生存率向上を目指しています。これらの計算手法と実験的検証の組み合わせは、組織再生や治療応用に向けた、より効果的なバイオプリンティングソリューションへの道を開くことが期待されています。
-                </p>
-
-                <figure style="text-align: center;">
-                    <p>
-                        <img src="../../static/GraphicalAbstract1.png" alt="GraphicalAbstract1" width="550">
-                    </p>
-                    <figcaption><strong>Figure
-                            1. </strong>バイオプリンティング最適化のためのワークフロー:
-                        レオロジー試験で得られたバイオインクの特性を基に、針の押出しプロセスの数値シミュレーションが行われ、その後、ライブ/デッド細胞生存率解析が実施されます。機械学習モデルは、細胞の種類、インクの粘度、押出しパラメータを統合し、細胞生存率を予測・最適化します。
-                    </figcaption>
-                </figure>
 
                 <h2>オンラインコース修了証明書</h2>
                 <ul>
