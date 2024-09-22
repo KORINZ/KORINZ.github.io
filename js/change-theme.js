@@ -1,39 +1,38 @@
 // Function to change the theme
 function changeTheme() {
-  const button = document.getElementById('theme-toggler');
-  document.body.classList.toggle('dark');
-  button.classList.toggle('dark');
-  button.classList.toggle('flipped');
+  const isDark = !document.body.classList.contains('dark');
+  document.body.classList.toggle('dark', isDark);
+  localStorage.setItem('darkMode', isDark);
+  document.documentElement.style.setProperty('color-scheme', isDark ? 'dark' : 'light');
+  document.documentElement.style.setProperty('--bg-color', isDark ? '#333' : '#fff');
+  document.documentElement.style.setProperty('--text-color', isDark ? '#fff' : '#333');
 
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('darkMode', 'true');
-    localStorage.setItem('flipped', 'true');
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
-  } else {
-    localStorage.setItem('darkMode', 'false');
-    localStorage.setItem('flipped', 'false');
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
-  }
+  const button = document.getElementById('theme-toggler');
+  button.classList.toggle('dark', isDark);
+
+  const icon = document.getElementById('theme-icon');
+  icon.classList.toggle('fa-sun', !isDark);
+  icon.classList.toggle('fa-moon', isDark);
+
+  // Toggle the flipped class only when the button is clicked
+  button.classList.toggle('flipped');
 }
 
 // Event listener for the button
 document.getElementById('theme-toggler').addEventListener('click', changeTheme);
 
+// Initialize theme on page load
 (function () {
+  const isDark = localStorage.getItem('darkMode') === 'true';
+  document.body.classList.toggle('dark', isDark);
+
   const button = document.getElementById('theme-toggler');
-  if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark');
-    button.classList.add('dark');
-    button.classList.add('flipped');
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-sun');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-moon');
-  } else {
-    document.body.classList.remove('dark');
-    button.classList.remove('dark');
-    button.classList.remove('flipped');
-    document.getElementById('theme-icon').classList.remove('fas', 'fa-moon');
-    document.getElementById('theme-icon').classList.add('fas', 'fa-sun');
-  }
+  button.classList.toggle('dark', isDark);
+
+  const icon = document.getElementById('theme-icon');
+  icon.classList.toggle('fa-sun', !isDark);
+  icon.classList.toggle('fa-moon', isDark);
+
+  // Remove the flipped class on page load
+  button.classList.remove('flipped');
 })();

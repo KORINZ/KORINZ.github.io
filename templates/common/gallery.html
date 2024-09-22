@@ -16,6 +16,14 @@
         type="application/ld+json"> { "@context" : "http://schema.org", "@type" : "Person", "name" : "Colin ZHANG", "url" : "https://korinz.github.io", "sameAs" : null } </script>
     <!-- end SEO -->
 
+    <script>
+        (function () {
+            var isDark = localStorage.getItem('darkMode') === 'true';
+            document.documentElement.style.setProperty('color-scheme', isDark ? 'dark' : 'light');
+            document.documentElement.style.setProperty('--bg-color', isDark ? '#333' : '#fff');
+            document.documentElement.style.setProperty('--text-color', isDark ? '#fff' : '#333');
+        })();
+    </script>
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <meta property="og:image" content="static/web_screenshot.png">
     <link href="https://upload.wikimedia.org/wikipedia/commons/3/34/Home-icon.svg" rel="icon">
@@ -30,8 +38,7 @@
     <link href="https://unpkg.com/viewerjs@latest/dist/viewer.css" rel="stylesheet">
 </head>
 
-<body
-    class="<script>localStorage.getItem('darkMode') === 'true' ? document.write('dark') : document.write('')</script>">
+<body class="theme-loaded <script>document.write(localStorage.getItem('darkMode') === 'true' ? 'dark' : '')</script>">
     <div class="container-fluid">
         <div class="row">
             <aside class="col-lg">

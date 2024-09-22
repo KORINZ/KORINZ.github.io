@@ -15093,7 +15093,7 @@ body.dark #newsBox {
 }
 
 .theme-button.flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
 }
 
 .theme-button:hover {
@@ -15102,6 +15102,11 @@ body.dark #newsBox {
 
 .theme-button.dark:hover {
     background-color: rgba(51, 51, 51, 0.6);
+}
+
+#theme-toggler .fas {
+    font-size: 120%;
+    /* Increase icon size by 20% */
 }
 
 /* Top Bar Styles */
@@ -15318,7 +15323,6 @@ textarea:focus {
 
 
 
-
 .calc-button {
     padding: 0;
     height: 50px;
@@ -15330,14 +15334,12 @@ textarea:focus {
     background-color: #fff;
     color: #000;
     border-color: #000;
-    /* Adjust this color as needed */
 }
 
 body.dark .operator-button.calc-button-highlight {
     background-color: #fff !important;
     color: #333 !important;
     border-color: #333 !important;
-    /* Adjust this color as needed */
 }
 
 
@@ -15431,6 +15433,23 @@ aside {
     scrollbar-color: transparent transparent;
 }
 
+
+body.theme-loaded {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+}
+
 body {
-    transition: background-color 0.2s, color 0.2s;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark {
+    --bg-color: #333;
+    --text-color: #fff;
 }
