@@ -16,20 +16,31 @@ async function printNewsArticleContent() {
     const date = extractDate(html);
     const articleContent = extractArticleContent(html);
     const uniqueIds = extractUniqueMatchingIds(html);
-    const vocab = createWordPronunciationMap(html, uniqueIds)
+    const vocab = createWordPronunciationMap(html, uniqueIds);
     const dictionaryEntries = await getDictionaryEntries(url);
-    const dictionaryText = dictionaryEntries.map(entry => `${entry.word}:<br>${entry.defs}`).join('<br><br>');
 
+    let vocabSection = '';
+    let dictionarySection = '';
+
+    if (dictionaryEntries.length > 0) {
+        const dictionaryText = dictionaryEntries.map(entry => `${entry.word}:<br>${entry.defs}`).join('<br><br>');
+        vocabSection = `
+            <h3>単語</h3>
+            <p>${vocab}</p>
+        `;
+        dictionarySection = `
+            <h3>辞書</h3>
+            <p>${dictionaryText}</p>
+        `;
+    }
 
     const newsBox = document.getElementById('newsBox');
     newsBox.innerHTML = `
         <h2><a style="text-decoration: none;" href="${url}" target="_blank">${title} <i class="fas fa-external-link-alt"></i></a></h2>
         <p><strong>${date}</strong></p>
         <p>${articleContent}</p>
-        <h3>単語</h3>
-        <p>${vocab}</p>
-        <h3>辞書</h3>
-        <p>${dictionaryText}</p>
+        ${vocabSection}
+        ${dictionarySection}
     `;
     newsBox.scrollTop = 0; // Reset scroll bar to the top
 }
@@ -40,7 +51,7 @@ async function getRandomNewsUrl() {
     const response = await fetch(newsListUrl);
     const newsList = await response.json();
 
-    const newsIds = newsList.slice(0, 4).map(article => article.news_id);
+    const newsIds = newsList.slice(0, 15).map(article => article.news_id);
 
     const randomIndex = Math.floor(Math.random() * newsIds.length);
     const randomId = newsIds[randomIndex];
@@ -162,23 +173,32 @@ function extractRtMatches(wordHtml) {
 
 async function getDictionaryEntries(url) {
     const dictUrl = url.replace("html", "out.dic");
-    const response = await fetch(dictUrl);
-    const data = await response.json();
+    try {
+        const response = await fetch(dictUrl);
+        if (!response.ok) {
+            if (response.status === 404) {
+                console.log('Dictionary file not found. Returning empty array.');
+                return [];
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
 
-    const dictEntries = data.reikai.entries;
-    const entriesArray = [];
+        const dictEntries = data.reikai.entries;
+        const entriesArray = [];
 
-    for (const entryKey in dictEntries) {
-        const entries = dictEntries[entryKey];
-        const word = getDictWord(entries);
-        const defs = getDictDefs(entries);
-        entriesArray.push({
-            word,
-            defs
-        });
+        for (const entryKey in dictEntries) {
+            const entries = dictEntries[entryKey];
+            const word = getDictWord(entries);
+            const defs = getDictDefs(entries);
+            entriesArray.push({ word, defs });
+        }
+
+        return entriesArray;
+    } catch (error) {
+        console.error('Error fetching dictionary entries:', error);
+        return [];
     }
-
-    return entriesArray;
 }
 
 
