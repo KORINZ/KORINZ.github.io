@@ -15453,3 +15453,20 @@ body.dark {
     --bg-color: #333;
     --text-color: #fff;
 }
+
+.quick-links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quick-links-list {
+    flex: 1;
+}
+
+.orcid-image {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
