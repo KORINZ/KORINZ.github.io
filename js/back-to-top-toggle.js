@@ -4,7 +4,10 @@ $(document).ready(function () {
     let isAnimating = false;
 
     $(window).on('scroll', function () {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        // Calculate current scroll percentage
+        let scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+
+        if (scrollPercent >= 80) {  // Show button when scrolled 90% or more
             $('#back-to-top').fadeIn();
         } else {
             $('#back-to-top').fadeOut();
