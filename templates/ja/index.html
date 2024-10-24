@@ -274,17 +274,23 @@
                 <h2>連絡先</h2>
                 <p>以下のPythonスクリプトを実行することで、ASCIIから文字列への変換を利用して私に連絡を取ることができます:</p>
                 <div class="language-plaintext highlighter-rouge">
-                    <div class="highlight">
+                    <div class="highlight code-container">
+                        <button class="copy-button" data-clipboard-target="#python-code">
+                            <i class="fas fa-copy"></i>
+                        </button>
                         <pre
-                            class="highlight"><code class="command">"".join(chr(i) for i in (107, 111, 114, 105, 110, 46, 106, 97, 112, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109))</code></pre>
+                            class="highlight"><code id="python-code" class="command">"".join(chr(i) for i in (107, 111, 114, 105, 110, 46, 106, 97, 112, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109))</code></pre>
                     </div>
                 </div>
 
                 <p>または、ブラウザのコンソールで直接実行できるJavaScriptバージョン:</p>
                 <div class="language-plaintext highlighter-rouge">
-                    <div class="highlight">
+                    <div class="highlight code-container">
+                        <button class="copy-button" data-clipboard-target="#js-code">
+                            <i class="fas fa-copy"></i>
+                        </button>
                         <pre
-                            class="highlight"><code class="command">String.fromCharCode(107, 111, 114, 105, 110, 46, 106, 97, 112, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109);</code></pre>
+                            class="highlight"><code id="js-code" class="command">String.fromCharCode(107, 111, 114, 105, 110, 46, 106, 97, 112, 97, 110, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109);</code></pre>
                     </div>
                 </div>
             </main>
@@ -296,6 +302,7 @@
     <script src="../../js/calendar-ja.js"></script>
     <script src="../../js/get-nhk-news.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
+    <script src="../../js/copy-code.js"></script>
 
 </body>
 

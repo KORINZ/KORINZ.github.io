@@ -15471,3 +15471,31 @@ body.dark {
     align-items: center;
     height: 100%;
 }
+
+
+.code-container {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 1px 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1em;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.copy-button i {
+    margin-right: 4px;
+}
+
+/* Add padding to the code to prevent overlap with button */
+.code-container pre {
+    padding-left: 35px;
+}
