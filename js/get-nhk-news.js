@@ -123,6 +123,15 @@ function extractArticleContent(html) {
                 letter-spacing: 0;
                 text-align: center;
             }
+            @media (prefers-color-scheme: dark) {
+                rt {
+                    color: #fff;
+                }
+            }
+            /* For manual dark mode toggle */
+            .dark rt {
+                color: #fff;
+            }
         `;
         if (!document.head.querySelector('style[data-ruby-styles]')) {
             style.setAttribute('data-ruby-styles', 'true');
