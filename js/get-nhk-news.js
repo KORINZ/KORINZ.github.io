@@ -51,7 +51,7 @@ async function getRandomNewsUrl() {
     const response = await fetch(newsListUrl);
     const newsList = await response.json();
 
-    const newsIds = newsList.slice(0, 15).map(article => article.news_id);
+    const newsIds = newsList.slice(0, 10).map(article => article.news_id);
 
     const randomIndex = Math.floor(Math.random() * newsIds.length);
     const randomId = newsIds[randomIndex];
@@ -70,29 +70,70 @@ function extractDate(html) {
 }
 
 function extractArticleContent(html) {
+    // Remove player wrapper div if present
     html = html.replace(/<div class="playerWrapper"[^>]*>((.|\n)*?)<\/div>/i, '');
 
+    // Extract article body content
     const articleMatch = html.match(/<div[^>]*class="article-body"[^>]*>((.|\n)*?)<\/div>/i);
 
     if (articleMatch) {
         const articleBody = articleMatch[1];
-        const paragraphs = articleBody.match(/<p[^>]*>(.*?)<\/p>/gi);
-        let articleContent = "";
+        // Match all paragraphs
+        const paragraphs = articleBody.match(/<p[^>]*>(.|\n)*?<\/p>/gi);
 
-        paragraphs.forEach(function (paragraph, index) {
-            const cleanedParagraph = paragraph.replace(/<ruby>(.*?)<rt>.*?<\/rt><\/ruby>/g, '$1').replace(/<[^>]*>/g, "");
-            articleContent += cleanedParagraph;
-            if (index < paragraphs.length - 1) {
-                articleContent += "<br><br>";
+        if (!paragraphs) return "No paragraphs found";
+
+        // Process each paragraph
+        const cleanedParagraphs = paragraphs
+            .map(paragraph => {
+                return paragraph
+                    // Replace ruby tags with styled span structure
+                    .replace(/<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>/g, (match, kanji, furigana) => {
+                        return `<ruby>${kanji}<rt>${furigana}</rt></ruby>`;
+                    })
+                    // Remove color span tags while keeping their content
+                    .replace(/<span class="color[^"]*">(.*?)<\/span>/g, '$1')
+                    // Remove any remaining HTML tags except ruby
+                    .replace(/<(?!\/?ruby|\/?rt)[^>]*>/g, '');
+            })
+            // Filter out empty paragraphs
+            .filter(paragraph => {
+                // Remove all HTML tags to check if there's any content
+                const textContent = paragraph.replace(/<[^>]*>/g, '').trim();
+                return textContent.length > 0;
+            });
+
+        // Add the content to a styled container
+        const container = document.createElement('div');
+        container.style.fontFamily = 'sans-serif';
+        container.style.lineHeight = '1.8';
+        container.style.fontSize = '16px';
+        container.innerHTML = cleanedParagraphs.join('<br><br>');
+
+        // Apply the ruby styles globally once (not in the content)
+        const style = document.createElement('style');
+        style.textContent = `
+            ruby {
+                ruby-align: center;
+                ruby-position: over;
             }
-        });
+            rt {
+                font-size: 0.625em;
+                color: #000;
+                letter-spacing: 0;
+                text-align: center;
+            }
+        `;
+        if (!document.head.querySelector('style[data-ruby-styles]')) {
+            style.setAttribute('data-ruby-styles', 'true');
+            document.head.appendChild(style);
+        }
 
-        return articleContent;
-    } else {
-        return "Article content not found";
+        return container.outerHTML;
     }
-}
 
+    return "Article content not found";
+}
 
 function createWordPronunciationMap(html, ids) {
     const wordPronunciationPairs = [];
@@ -278,7 +319,18 @@ function toRoman(num) {
 let timeoutId = null; // Store the timeout ID here
 
 document.getElementById('copy-news-btn').addEventListener('click', function () {
-    const textToCopy = document.getElementById('newsBox').innerText;
+    const newsBox = document.getElementById('newsBox');
+
+    // Create a temporary element to handle text extraction
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = newsBox.innerHTML;
+
+    // Remove furigana (rt tags) from the temporary element
+    tempDiv.querySelectorAll('rt').forEach(rt => rt.remove());
+
+    // Extract text from the cleaned HTML
+    const textToCopy = tempDiv.innerText;
+
     navigator.clipboard.writeText(textToCopy)
         .then(() => {
             console.log('Text copied to clipboard');
@@ -288,7 +340,7 @@ document.getElementById('copy-news-btn').addEventListener('click', function () {
             const path = window.location.pathname;
             const isJapanese = path.includes('ja');
             messageSpan.innerHTML = isJapanese ? 'コピーされました <i class="fa-solid fa-check"></i>' : 'Copied <i class="fa-solid fa-check"></i>';
-            messageSpan.style.fontWeight = 'bold'; // Make the text bold
+            messageSpan.style.fontWeight = 'bold';
 
             // Clear any previous timeout
             if (timeoutId !== null) {
@@ -298,8 +350,8 @@ document.getElementById('copy-news-btn').addEventListener('click', function () {
             // Set a new timeout to clear the message after 2 seconds
             timeoutId = setTimeout(() => {
                 messageSpan.innerHTML = '';
-                messageSpan.style.fontWeight = 'normal'; // Reset the font weight
-            }, 2000); // 2000 milliseconds = 2 seconds
+                messageSpan.style.fontWeight = 'normal';
+            }, 2000);
         })
         .catch(err => {
             console.error('Failed to copy text: ', err);
