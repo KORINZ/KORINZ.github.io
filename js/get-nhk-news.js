@@ -120,20 +120,17 @@ function extractArticleContent(html) {
             }
             rt {
                 font-size: 0.625em;
-                color: #000 !important;
+                color: #000;
                 letter-spacing: 0;
                 text-align: center;
-                -webkit-text-fill-color: #000;
             }
             @media (prefers-color-scheme: dark) {
                 rt {
-                    color: #fff !important;
-                    -webkit-text-fill-color: #fff;
+                    color: #fff;
                 }
             }
             .dark rt {
-                color: #fff !important;
-                -webkit-text-fill-color: #fff;
+                color: #fff;
             }
         `;
         if (!document.head.querySelector('style[data-ruby-styles]')) {
