@@ -120,23 +120,18 @@ function extractArticleContent(html) {
             }
             rt {
                 font-size: 0.625em;
-                color: #000;
                 letter-spacing: 0;
                 text-align: center;
-            }
-            @media (prefers-color-scheme: dark) {
-                rt {
-                    color: #fff !important;
-                }
+                color: #000 !important;
             }
             .dark rt {
                 color: #fff !important;
             }
-            /* Ensure text is visible in light mode for iOS */
-            @supports (-webkit-touch-callout: none) {
-                rt {
-                    color: #000;
-                }
+            :root[data-theme="dark"] rt {
+                color: #fff !important;
+            }
+            :root[data-theme="light"] rt {
+                color: #000 !important;
             }
         `;
         if (!document.head.querySelector('style[data-ruby-styles]')) {
