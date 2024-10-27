@@ -117,27 +117,23 @@ function extractArticleContent(html) {
                 ruby-align: center;
                 ruby-position: over;
                 -webkit-ruby-position: over;
-                color: #000;
             }
             rt {
                 font-size: 0.625em;
-                color: #000;
+                color: #000 !important;
                 letter-spacing: 0;
                 text-align: center;
+                -webkit-text-fill-color: #000;
             }
             @media (prefers-color-scheme: dark) {
-                ruby {
-                    color: #fff;
-                }
                 rt {
-                    color: #fff;
+                    color: #fff !important;
+                    -webkit-text-fill-color: #fff;
                 }
-            }
-            .dark ruby {
-                color: #fff;
             }
             .dark rt {
-                color: #fff;
+                color: #fff !important;
+                -webkit-text-fill-color: #fff;
             }
         `;
         if (!document.head.querySelector('style[data-ruby-styles]')) {
