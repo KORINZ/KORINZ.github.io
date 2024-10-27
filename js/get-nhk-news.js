@@ -117,6 +117,7 @@ function extractArticleContent(html) {
                 ruby-align: center;
                 ruby-position: over;
                 -webkit-ruby-position: over;
+                color: #000;
             }
             rt {
                 font-size: 0.625em;
@@ -125,9 +126,15 @@ function extractArticleContent(html) {
                 text-align: center;
             }
             @media (prefers-color-scheme: dark) {
+                ruby {
+                    color: #fff;
+                }
                 rt {
                     color: #fff;
                 }
+            }
+            .dark ruby {
+                color: #fff;
             }
             .dark rt {
                 color: #fff;
