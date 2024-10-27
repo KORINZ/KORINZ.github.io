@@ -108,34 +108,35 @@ function extractArticleContent(html) {
         container.style.fontFamily = 'sans-serif';
         container.style.lineHeight = '1.8';
         container.style.fontSize = '16px';
-        container.classList.add('article-content');
         container.innerHTML = cleanedParagraphs.join('<br><br>');
 
         // Apply the ruby styles globally once (not in the content)
         const style = document.createElement('style');
         style.textContent = `
-            .article-content {
-                color: inherit;
-            }
-            .article-content ruby {
+            ruby {
                 ruby-align: center;
                 ruby-position: over;
                 -webkit-ruby-position: over;
-                color: inherit;
             }
-            .article-content rt {
+            rt {
                 font-size: 0.625em;
                 color: #000;
                 letter-spacing: 0;
                 text-align: center;
             }
             @media (prefers-color-scheme: dark) {
-                .article-content rt {
-                    color: #fff;
+                rt {
+                    color: #fff !important;
                 }
             }
-            .dark .article-content rt {
-                color: #fff;
+            .dark rt {
+                color: #fff !important;
+            }
+            /* Ensure text is visible in light mode for iOS */
+            @supports (-webkit-touch-callout: none) {
+                rt {
+                    color: #000;
+                }
             }
         `;
         if (!document.head.querySelector('style[data-ruby-styles]')) {
