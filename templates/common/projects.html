@@ -376,6 +376,37 @@
                         <pre class="highlight"><code class="command">from __future__ import braces</code></pre>
                     </div>
                 </div>
+
+                <h2>日本語ニュース スクレイピング* (deprecated)</h2>
+                <div id="newsBox"
+                    style="width: 100%; height: 375px; overflow: auto; border: 1px solid black; padding: 10px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-align: center;">NHK NEWS WEB EASY スクレイパー
+                    </h2>
+                    <p style=" font-size: 1rem;">このツールは、<a
+                            href="https://www3.nhk.or.jp/news/easy/">NHKやさしいことばニュース</a>のウェブサイトから簡易化された日本語のニュース記事を取得し表示するのに役立ちます。ニュースの内容だけでなく、重要な語彙とその発音を抽出し、可能な場合には辞書の定義も提供します。
+                    </p>
+                    <p style="font-size: 1rem;">始めるには、『作成』ボタンをクリックするだけです。また、『コピー』ボタンを使って内容をクリップボードにコピーすることもできます。</p>
+                    <p style="font-size: 1rem;">
+                        なお、ニュースの更新期間中は、ニュース取得機能が正しく動作しない場合があります。また、『作成』機能は、NHK NEWS
+                        WEB EASYウェブサイトの最新10件の見出しからランダムに1つの記事を抽出することにご注意ください。
+                    </p>
+                    <p style="font-size: 1rem;">*2025年10月1日以降のニュースについては、NHK ONEの変更により、利用できなくなりました。
+                    </p>
+                </div>
+
+                <button id="fetch-news-btn" class="custom-button">作成</button>
+                <button id="copy-news-btn" class="custom-button">コピー</button>
+                <span id="copy-message"></span>
+                <p style="font-size: 0.8rem;">
+                    また、このツールのPythonで開発された使いやすいグラフィカルインターフェース版もご覧いただけます。この<a
+                        href="https://github.com/KORINZ/nhk-news-scraper-gui">GitHubリポジトリ</a>でチェックしてみてください。
+                    <br>
+                    すべてのニュースコンテンツは、NHK（日本放送協会）によって著作権が保護されています。
+                    <br>
+                    「NEWS WEB EASY」では、三省堂の『例解小学国語辞典第5版』を使っています。
+                    辞書の著作権は、辞書を作った株式会社三省堂にあります。
+                </p>
+
             </main>
         </div>
     </div>
@@ -388,6 +419,9 @@
     <script src="../../js/calculator.js"></script>
     <script src="../../js/change-theme.js"></script>
     <script src="../../js/sidebar-toggle.js"></script>
+    <script src="../../js/get-nhk-news.js"></script>
+    <script src="../../js/copy-code.js"></script>
+
     <script src="../../js/calendar.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function () {
