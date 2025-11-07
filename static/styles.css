@@ -15199,6 +15199,27 @@ body.dark figure img {
     filter: brightness(0.7) contrast(0.85) !important;
 }
 
+body.dark img {
+    filter: brightness(0.7) contrast(0.85) !important;
+}
+
+.university-logo {
+    height: 2em;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 4px;
+    transition: transform 0.2s ease;
+}
+
+.university-logo:hover {
+    transform: scale(1.15);
+}
+
+a.logo-link {
+    text-decoration: none;
+    border: none;
+}
+
 .social-links a i {
     width: 10px;
     /* Adjust the width as per your requirement */
