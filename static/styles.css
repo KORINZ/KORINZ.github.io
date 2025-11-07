@@ -15521,3 +15521,126 @@ body.dark {
 .code-container pre {
     padding-left: 35px;
 }
+
+/* Page load transition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply to main content */
+main {
+    animation: fadeIn 0.35s ease-out;
+}
+
+/* Smooth fade for body on page load */
+body {
+    opacity: 0;
+    animation: bodyFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes bodyFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Optional: Add staggered animation for main content elements */
+main>* {
+    opacity: 0;
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+main>*:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+main>*:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+main>*:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+main>*:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+main>*:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth link hover transitions */
+a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* Keep full opacity for figure links and image-containing links */
+figure a:hover,
+figure a:hover *,
+a:hover img,
+a:has(img):hover {
+    opacity: 1 !important;
+}
+
+/* Navigation links transition */
+nav ul li a {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--link-color, #007bff);
+    transition: width 0.2s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Optional: Add page exit animation with JavaScript */
+.page-transition-exit {
+    animation: fadeOut 0.2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
