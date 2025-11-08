@@ -15619,27 +15619,6 @@ a:has(img):hover {
     opacity: 1 !important;
 }
 
-/* Navigation links transition */
-nav ul li a {
-    position: relative;
-    transition: all 0.2s ease;
-}
-
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--link-color, #007bff);
-    transition: width 0.2s ease;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
 /* Optional: Add page exit animation with JavaScript */
 .page-transition-exit {
     animation: fadeOut 0.2s ease-out forwards;
