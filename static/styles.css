@@ -15215,6 +15215,18 @@ body.dark img {
     transform: scale(1.15);
 }
 
+.home-icon {
+    height: 0.9em;
+    width: auto;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+.home-icon:hover {
+    transform: scale(1.15);
+}
+
+
 a.logo-link {
     text-decoration: none;
     border: none;
