@@ -15098,10 +15098,12 @@ body.dark #newsBox {
 
 .theme-button:hover {
     background-color: rgba(51, 51, 51, 0.6);
+    filter: brightness(1.1);
 }
 
 .theme-button.dark:hover {
     background-color: rgba(51, 51, 51, 0.6);
+    filter: brightness(1.1);
 }
 
 #theme-toggler .fas {
@@ -15200,7 +15202,7 @@ body.dark figure img {
 }
 
 body.dark img {
-    filter: brightness(0.7) contrast(0.85) !important;
+    filter: brightness(0.7) contrast(0.85);
 }
 
 .university-logo {
@@ -15220,10 +15222,17 @@ body.dark img {
     width: auto;
     vertical-align: middle;
     transition: transform 0.2s ease;
+    filter: brightness(1.0) contrast(1.0) !important;
 }
 
-.home-icon:hover {
-    transform: scale(1.15);
+
+
+.flag-icon {
+    height: 1.0em;
+    width: auto;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+    filter: brightness(1.0) contrast(1.0) !important;
 }
 
 
