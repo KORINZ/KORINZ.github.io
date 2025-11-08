@@ -15656,3 +15656,26 @@ nav ul li a:hover::after {
         transform: translateY(-10px);
     }
 }
+
+/* Navigation links transition - Non-touch devices only */
+@media (hover: hover) and (pointer: fine) {
+    nav ul li a {
+        position: relative;
+        transition: all 0.2s ease;
+    }
+
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--link-color, #007bff);
+        transition: width 0.2s ease;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+}
