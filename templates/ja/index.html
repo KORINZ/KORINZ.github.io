@@ -232,6 +232,25 @@
                         パラメータを予測する。回帰型のMLPモデルは、ハウスドルフ距離（HD）および細胞生存率を予測するために使用される。HD指標は、印刷構造と設計構造との幾何学的忠実度を定量的に評価し、回帰型CNNはグリッド画像からHD値を直接予測する。
                 </figure>
 
+                <figure style="text-align: center;">
+                    <p><a href="" target="_blank">
+                            <img src="../../static/GraphicalAbstract3.png" alt="GraphicalAbstract3" width="1000">
+                        </a>
+                    </p>
+                    <figcaption style="text-align: left;"><strong>図3. </strong>光架橋型3Dバイオプリンティングにおける
+                        造形形状最適化のための&beta;-CVAEフレームワークの概要。
+                        (a) 光照射強度、架橋剤濃度、およびレオロジー特性を変化させて取得した造形物画像を、
+                        レオロジーおよび造形条件<strong>c</strong>を条件付けとして、
+                        特徴が分離された潜在空間<strong>z</strong>にエンコードし、条件付き造形物画像生成を行う。
+                        転移学習により、他の設計形状への拡張も可能である。
+                        (b) In silicoにおける閉ループ最適化の流れ。デコーダが候補となる造形物を生成し、
+                        CNNが参照設計図に対する形状再現性(プリンタビリティ)を評価する。
+                        ベイズ最適化により、SVRレオロジーモデルに基づいてレオロジーパラメータ
+                        (<em>&eta;</em><sub>0</sub>、<em>m</em>、<em>n</em>、tan(<em>&delta;</em>))
+                        を反復的に更新し、収束に至る。
+                    </figcaption>
+                </figure>
+
                 <h2>学術論文</h2>
                 <ol>
                     <li><b>Colin Zhang</b>, Kelum Elvitigala, and Shinji Sakai.
