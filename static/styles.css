@@ -15395,6 +15395,15 @@ body.dark #calculation-log {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+body.dark .scite-badge {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+body.dark .scite-badge:hover {
+    opacity: 1;
+}
+
 .game-container {
     display: flex;
     flex-direction: column;
