@@ -15667,3 +15667,32 @@ a:has(img):hover {
         width: 100%;
     }
 }
+
+.oa-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.oa-tooltip .oa-tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.15s ease;
+    z-index: 10;
+}
+
+.oa-tooltip:hover .oa-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
