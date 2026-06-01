@@ -1,34 +1,35 @@
-$(document).ready(function () {
-    $('#back-to-top').hide();  // Hide the button when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('back-to-top');
+    var isAnimating = false;
 
-    let isAnimating = false;
+    function updateVisibility() {
+        var scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        btn.style.display = scrollPercent >= 80 ? 'block' : 'none';
+    }
 
-    $(window).on('scroll', function () {
-        // Calculate current scroll percentage
-        let scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    updateVisibility();
 
-        if (scrollPercent >= 80) {  // Show button when scrolled 80% or more
-            $('#back-to-top').fadeIn();
-        } else {
-            $('#back-to-top').fadeOut();
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (isAnimating) return;
+        isAnimating = true;
+        var start = window.scrollY;
+        var startTime = null;
+        var duration = 400;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            window.scrollTo(0, start * (1 - ease));
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                isAnimating = false;
+            }
         }
-    });
 
-    // Trigger the scroll event as soon as the page loads
-    $(window).trigger('scroll');
-
-    // scroll body to 0px on click
-    $('#back-to-top').click(function () {
-        if (isAnimating) return false;  // Do nothing if an animation is in progress
-
-        isAnimating = true;  // Set the flag to true to indicate that an animation has started
-
-        $('body,html').animate({
-            scrollTop: 0
-        }, 400, function () {
-            isAnimating = false;  // Reset the flag when the animation finishes
-        });
-
-        return false;
+        requestAnimationFrame(step);
     });
 });

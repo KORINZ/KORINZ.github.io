@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://korinz.github.io/">
     <meta property="og:description" content="About me">
     <script
-        type="application/ld+json"> { "@context" : "http://schema.org", "@type" : "Person", "name" : "Colin ZHANG", "url" : "https://korinz.github.io", "sameAs" : null } </script>
+        type="application/ld+json"> { "@context" : "https://schema.org", "@type" : "Person", "name" : "Colin ZHANG", "url" : "https://korinz.github.io", "sameAs" : null } </script>
     <!-- end SEO -->
 
     <script>
@@ -34,12 +34,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.0.0/jquery.min.js" defer></script>
 
 </head>
 
-<body class="theme-loaded <script>document.write(localStorage.getItem('darkMode') === 'true' ? 'dark' : '')</script>">
+<body class="theme-loaded">
     <div class="container-fluid">
         <div class="row">
             <aside class="col-lg">
@@ -180,7 +180,7 @@
                 </p>
                 <figure style="text-align: center;">
                     <p><a href="https://doi.org/10.1080/17452759.2024.2400330" target="_blank">
-                            <img src="../../static/GraphicalAbstract1.png" alt="GraphicalAbstract1" width="600">
+                            <img src="../../static/GraphicalAbstract1.png" alt="GraphicalAbstract1" width="600" loading="eager">
                         </a>
                     </p>
                     <figcaption style="text-align: left;"><strong>Figure 1. </strong>Graphical workflow for bioprinting
@@ -197,7 +197,7 @@
 
                 <figure style="text-align: center;">
                     <p><a href="https://doi.org/10.1088/1758-5090/ae288c" target="_blank">
-                            <img src="../../static/GraphicalAbstract2.png" alt="GraphicalAbstract2" width="800">
+                            <img src="../../static/GraphicalAbstract2.png" alt="GraphicalAbstract2" width="800" loading="lazy">
                         </a>
                     </p>
                     <figcaption style="text-align: left;"><strong>Figure 2. </strong>Overview of the AI-powered printing
@@ -217,7 +217,7 @@
 
                 <figure style="text-align: center;">
                     <p><a href="https://doi.org/10.1080/17452759.2026.2671497" target="_blank">
-                            <img src="../../static/GraphicalAbstract3.png" alt="GraphicalAbstract3" width="1000">
+                            <img src="../../static/GraphicalAbstract3.png" alt="GraphicalAbstract3" width="1000" loading="lazy">
                         </a>
                     </p>
                     <figcaption style="text-align: left;"><strong>Figure 3. </strong>Overview of the
