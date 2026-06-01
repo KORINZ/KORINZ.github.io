@@ -10,16 +10,23 @@
 
     var ctx = canvas.getContext('2d');
     var W = canvas.width, H = canvas.height;
-    var LAYERS = [3, 5, 5, 4];
+    var LAYERS = [4, 5, 5, 3];
     var PAD_X = 20, PAD_Y = 18;
 
-    var outStep = (H - 2 * PAD_Y) / (LAYERS[LAYERS.length - 1] - 1);
+    var hidStep = (H - 2 * PAD_Y) / (LAYERS[1] - 1);
     var nodes = LAYERS.map(function (count, li) {
         var x = PAD_X + li * (W - 2 * PAD_X) / (LAYERS.length - 1);
         return Array.from({ length: count }, function (_, ni) {
-            var y = (li === 0)
-                ? PAD_Y + (ni + 0.5) * outStep
-                : (count === 1 ? H / 2 : PAD_Y + ni * (H - 2 * PAD_Y) / (count - 1));
+            var y;
+            if (li === 0) {
+                // sit at midpoints between the 5 hidden-layer dots
+                y = PAD_Y + hidStep / 2 + ni * hidStep;
+            } else if (li === LAYERS.length - 1) {
+                // align with middle 3 of hidden-layer 5 dots
+                y = H / 2 + (ni - Math.floor(count / 2)) * hidStep;
+            } else {
+                y = count === 1 ? H / 2 : PAD_Y + ni * (H - 2 * PAD_Y) / (count - 1);
+            }
             return { x: x, y: y, glow: 0 };
         });
     });
@@ -34,15 +41,15 @@
     }
 
     var pulses = [];
-    for (var k = 0; k < 38; k++) {
+    for (var k = 0; k < 50; k++) {
         var e0 = edges[Math.floor(Math.random() * edges.length)];
-        pulses.push({ l: e0.l, i: e0.i, j: e0.j, t: Math.random(), speed: 0.018 + Math.random() * 0.016 });
+        pulses.push({ l: e0.l, i: e0.i, j: e0.j, t: Math.random(), speed: 0.022 + Math.random() * 0.022 });
     }
 
     setInterval(function () {
         var e = edges[Math.floor(Math.random() * edges.length)];
-        pulses.push({ l: e.l, i: e.i, j: e.j, t: 0, speed: 0.018 + Math.random() * 0.016 });
-    }, 90);
+        pulses.push({ l: e.l, i: e.i, j: e.j, t: 0, speed: 0.022 + Math.random() * 0.022 });
+    }, 65);
 
     function draw() {
         ctx.clearRect(0, 0, W, H);
