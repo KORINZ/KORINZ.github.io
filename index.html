@@ -145,7 +145,7 @@
 
             <main class="col-lg">
 
-                <h2>>>> Hello, World!</h2>
+                <h2 id="terminal-heading">&gt;&gt;&gt; </h2>
 
                 <p>I'm Colin Zhang, currently a Ph.D. student at The University of Osaka. My research topics involve
                     additive manufacturing, numerical simulation, and machine learning. I graduated from UC Santa
@@ -405,6 +405,30 @@
     <script src="js/copy-code.js"></script>
     <script src="js/icon-hover.js"></script>
     <script src="js/neural-net.js"></script>
+
+    <script>
+        (function () {
+            var style = document.createElement('style');
+            style.textContent = '#terminal-heading .cursor{font-weight:normal;animation:cursor-blink 1s step-end infinite}@keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}';
+            document.head.appendChild(style);
+            var el = document.getElementById('terminal-heading');
+            var text = 'Hello, World!';
+            var textNode = document.createTextNode('');
+            var cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            cursor.textContent = '|';
+            el.appendChild(textNode);
+            el.appendChild(cursor);
+            var i = 0;
+            function type() {
+                if (i < text.length) {
+                    textNode.nodeValue += text[i++];
+                    setTimeout(type, 150);
+                }
+            }
+            setTimeout(type, 800);
+        })();
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGRY00GE5F"></script>
