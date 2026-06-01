@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const builtWithHoverColors = {
         'fa-bootstrap': '#6a2edc',      // Bootstrap purple
         'fa-font-awesome': '#5a8ed4',   // Font Awesome blue
-        'fa-square-js': '#f4de3e'       // JS yellow
+        'fa-square-js': '#f4de3e',       // JS yellow
+        'fa-css': '#2965f1'              // CSS blue
     };
 
     Object.entries(builtWithHoverColors).forEach(([iconClass, hoverColor]) => {
