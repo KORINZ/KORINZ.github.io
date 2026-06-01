@@ -15721,3 +15721,162 @@ a:has(img):hover {
 .gif-toggle[open] .gif-toggle-hide {
     display: inline;
 }
+/* ───── Easter egg: hacker-mode toggle icon ───── */
+img#hacker-toggle {
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.25s ease;
+}
+
+img#hacker-toggle:hover {
+    filter: drop-shadow(0 0 7px rgba(0,255,65,0.85)) hue-rotate(80deg) saturate(3) brightness(1.4);
+    transform: scale(1.25) rotate(-6deg);
+}
+
+/* ───── Hacker mode global overrides ───── */
+body.hacker-mode {
+    background-color: #000 !important;
+    color: #00ff41 !important;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+body.hacker-mode * {
+    font-family: 'Courier New', Courier, monospace !important;
+    color: #00ff41 !important;
+    border-color: #1a4d1a !important;
+}
+
+body.hacker-mode a,
+body.hacker-mode a:visited {
+    color: #00cc33 !important;
+}
+
+body.hacker-mode a:hover {
+    color: #00ff41 !important;
+    text-shadow: 0 0 8px rgba(0,255,65,0.7);
+}
+
+body.hacker-mode h1,
+body.hacker-mode h2,
+body.hacker-mode h3 {
+    color: #00ff41 !important;
+    text-shadow: 0 0 12px rgba(0,255,65,0.45);
+}
+
+/* scanline overlay */
+body.hacker-mode::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.04) 0px,
+        rgba(0,0,0,0.04) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body.hacker-mode aside,
+body.hacker-mode nav {
+    background-color: #060606 !important;
+    border-right: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode main,
+body.hacker-mode .container-fluid,
+body.hacker-mode .row {
+    background-color: #000 !important;
+}
+
+body.hacker-mode hr {
+    border-color: #1a4d1a !important;
+    opacity: 0.7;
+}
+
+/* Glowing pulse on the toggle icon while hacker mode is active */
+body.hacker-mode img#hacker-toggle {
+    filter: drop-shadow(0 0 10px #00ff41) hue-rotate(80deg) saturate(6) brightness(2);
+    animation: hacker-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hacker-pulse {
+    0%, 100% { filter: drop-shadow(0 0 7px #00ff41) hue-rotate(80deg) saturate(6) brightness(1.8); }
+    50%       { filter: drop-shadow(0 0 20px #00ff41) hue-rotate(80deg) saturate(6) brightness(2.8); }
+}
+
+body.hacker-mode code,
+body.hacker-mode pre,
+body.hacker-mode .command {
+    background-color: #0a1a0a !important;
+    color: #00ff41 !important;
+    border: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode .highlight,
+body.hacker-mode .code-container,
+body.hacker-mode .highlighter-rouge {
+    background-color: #0a1a0a !important;
+    border: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode button {
+    background-color: #000 !important;
+    color: #00ff41 !important;
+    border: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode img:not(#hacker-toggle):not(.flag-icon) {
+    filter: sepia(1) hue-rotate(85deg) saturate(4) brightness(0.6) contrast(1.1) !important;
+}
+
+body.hacker-mode iframe.pdf-viewer {
+    filter: sepia(1) hue-rotate(85deg) saturate(3) brightness(0.75) contrast(1.1);
+    border: 1px solid #00ff41 !important;
+    box-shadow: 0 0 12px rgba(0, 255, 65, 0.25);
+}
+
+/* ───── Nav emoji icons – hacker mode ───── */
+body.hacker-mode .nav-emoji {
+    filter: grayscale(1) brightness(1.4) contrast(1.1);
+    display: inline-block;
+}
+
+/* fa-square bullet icons – pulse green in hacker mode */
+body.hacker-mode .fa-ul .fa-square {
+    color: #00ff41 !important;
+    text-shadow: 0 0 6px #00ff41;
+    animation: hacker-bullet-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hacker-bullet-pulse {
+    0%, 100% { text-shadow: 0 0 4px #00ff41; opacity: 1; }
+    50%       { text-shadow: 0 0 14px #00ff41; opacity: 0.65; }
+}
+
+/* ───── Hacker mode: tone down bright whites ───── */
+body.hacker-mode .today {
+    background-color: #003300 !important;
+    color: #00ff41 !important;
+}
+
+body.hacker-mode #display,
+body.hacker-mode #calculation-log {
+    background-color: #0a1a0a !important;
+    color: #00ff41 !important;
+    border-color: #00ff41 !important;
+}
+
+/* ───── Hacker mode: binary headings – wrap without overflow ───── */
+body.hacker-mode main h1,
+body.hacker-mode main h2,
+body.hacker-mode main h3 {
+    word-break: break-all;
+    letter-spacing: 0.05em;
+}
+
+/* ───── Hacker mode: hide terminal cursor alongside cleared typed text ───── */
+body.hacker-mode #terminal-heading .cursor {
+    display: none;
+}

@@ -14,16 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const link = icon.closest('a');
         if (!link) return;
 
-        const originalColor = getComputedStyle(icon).color;
+        // Clear the inline style so CSS (incl. hacker-mode) takes over naturally
+        const reset = () => { icon.style.removeProperty('color'); };
 
-        const reset = () => {
-            icon.style.color = originalColor;
-        };
-
-        link.addEventListener('mouseenter', () => {
-            icon.style.color = hoverColor;
-        });
-
+        link.addEventListener('mouseenter', () => { icon.style.color = hoverColor; });
         link.addEventListener('mouseleave', reset);
         link.addEventListener('click', reset);
         link.addEventListener('touchend', reset);
@@ -40,19 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const link = icon.closest('a');
         if (!link) return;
 
-        const originalColor = getComputedStyle(icon).color;
-        const hoverColor = '#fff';
-
         const reset = () => {
             icon.classList.remove('fa-github-alt');
             icon.classList.add('fa-github');
-            icon.style.color = originalColor;
+            icon.style.removeProperty('color');
         };
 
         link.addEventListener('mouseenter', () => {
             icon.classList.remove('fa-github');
             icon.classList.add('fa-github-alt');
-            icon.style.color = hoverColor;
+            icon.style.color = '#fff';
         });
 
         link.addEventListener('mouseleave', reset);
@@ -65,19 +56,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const link = icon.closest('a');
         if (!link) return;
 
-        const originalColor = getComputedStyle(icon).color;
-        const hoverColor = '#64a9db';
-
         const reset = () => {
             icon.classList.remove('fa-twitter');
             icon.classList.add('fa-x-twitter');
-            icon.style.color = originalColor;
+            icon.style.removeProperty('color');
         };
 
         link.addEventListener('mouseenter', () => {
             icon.classList.remove('fa-x-twitter');
             icon.classList.add('fa-twitter');
-            icon.style.color = hoverColor;
+            icon.style.color = '#64a9db';
         });
 
         link.addEventListener('mouseleave', reset);
@@ -98,16 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const link = icon.closest('a');
             if (!link) return;
 
-            const originalColor = getComputedStyle(icon).color;
+            const reset = () => { icon.style.removeProperty('color'); };
 
-            const reset = () => {
-                icon.style.color = originalColor;
-            };
-
-            link.addEventListener('mouseenter', () => {
-                icon.style.color = hoverColor;
-            });
-
+            link.addEventListener('mouseenter', () => { icon.style.color = hoverColor; });
             link.addEventListener('mouseleave', reset);
             link.addEventListener('click', reset);
             link.addEventListener('touchend', reset);

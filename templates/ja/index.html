@@ -19,9 +19,10 @@
     <script>
         (function () {
             var isDark = localStorage.getItem('darkMode') === 'true';
+            var isHacker = localStorage.getItem('hackerMode') === 'true';
             document.documentElement.style.setProperty('color-scheme', isDark ? 'dark' : 'light');
-            document.documentElement.style.setProperty('--bg-color', isDark ? '#333' : '#fff');
-            document.documentElement.style.setProperty('--text-color', isDark ? '#fff' : '#333');
+            document.documentElement.style.setProperty('--bg-color', isHacker ? '#000' : isDark ? '#333' : '#fff');
+            document.documentElement.style.setProperty('--text-color', isHacker ? '#00ff41' : isDark ? '#fff' : '#333');
         })();
     </script>
     <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -46,7 +47,7 @@
         <div class="row">
             <aside class="col-lg">
                 <header>
-                    <h1><a href="">コリン <img src="/static/home_2.png" alt="Home Icon" class="home-icon"></a></h1>
+                    <h1><a href="">コリン</a> <img src="/static/home_2.png" alt="Home Icon" class="home-icon" id="hacker-toggle" title="???"></h1>
 
                     <div class="top-bar">
                         <span>
@@ -117,11 +118,11 @@
                     <hr>
                     <ul class="fa-ul">
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="../common/projects.html">🛠️ プロジェクト</a></li>
+                                href="../common/projects.html"><span class="nav-emoji">🛠️</span> プロジェクト</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="../common/research.html">⚗️ 研究</a></li>
+                                href="../common/research.html"><span class="nav-emoji">⚗️</span> 研究</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="../common/gallery.html">🖼️ ギャラリー</a></li>
+                                href="../common/gallery.html"><span class="nav-emoji">🖼️</span> ギャラリー</a></li>
                     </ul>
                     <hr>
                     <div class="centered-container">
@@ -417,6 +418,7 @@
     <script src="../../js/sidebar-toggle.js"></script>
     <script src="../../js/calendar-ja.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
+    <script src="../../js/hacker-mode.js"></script>
     <script src="../../js/copy-code.js"></script>
     <script src="../../js/icon-hover.js"></script>
     <script src="../../js/neural-net.js"></script>
@@ -436,11 +438,18 @@
             el.appendChild(cursor);
             var i = 0;
             function type() {
+                if (document.body.classList.contains('hacker-mode')) return;
                 if (i < text.length) {
                     textNode.nodeValue += text[i++];
                     setTimeout(type, 150);
                 }
             }
+            window._terminalRestart = function () {
+                textNode.nodeValue = '';
+                i = 0;
+                setTimeout(type, 500);
+            };
+            window._terminalTypedNode = textNode;
             setTimeout(type, 800);
         })();
     </script>

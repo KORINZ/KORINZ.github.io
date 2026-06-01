@@ -53,10 +53,11 @@
 
     function draw() {
         ctx.clearRect(0, 0, W, H);
-        var nodeClr = 'rgba(255,255,255,0.85)';
-        var connClr = 'rgba(255,255,255,0.45)';
-        var pulseClr = '#ffffff';
-        var glowClr = 'rgba(255,255,255,0.45)';
+        var isHacker = document.body.classList.contains('hacker-mode');
+        var nodeClr = isHacker ? 'rgba(0,255,65,0.85)' : 'rgba(255,255,255,0.85)';
+        var connClr = isHacker ? 'rgba(0,255,65,0.40)' : 'rgba(255,255,255,0.45)';
+        var pulseClr = isHacker ? '#00ff41' : '#ffffff';
+        var glowClr = isHacker ? 'rgba(0,255,65,0.45)' : 'rgba(255,255,255,0.45)';
         var NODE_R = 5;
 
         for (var ei = 0; ei < edges.length; ei++) {
@@ -81,8 +82,8 @@
             var alpha = Math.sin(p.t * Math.PI);
             ctx.globalAlpha = alpha;
             var grad = ctx.createRadialGradient(px, py, 0, px, py, 8);
-            grad.addColorStop(0, 'rgba(255,255,255,1)');
-            grad.addColorStop(0.4, 'rgba(255,255,255,0.3)');
+            grad.addColorStop(0, isHacker ? 'rgba(0,255,65,1)' : 'rgba(255,255,255,1)');
+            grad.addColorStop(0.4, isHacker ? 'rgba(0,255,65,0.3)' : 'rgba(255,255,255,0.3)');
             grad.addColorStop(1, 'transparent');
             ctx.beginPath();
             ctx.arc(px, py, 8, 0, Math.PI * 2);
@@ -114,7 +115,7 @@
                 ctx.globalAlpha = 0.55 + Math.min(nd.glow, 1) * 0.45;
                 ctx.fill();
                 ctx.globalAlpha = 1;
-                ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                ctx.strokeStyle = isHacker ? 'rgba(0,255,65,0.9)' : 'rgba(255,255,255,0.9)';
                 ctx.lineWidth = 1;
                 ctx.stroke();
             }

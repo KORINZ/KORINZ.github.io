@@ -15,6 +15,7 @@ function drawAnalogClock(date) {
     if (!canvas) return;
     let ctx = canvas.getContext('2d');
     let isDark = document.body.classList.contains('dark');
+    let isHacker = document.body.classList.contains('hacker-mode');
 
     const size = canvas.width;
     const cx = size / 2;
@@ -25,9 +26,9 @@ function drawAnalogClock(date) {
 
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-    ctx.fillStyle = isDark ? '#2a2a2a' : '#fff';
+    ctx.fillStyle = isHacker ? '#000' : isDark ? '#2a2a2a' : '#fff';
     ctx.fill();
-    ctx.strokeStyle = isDark ? '#aaa' : '#333';
+    ctx.strokeStyle = isHacker ? '#00ff41' : isDark ? '#aaa' : '#333';
     ctx.lineWidth = 2.5;
     ctx.stroke();
 
@@ -37,7 +38,7 @@ function drawAnalogClock(date) {
         ctx.beginPath();
         ctx.moveTo(cx + Math.cos(angle) * (r - (isHour ? 9 : 5)), cy + Math.sin(angle) * (r - (isHour ? 9 : 5)));
         ctx.lineTo(cx + Math.cos(angle) * (r - 2), cy + Math.sin(angle) * (r - 2));
-        ctx.strokeStyle = isDark ? '#aaa' : '#333';
+        ctx.strokeStyle = isHacker ? '#00ff41' : isDark ? '#aaa' : '#333';
         ctx.lineWidth = isHour ? 2.5 : 1.5;
         ctx.stroke();
     }
@@ -46,13 +47,14 @@ function drawAnalogClock(date) {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
 
-    drawHand(ctx, cx, cy, ((hours + minutes / 60) / 12) * 2 * Math.PI - Math.PI / 2, r * 0.5, 4, isDark ? '#eee' : '#333');
-    drawHand(ctx, cx, cy, ((minutes + seconds / 60) / 60) * 2 * Math.PI - Math.PI / 2, r * 0.72, 3, isDark ? '#eee' : '#333');
-    drawHand(ctx, cx, cy, (seconds / 60) * 2 * Math.PI - Math.PI / 2, r * 0.83, 1.5, '#e74c3c');
+    let handClr = isHacker ? '#00ff41' : isDark ? '#eee' : '#333';
+    drawHand(ctx, cx, cy, ((hours + minutes / 60) / 12) * 2 * Math.PI - Math.PI / 2, r * 0.5, 4, handClr);
+    drawHand(ctx, cx, cy, ((minutes + seconds / 60) / 60) * 2 * Math.PI - Math.PI / 2, r * 0.72, 3, handClr);
+    drawHand(ctx, cx, cy, (seconds / 60) * 2 * Math.PI - Math.PI / 2, r * 0.83, 1.5, isHacker ? '#39ff14' : '#e74c3c');
 
     ctx.beginPath();
     ctx.arc(cx, cy, 3.5, 0, 2 * Math.PI);
-    ctx.fillStyle = isDark ? '#eee' : '#333';
+    ctx.fillStyle = isHacker ? '#00ff41' : isDark ? '#eee' : '#333';
     ctx.fill();
 }
 

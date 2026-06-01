@@ -19,9 +19,10 @@
     <script>
         (function () {
             var isDark = localStorage.getItem('darkMode') === 'true';
+            var isHacker = localStorage.getItem('hackerMode') === 'true';
             document.documentElement.style.setProperty('color-scheme', isDark ? 'dark' : 'light');
-            document.documentElement.style.setProperty('--bg-color', isDark ? '#333' : '#fff');
-            document.documentElement.style.setProperty('--text-color', isDark ? '#fff' : '#333');
+            document.documentElement.style.setProperty('--bg-color', isHacker ? '#000' : isDark ? '#333' : '#fff');
+            document.documentElement.style.setProperty('--text-color', isHacker ? '#00ff41' : isDark ? '#fff' : '#333');
         })();
     </script>
     <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -43,8 +44,7 @@
         <div class="row">
             <aside class="col-lg">
                 <header>
-                    <h1><a href="../../index.html">COLIN <img src="/static/home_2.png" alt="Home Icon"
-                                class="home-icon"></a></h1>
+                    <h1><a href="../../index.html">COLIN</a> <img src="/static/home_2.png" alt="Home Icon" class="home-icon" id="hacker-toggle" title="???"></h1>
                     <div class="top-bar">
                         <span>Projects / プロジェクト</span>
                         <button id="theme-toggler" class="theme-button">
@@ -107,11 +107,11 @@
                     <hr>
                     <ul class="fa-ul">
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="../../index.html">🏠 Home</a> / <a href="../ja/index.html">🗾 ホーム</a></li>
+                                href="../../index.html"><span class="nav-emoji">🏠</span> Home</a> / <a href="../ja/index.html"><span class="nav-emoji">🗾</span> ホーム</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="research.html">⚗️ Research / 研究</a></li>
+                                href="research.html"><span class="nav-emoji">⚗️</span> Research / 研究</a></li>
                         <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a
-                                href="gallery.html">🖼️ Gallery / ギャラリー</a></li>
+                                href="gallery.html"><span class="nav-emoji">🖼️</span> Gallery / ギャラリー</a></li>
                     </ul>
                     <hr>
                     <div class="centered-container">
@@ -443,6 +443,7 @@
 
     <script src="../../js/calendar.js"></script>
     <script src="../../js/back-to-top-toggle.js"></script>
+    <script src="../../js/hacker-mode.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function () {
             let lastTouchEnd = 0;
             let buttons = document.querySelectorAll('.calc-button');
