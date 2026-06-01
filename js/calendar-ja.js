@@ -1,5 +1,61 @@
 let currentDay = null;
 
+function drawHand(ctx, cx, cy, angle, length, width, color) {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * length, cy + Math.sin(angle) * length);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+}
+
+function drawAnalogClock(date) {
+    let canvas = document.getElementById('analog-clock');
+    if (!canvas) return;
+    let ctx = canvas.getContext('2d');
+    let isDark = document.body.classList.contains('dark');
+
+    const size = canvas.width;
+    const cx = size / 2;
+    const cy = size / 2;
+    const r = size / 2 - 4;
+
+    ctx.clearRect(0, 0, size, size);
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+    ctx.fillStyle = isDark ? '#2a2a2a' : '#fff';
+    ctx.fill();
+    ctx.strokeStyle = isDark ? '#aaa' : '#333';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    for (let i = 0; i < 12; i++) {
+        let angle = (i / 12) * 2 * Math.PI - Math.PI / 2;
+        let isHour = i % 3 === 0;
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(angle) * (r - (isHour ? 9 : 5)), cy + Math.sin(angle) * (r - (isHour ? 9 : 5)));
+        ctx.lineTo(cx + Math.cos(angle) * (r - 2), cy + Math.sin(angle) * (r - 2));
+        ctx.strokeStyle = isDark ? '#aaa' : '#333';
+        ctx.lineWidth = isHour ? 2.5 : 1.5;
+        ctx.stroke();
+    }
+
+    let hours = date.getHours() % 12;
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    drawHand(ctx, cx, cy, ((hours + minutes / 60) / 12) * 2 * Math.PI - Math.PI / 2, r * 0.5, 4, isDark ? '#eee' : '#333');
+    drawHand(ctx, cx, cy, ((minutes + seconds / 60) / 60) * 2 * Math.PI - Math.PI / 2, r * 0.72, 3, isDark ? '#eee' : '#333');
+    drawHand(ctx, cx, cy, (seconds / 60) * 2 * Math.PI - Math.PI / 2, r * 0.83, 1.5, '#e74c3c');
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, 3.5, 0, 2 * Math.PI);
+    ctx.fillStyle = isDark ? '#eee' : '#333';
+    ctx.fill();
+}
+
 function createCalendar() {
     // Clear any existing calendar first
     let calendarDiv = document.getElementById('calendar');
@@ -7,6 +63,14 @@ function createCalendar() {
     // Get the current date.
     let date = new Date();
     currentDay = date.getDate();
+
+    // Create analog clock canvas above the calendar table
+    let clockCanvas = document.createElement('canvas');
+    clockCanvas.id = 'analog-clock';
+    clockCanvas.width = 100;
+    clockCanvas.height = 100;
+    clockCanvas.style.cssText = 'display:block;margin:4px auto 6px auto;';
+    calendarDiv.appendChild(clockCanvas);
 
     // Create a table for the calendar.
     let calendarTable = document.createElement('table');
@@ -107,7 +171,7 @@ function updateTime() {
     }
 
     timeCell.textContent = `${hours}:${minutes}:${seconds} (${timezoneString})`;
-
+    drawAnalogClock(date);
 }
 
 // Call the function to create the calendar.

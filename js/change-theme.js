@@ -16,6 +16,8 @@ function changeTheme() {
 
   // Toggle the flipped class only when the button is clicked
   button.classList.toggle('flipped');
+
+  if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
 }
 
 // Event listener for the button
