@@ -15705,3 +15705,15 @@ a:has(img):hover {
     visibility: visible;
     opacity: 1;
 }
+
+.gif-toggle .gif-toggle-hide {
+    display: none;
+}
+
+.gif-toggle[open] .gif-toggle-show {
+    display: none;
+}
+
+.gif-toggle[open] .gif-toggle-hide {
+    display: inline;
+}
