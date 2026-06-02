@@ -15916,6 +15916,31 @@ body.hacker-mode {
     scrollbar-width: thin;
 }
 
+/* Main page (html/viewport) scrollbar in hacker mode */
+html:has(body.hacker-mode)::-webkit-scrollbar {
+    width: 8px;
+    background-color: #000;
+}
+
+html:has(body.hacker-mode)::-webkit-scrollbar-track {
+    background: #000;
+    border-left: 1px solid #1a4d1a;
+}
+
+html:has(body.hacker-mode)::-webkit-scrollbar-thumb {
+    background: #1a6b1a;
+    border-radius: 2px;
+}
+
+html:has(body.hacker-mode)::-webkit-scrollbar-thumb:hover {
+    background: #00ff41;
+    box-shadow: 0 0 6px #00ff41;
+}
+
+html:has(body.hacker-mode)::-webkit-scrollbar-corner {
+    background: #000;
+}
+
 body.hacker-mode *::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -15939,4 +15964,31 @@ body.hacker-mode *::-webkit-scrollbar-thumb:hover {
 
 body.hacker-mode *::-webkit-scrollbar-corner {
     background: #000;
+}
+
+/* Sidebar scrollbar: hidden by default, shown with hacker style in hacker mode */
+body.hacker-mode aside::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    background-color: #000;
+}
+
+body.hacker-mode aside::-webkit-scrollbar-track {
+    background: #000;
+    border-left: 1px solid #1a4d1a;
+}
+
+body.hacker-mode aside::-webkit-scrollbar-thumb {
+    background: #1a6b1a;
+    border-radius: 2px;
+}
+
+body.hacker-mode aside::-webkit-scrollbar-thumb:hover {
+    background: #00ff41;
+    box-shadow: 0 0 6px #00ff41;
+}
+
+body.hacker-mode aside {
+    scrollbar-color: #1a6b1a #000;
+    scrollbar-width: thin;
 }
