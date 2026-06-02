@@ -94,14 +94,14 @@
             if (!textTargets.length) return;
             var t = textTargets[Math.floor(Math.random() * textTargets.length)];
             var node = t.node;
-            var orig = node.nodeValue;
+            var orig = t.original;
             var arr = orig.split('');
             var pool = arr.reduce(function (a, ch, i) { if (ch !== ' ') a.push(i); return a; }, []);
             if (!pool.length) return;
             arr[pool[Math.floor(Math.random() * pool.length)]] = rndChar();
             node.nodeValue = arr.join('');
-            setTimeout(function () { node.nodeValue = orig; }, 110);
-        }, 1800);
+            setTimeout(function () { node.nodeValue = orig; }, 150);
+        }, 3200);
     }
 
     function stopHackerText() {
