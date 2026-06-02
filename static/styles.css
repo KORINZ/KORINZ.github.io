@@ -2079,10 +2079,14 @@ body.hacker-mode::after {
     z-index: 9999;
 }
 
-body.hacker-mode aside,
-body.hacker-mode nav {
+body.hacker-mode aside {
     background-color: #060606 !important;
     border-right: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode nav {
+    background-color: #060606 !important;
+    border: none !important;
 }
 
 body.hacker-mode main,
