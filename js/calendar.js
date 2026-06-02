@@ -17,11 +17,14 @@ function drawAnalogClock(date) {
     let isDark = document.body.classList.contains('dark');
     let isHacker = document.body.classList.contains('hacker-mode');
 
-    const size = canvas.width;
+    const dpr = window.devicePixelRatio || 1;
+    const size = canvas.width / dpr;
     const cx = size / 2;
     const cy = size / 2;
     const r = size / 2 - 4;
 
+    ctx.save();
+    ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, size, size);
 
     ctx.beginPath();
@@ -56,6 +59,7 @@ function drawAnalogClock(date) {
     ctx.arc(cx, cy, 3.5, 0, 2 * Math.PI);
     ctx.fillStyle = isHacker ? '#00ff41' : isDark ? '#eee' : '#333';
     ctx.fill();
+    ctx.restore();
 }
 
 function createCalendar() {
@@ -69,9 +73,10 @@ function createCalendar() {
     // Create analog clock canvas above the calendar table
     let clockCanvas = document.createElement('canvas');
     clockCanvas.id = 'analog-clock';
-    clockCanvas.width = 100;
-    clockCanvas.height = 100;
-    clockCanvas.style.cssText = 'display:block;margin:4px auto 6px auto;';
+    let clockDpr = window.devicePixelRatio || 1;
+    clockCanvas.width = 100 * clockDpr;
+    clockCanvas.height = 100 * clockDpr;
+    clockCanvas.style.cssText = 'display:block;margin:4px auto 6px auto;width:100px;height:100px;';
     calendarDiv.appendChild(clockCanvas);
 
     // Create a table for the calendar.

@@ -1,15 +1,17 @@
 (function () {
     var canvas = document.createElement('canvas');
-    canvas.width = 192;
-    canvas.height = 148;
-    canvas.style.cssText = 'display:block;margin:10px auto 0;opacity:.88;';
+    var dpr = window.devicePixelRatio || 1;
+    var W = 192, H = 148;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.cssText = 'display:block;margin:10px auto 0;opacity:.88;width:' + W + 'px;height:' + H + 'px;';
 
     var footer = document.querySelector('nav footer');
     if (!footer) return;
     footer.insertAdjacentElement('afterend', canvas);
 
     var ctx = canvas.getContext('2d');
-    var W = canvas.width, H = canvas.height;
+    ctx.scale(dpr, dpr);
     var LAYERS = [4, 5, 5, 3];
     var PAD_X = 20, PAD_Y = 18;
 
