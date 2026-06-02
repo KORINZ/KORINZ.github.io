@@ -34,7 +34,8 @@ function drawBoard() {
                         gameOver = true;
                     }
                     else {
-                        const { move } = minimax(board, maxDepth, currentPlayer === 'X', -Infinity, Infinity);
+                        const isHacker = document.body.classList.contains('hacker-mode');
+                        const move = isHacker ? worstMove(board) : minimax(board, maxDepth, false, -Infinity, Infinity).move;
                         if (move) {
                             board[move[0]][move[1]] = currentPlayer;
                             currentPlayer = 'X';
@@ -189,6 +190,21 @@ function minimax(board, depth, isMaximizingPlayer, alpha, beta) {
         }
         return minEval;
     }
+}
+
+function worstMove(board) {
+    const possibleActions = actions(board);
+    let worstScore = -Infinity;
+    let worst = null;
+    for (let i = 0; i < possibleActions.length; i++) {
+        const newBoard = result(board, possibleActions[i], 'O');
+        const score = minimax(newBoard, maxDepth, true, -Infinity, Infinity).score;
+        if (score > worstScore) {
+            worstScore = score;
+            worst = possibleActions[i];
+        }
+    }
+    return worst;
 }
 
 drawBoard();
