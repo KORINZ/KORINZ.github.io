@@ -15837,10 +15837,39 @@ body.hacker-mode iframe.pdf-viewer {
     box-shadow: 0 0 12px rgba(0, 255, 65, 0.25);
 }
 
-/* ───── Nav emoji icons – hacker mode ───── */
+/* ───── Emoji icons – hacker mode: green tint ───── */
 body.hacker-mode .nav-emoji {
-    filter: grayscale(1) brightness(1.4) contrast(1.1);
+    filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(7) brightness(1.05);
     display: inline-block;
+}
+
+body.hacker-mode img.emoji {
+    filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(7) brightness(1.05) !important;
+}
+
+/* ───── Hacker mode: restore Font Awesome icon fonts (overridden by * rule) ───── */
+body.hacker-mode .fas,
+body.hacker-mode .fa-solid {
+    font-family: "Font Awesome 7 Free", "Font Awesome 6 Free", "FontAwesome" !important;
+    font-weight: 900 !important;
+    color: #00ff41 !important;
+    text-shadow: 0 0 6px rgba(0,255,65,0.6);
+}
+
+body.hacker-mode .far,
+body.hacker-mode .fa-regular {
+    font-family: "Font Awesome 7 Free", "Font Awesome 6 Free", "FontAwesome" !important;
+    font-weight: 400 !important;
+    color: #00ff41 !important;
+    text-shadow: 0 0 6px rgba(0,255,65,0.6);
+}
+
+body.hacker-mode .fab,
+body.hacker-mode .fa-brands {
+    font-family: "Font Awesome 7 Brands", "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+    color: #00ff41 !important;
+    text-shadow: 0 0 6px rgba(0,255,65,0.6);
 }
 
 /* fa-square bullet icons – pulse green in hacker mode */
@@ -15879,4 +15908,35 @@ body.hacker-mode main h3 {
 /* ───── Hacker mode: hide terminal cursor alongside cleared typed text ───── */
 body.hacker-mode #terminal-heading .cursor {
     display: none;
+}
+
+/* ───── Hacker mode: scrollbars (overrides OS light/dark defaults) ───── */
+body.hacker-mode {
+    scrollbar-color: #1a6b1a #000;
+    scrollbar-width: thin;
+}
+
+body.hacker-mode *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+}
+
+body.hacker-mode *::-webkit-scrollbar-track {
+    background: #000;
+    border-left: 1px solid #1a4d1a;
+}
+
+body.hacker-mode *::-webkit-scrollbar-thumb {
+    background: #1a6b1a;
+    border-radius: 2px;
+}
+
+body.hacker-mode *::-webkit-scrollbar-thumb:hover {
+    background: #00ff41;
+    box-shadow: 0 0 6px #00ff41;
+}
+
+body.hacker-mode *::-webkit-scrollbar-corner {
+    background: #000;
 }
