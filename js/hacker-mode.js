@@ -122,6 +122,7 @@
         document.documentElement.style.setProperty('--bg-color', on ? '#000' : isDark ? '#333' : '#fff');
         document.documentElement.style.setProperty('--text-color', on ? '#00ff41' : isDark ? '#fff' : '#333');
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
+        if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         if (on) startHackerText();
         else stopHackerText();
     }
@@ -134,6 +135,7 @@
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#00ff41');
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
+        if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         setTimeout(startHackerText, 250);
     }
 

@@ -10,6 +10,83 @@ function drawHand(ctx, cx, cy, angle, length, width, color) {
     ctx.stroke();
 }
 
+function drawHackerClock(date) {
+    var canvas = document.getElementById('hacker-clock');
+    if (!canvas) return;
+
+    var SEGS = {
+        '0': [1,1,1,1,1,1,0], '1': [0,1,1,0,0,0,0],
+        '2': [1,1,0,1,1,0,1], '3': [1,1,1,1,0,0,1],
+        '4': [0,1,1,0,0,1,1], '5': [1,0,1,1,0,1,1],
+        '6': [1,0,1,1,1,1,1], '7': [1,1,1,0,0,0,0],
+        '8': [1,1,1,1,1,1,1], '9': [1,1,1,1,0,1,1]
+    };
+
+    var dpr = window.devicePixelRatio || 1;
+    var DW = 20, DH = 36, sw = 4, gap = 3, intraGap = 4, colonW = 8, PAD = 6;
+    var totalW = 6 * DW + 2 * colonW + 4 * gap + 3 * intraGap;
+    var W = totalW + PAD * 2, H = DH + PAD * 2;
+
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+
+    var ctx = canvas.getContext('2d');
+    ctx.save();
+    ctx.scale(dpr, dpr);
+
+    var ON = '#00ff41', OFF = 'rgba(0,255,65,0.1)';
+
+    function drawSeg(segs, x, y) {
+        var defs = [
+            [x + sw, y, DW - 2*sw, sw, true],
+            [x + DW - sw, y + sw, sw, DH/2 - 2*sw, false],
+            [x + DW - sw, y + DH/2 + sw, sw, DH/2 - 2*sw, false],
+            [x + sw, y + DH - sw, DW - 2*sw, sw, true],
+            [x, y + DH/2 + sw, sw, DH/2 - 2*sw, false],
+            [x, y + sw, sw, DH/2 - 2*sw, false],
+            [x + sw, y + DH/2 - sw/2, DW - 2*sw, sw, true]
+        ];
+        for (var i = 0; i < 7; i++) {
+            var on = segs[i] === 1;
+            ctx.fillStyle = on ? ON : OFF;
+            ctx.shadowColor = on ? ON : 'transparent';
+            ctx.shadowBlur = on ? 6 : 0;
+            ctx.fillRect(defs[i][0], defs[i][1], defs[i][2], defs[i][3]);
+        }
+    }
+
+    function drawColon(x, y) {
+        ctx.fillStyle = ON;
+        ctx.shadowColor = ON;
+        ctx.shadowBlur = 7;
+        var r = sw * 0.55;
+        ctx.beginPath();
+        ctx.arc(x + colonW / 2, y + DH / 3, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x + colonW / 2, y + DH * 2 / 3, r, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    var h = date.getHours().toString().padStart(2, '0');
+    var m = date.getMinutes().toString().padStart(2, '0');
+    var s = date.getSeconds().toString().padStart(2, '0');
+    var ox = PAD, oy = PAD;
+
+    drawSeg(SEGS[h[0]], ox, oy); ox += DW + intraGap;
+    drawSeg(SEGS[h[1]], ox, oy); ox += DW + gap;
+    drawColon(ox, oy); ox += colonW + gap;
+    drawSeg(SEGS[m[0]], ox, oy); ox += DW + intraGap;
+    drawSeg(SEGS[m[1]], ox, oy); ox += DW + gap;
+    drawColon(ox, oy); ox += colonW + gap;
+    drawSeg(SEGS[s[0]], ox, oy); ox += DW + intraGap;
+    drawSeg(SEGS[s[1]], ox, oy);
+
+    ctx.restore();
+}
+
 function drawAnalogClock(date) {
     let canvas = document.getElementById('analog-clock');
     if (!canvas) return;
@@ -74,11 +151,18 @@ function createCalendar() {
     clockCanvas.style.cssText = 'display:block;margin:4px auto 6px auto;';
     calendarDiv.appendChild(clockCanvas);
 
+    // Create hacker-mode 7-segment clock canvas (shown only in hacker mode)
+    let hackerClockCanvas = document.createElement('canvas');
+    hackerClockCanvas.id = 'hacker-clock';
+    hackerClockCanvas.style.cssText = 'display:none;margin:6px auto 2px;';
+    calendarDiv.appendChild(hackerClockCanvas);
+
     // Create a table for the calendar.
     let calendarTable = document.createElement('table');
 
     // Add time and timezone at the top of the calendar
     let timeRow = document.createElement('tr');
+    timeRow.id = 'time-row';
     let timeCell = document.createElement('th');
 
     timeCell.setAttribute('id', 'time'); // give the time cell an ID so we can update it later
@@ -174,6 +258,7 @@ function updateTime() {
 
     timeCell.textContent = `${hours}:${minutes}:${seconds} (${timezoneString})`;
     drawAnalogClock(date);
+    drawHackerClock(date);
 }
 
 // Call the function to create the calendar.
