@@ -1,7 +1,6 @@
 (function () {
     var GLITCH = '!@#$%^&*<>[]{}|/\\01~`;:.?';
     var active = false;
-    var glitchTimer = null;
     var encodeTimer = null;  // guards the delayed encodeHeadings call
     var textTargets = [];    // paragraphs: [{node, original}]
     var headingTargets = []; // headings:   [{node, original}]
@@ -125,50 +124,13 @@
             decodeAnimate(node, node.nodeValue);
         });
 
-        // Also include nav links in glitch pool
-        document.querySelectorAll('nav ul li a').forEach(function (el) {
-            var node = firstTextNode(el);
-            if (!node) return;
-            textTargets.push({ node: node, original: node.nodeValue });
-        });
-
         // Binary-encode headings after the initial theme flash settles
         encodeTimer = setTimeout(encodeHeadings, 300);
-
-        // Ambient idle glitch — random timing, occasional multi-char bursts
-        (function scheduleGlitch() {
-            if (!active) return;
-            glitchTimer = setTimeout(function () {
-                if (!active || !textTargets.length) return;
-                var t = textTargets[Math.floor(Math.random() * textTargets.length)];
-                var node = t.node;
-                var orig = t.original;
-                var arr = orig.split('');
-                var pool = arr.reduce(function (a, ch, i) { if (ch !== ' ' && ch !== '\n') a.push(i); return a; }, []);
-                if (!pool.length) { scheduleGlitch(); return; }
-
-                // 25% chance of a 2–4 char burst, otherwise single char
-                var count = Math.random() < 0.25 ? Math.floor(Math.random() * 3) + 2 : 1;
-                var chosen = pool.slice().sort(function () { return Math.random() - 0.5; }).slice(0, count);
-                var glitched = arr.slice();
-                chosen.forEach(function (idx) { glitched[idx] = rndChar(); });
-                node.nodeValue = glitched.join('');
-
-                var holdMs = count > 1 ? 220 : 130;
-                setTimeout(function () {
-                    if (node.nodeValue !== orig) node.nodeValue = orig;
-                }, holdMs);
-
-                scheduleGlitch();
-            }, 800 + Math.random() * 2400);
-        })();
     }
 
     function stopHackerText() {
         clearTimeout(encodeTimer);
         encodeTimer = null;
-        clearInterval(glitchTimer);
-        glitchTimer = null;
         textTargets.forEach(function (t) { t.node.nodeValue = t.original; });
         textTargets = [];
         restoreHeadings();
