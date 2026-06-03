@@ -98,7 +98,11 @@
                 el.childNodes.forEach(function (n) {
                     if (n.nodeType !== 3) return;
                     textNodes.push({ node: n, original: n.nodeValue });
-                    combined += n.nodeValue;
+                    // Always use the full terminal text for the typed node — the typing
+                    // animation may be mid-flight or blocked in hacker mode.
+                    var val = (n === window._terminalTypedNode && window._terminalText)
+                              ? window._terminalText : n.nodeValue;
+                    combined += val;
                 });
                 if (textNodes.length > 0 && combined.trim().length > 1) {
                     textNodes[0].node.nodeValue = combined;
