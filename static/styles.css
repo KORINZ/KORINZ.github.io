@@ -1851,6 +1851,30 @@ body.dark {
     margin-right: 4px;
 }
 
+.copy-button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.copy-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Add padding to the code to prevent overlap with button */
 .code-container pre {
     padding-left: 35px;
@@ -2129,6 +2153,11 @@ body.hacker-mode button {
     background-color: #000 !important;
     color: #00ff41 !important;
     border: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode .copy-button {
+    background-color: transparent !important;
+    border: none !important;
 }
 
 body.hacker-mode img:not(#hacker-toggle):not(.flag-icon) {
