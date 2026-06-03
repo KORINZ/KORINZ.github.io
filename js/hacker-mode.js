@@ -32,7 +32,7 @@
         var preGlitch = 500;
         var duration  = 1200;
         function frame(ts) {
-            if (!active) { node.nodeValue = original; return; }
+            if (!active) { return; }
             if (!start) start = ts;
             var elapsed = ts - start;
             if (elapsed < preGlitch) {
@@ -62,7 +62,7 @@
         var preGlitch = 500;
         var duration  = 1200;
         function frame(ts) {
-            if (!active) { node.nodeValue = originalText; return; }
+            if (!active) { return; }
             if (!start) start = ts;
             var elapsed = ts - start;
             if (elapsed < preGlitch) {
