@@ -22,7 +22,12 @@ function changeTheme() {
 }
 
 // Event listener for the button
-document.getElementById('theme-toggler').addEventListener('click', changeTheme);
+const themeToggler = document.getElementById('theme-toggler');
+themeToggler.addEventListener('click', changeTheme);
+themeToggler.addEventListener('touchend', function () {
+  this.blur();
+  document.activeElement && document.activeElement.blur();
+});
 
 // Initialize theme on page load
 (function () {
