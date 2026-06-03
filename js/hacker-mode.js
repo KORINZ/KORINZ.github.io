@@ -4,6 +4,7 @@
     var encodeTimer = null;  // guards the delayed encodeHeadings call
     var textTargets = [];    // paragraphs: [{node, original}]
     var headingTargets = []; // headings:   [{node, original}]
+    var sidebarTargets = []; // sidebar links: [{node, original}]
 
     function rndChar() {
         return GLITCH[Math.floor(Math.random() * GLITCH.length)];
@@ -144,6 +145,23 @@
 
         // Binary-encode headings after the initial theme flash settles
         encodeTimer = setTimeout(encodeHeadings, 300);
+
+        startSidebarGlitch();
+    }
+
+    function startSidebarGlitch() {
+        sidebarTargets = [];
+        document.querySelectorAll('aside h1 a, aside .social-links a, aside nav ul a').forEach(function (el) {
+            var node = firstTextNode(el);
+            if (!node) return;
+            sidebarTargets.push({ node: node, original: node.nodeValue });
+            decodeAnimate(node, node.nodeValue);
+        });
+    }
+
+    function stopSidebarGlitch() {
+        sidebarTargets.forEach(function (t) { t.node.nodeValue = t.original; });
+        sidebarTargets = [];
     }
 
     function stopHackerText() {
@@ -152,6 +170,7 @@
         textTargets.forEach(function (t) { t.node.nodeValue = t.original; });
         textTargets = [];
         restoreHeadings();
+        stopSidebarGlitch();
         if (typeof window._terminalRestart === 'function') window._terminalRestart();
     }
 
