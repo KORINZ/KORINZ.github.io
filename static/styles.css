@@ -1802,7 +1802,7 @@ body.theme-loaded {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body.dark {
@@ -2060,7 +2060,7 @@ img#hacker-toggle:hover {
 body.hacker-mode {
     background-color: #000 !important;
     color: #00ff41 !important;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body.hacker-mode * {

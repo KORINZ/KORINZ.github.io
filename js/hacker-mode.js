@@ -47,6 +47,27 @@
         requestAnimationFrame(frame);
     }
 
+    // Matrix-encode: scramble → lock in binary left-to-right over 900 ms
+    function encodeAnimate(node, originalText) {
+        var binary = toBinary(originalText);
+        var start = null;
+        var duration = 900;
+        function frame(ts) {
+            if (!active) { node.nodeValue = binary; return; }
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / duration, 1);
+            var out = '';
+            for (var i = 0; i < binary.length; i++) {
+                var ch = binary[i];
+                out += (ch === ' ' || ch === '\n' || i / binary.length < p) ? ch : rndChar();
+            }
+            node.nodeValue = out;
+            if (p < 1) requestAnimationFrame(frame);
+            else node.nodeValue = binary;
+        }
+        requestAnimationFrame(frame);
+    }
+
     function encodeHeadings() {
         if (!active) return;
         headingTargets = [];
@@ -62,7 +83,7 @@
                 }
                 headingTargets.push({ node: n, original: n.nodeValue });
                 if (first && n.nodeValue.trim().length > 1) {
-                    n.nodeValue = toBinary(n.nodeValue);
+                    encodeAnimate(n, n.nodeValue);
                     first = false;
                 } else {
                     n.nodeValue = '';
