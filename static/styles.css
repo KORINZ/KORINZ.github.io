@@ -2189,6 +2189,18 @@ body.hacker-mode .language-plaintext code {
     border-color: #1a4d1a !important;
 }
 
+body.hacker-mode .highlighter-rouge .highlight,
+body.hacker-mode .highlighter-rouge .code-container,
+body.hacker-mode .highlighter-rouge pre,
+body.hacker-mode .highlighter-rouge code,
+body.hacker-mode .highlighter-rouge .command {
+    border: none !important;
+}
+
+body.hacker-mode .highlighter-rouge pre {
+    margin: 0 !important;
+}
+
 body.hacker-mode button {
     background-color: #000 !important;
     color: #00ff41 !important;
