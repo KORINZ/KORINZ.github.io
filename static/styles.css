@@ -2164,15 +2164,11 @@ body.hacker-mode hr {
     opacity: 0.7;
 }
 
-/* Glowing pulse on the toggle icon while hacker mode is active */
+/* Color-shifted glow on the toggle icon while hacker mode is active */
 body.hacker-mode img#hacker-toggle {
-    filter: drop-shadow(0 0 10px #00ff41) hue-rotate(80deg) saturate(6) brightness(2);
-    animation: hacker-pulse 2s ease-in-out infinite;
-}
-
-@keyframes hacker-pulse {
-    0%, 100% { filter: drop-shadow(0 0 7px #00ff41) hue-rotate(80deg) saturate(6) brightness(1.8); }
-    50%       { filter: drop-shadow(0 0 20px #00ff41) hue-rotate(80deg) saturate(6) brightness(2.8); }
+    filter: hue-rotate(180deg) saturate(2) brightness(1.4) drop-shadow(0 0 8px #00ff41);
+    animation: hacker-toggle-breathe 3s ease-in-out infinite,
+               hacker-toggle-wiggle 10s ease-in-out infinite;
 }
 
 body.hacker-mode code,
