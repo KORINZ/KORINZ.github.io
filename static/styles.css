@@ -2166,7 +2166,7 @@ body.hacker-mode hr {
 
 /* Color-shifted glow on the toggle icon while hacker mode is active */
 body.hacker-mode img#hacker-toggle {
-    filter: hue-rotate(180deg) saturate(2) brightness(1.4) drop-shadow(0 0 8px #00ff41) !important;
+    filter: hue-rotate(180deg) saturate(2) brightness(1.4) !important;
     animation: hacker-toggle-breathe 3s ease-in-out infinite,
                hacker-toggle-wiggle 10s ease-in-out infinite;
 }
