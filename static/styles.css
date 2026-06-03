@@ -2197,6 +2197,14 @@ body.hacker-mode img:not(#hacker-toggle):not(.flag-icon) {
     filter: sepia(1) hue-rotate(85deg) saturate(4) brightness(0.6) contrast(1.1) !important;
 }
 
+body.hacker-mode .flag-icon {
+    display: none !important;
+}
+
+body.hacker-mode #theme-toggler {
+    display: none !important;
+}
+
 body.hacker-mode .pdf-viewer {
     /* Force the embedded PDF.js viewer to always use light mode so the filter is consistent */
     color-scheme: light;
