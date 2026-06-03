@@ -2149,10 +2149,42 @@ body.hacker-mode .highlighter-rouge {
     border: 1px solid #1a4d1a !important;
 }
 
+body.hacker-mode .language-plaintext,
+body.hacker-mode .language-plaintext pre,
+body.hacker-mode .language-plaintext code {
+    background-color: #0a1a0a !important;
+    color: #00ff41 !important;
+    border-color: #1a4d1a !important;
+}
+
 body.hacker-mode button {
     background-color: #000 !important;
     color: #00ff41 !important;
     border: 1px solid #1a4d1a !important;
+}
+
+body.hacker-mode .custom-button {
+    background-color: #000 !important;
+    color: #00ff41 !important;
+    border-color: #1a4d1a !important;
+}
+
+body.hacker-mode .custom-button:hover {
+    background-color: #00ff41 !important;
+    color: #000 !important;
+    border-color: #00ff41 !important;
+}
+
+body.hacker-mode #newsBox {
+    background-color: #000 !important;
+    color: #00ff41 !important;
+    border-color: #1a4d1a !important;
+}
+
+body.hacker-mode .operator-button.calc-button-highlight {
+    background-color: #000 !important;
+    color: #00ff41 !important;
+    border-color: #1a4d1a !important;
 }
 
 body.hacker-mode .copy-button {
@@ -2164,8 +2196,8 @@ body.hacker-mode img:not(#hacker-toggle):not(.flag-icon) {
     filter: sepia(1) hue-rotate(85deg) saturate(4) brightness(0.6) contrast(1.1) !important;
 }
 
-body.hacker-mode iframe.pdf-viewer {
-    filter: sepia(1) hue-rotate(85deg) saturate(3) brightness(0.75) contrast(1.1);
+body.hacker-mode .pdf-viewer {
+    filter: sepia(1) hue-rotate(85deg) saturate(3) brightness(0.75) contrast(1.1) !important;
     border: 1px solid #00ff41 !important;
     box-shadow: 0 0 12px rgba(0, 255, 65, 0.25);
 }
