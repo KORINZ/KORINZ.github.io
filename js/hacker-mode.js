@@ -188,6 +188,8 @@
         document.documentElement.style.setProperty('--bg-color', on ? '#000' : isDark ? '#333' : '#fff');
         document.documentElement.style.setProperty('--text-color', on ? '#00ff41' : isDark ? '#fff' : '#333');
         setPdfViewerColorScheme(on);
+        var toggle = document.getElementById('hacker-toggle');
+        if (toggle) toggle.title = on ? 'Return' : '???';
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         if (on) startHackerText();
@@ -202,6 +204,8 @@
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#00ff41');
         setPdfViewerColorScheme(true);
+        var initToggle = document.getElementById('hacker-toggle');
+        if (initToggle) initToggle.title = 'Return';
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         setTimeout(startHackerText, 250);
