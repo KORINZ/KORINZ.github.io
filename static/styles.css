@@ -2096,6 +2096,14 @@ body.hacker-mode a:hover {
     text-shadow: 0 0 8px rgba(0,255,65,0.7);
 }
 
+body.hacker-mode nav ul li a::after {
+    background-color: #00ff41 !important;
+}
+
+body.hacker-mode nav ul li a:hover::after {
+    box-shadow: 0 0 6px rgba(0,255,65,0.7);
+}
+
 body.hacker-mode h1,
 body.hacker-mode h2,
 body.hacker-mode h3 {
