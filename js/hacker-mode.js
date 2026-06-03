@@ -53,7 +53,7 @@
         var start = null;
         var duration = 900;
         function frame(ts) {
-            if (!active) { node.nodeValue = binary; return; }
+            if (!active) { node.nodeValue = originalText; return; }
             if (!start) start = ts;
             var p = Math.min((ts - start) / duration, 1);
             var out = '';
