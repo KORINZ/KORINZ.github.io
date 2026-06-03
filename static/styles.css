@@ -2049,6 +2049,22 @@ a:has(img):hover {
 img#hacker-toggle {
     cursor: pointer;
     transition: filter 0.3s ease, transform 0.25s ease;
+    animation: hacker-toggle-breathe 3s ease-in-out infinite,
+               hacker-toggle-wiggle 10s ease-in-out infinite;
+}
+
+@keyframes hacker-toggle-breathe {
+    0%, 100% { opacity: 0.7; scale: 0.95; }
+    50%       { opacity: 1.0; scale: 1.0;  }
+}
+
+@keyframes hacker-toggle-wiggle {
+    0%,  9%, 100% { rotate:  0deg; }
+    1.5%          { rotate: -10deg; }
+    3.5%          { rotate:  10deg; }
+    5.5%          { rotate:  -7deg; }
+    7.5%          { rotate:   4deg; }
+    9%            { rotate:   0deg; }
 }
 
 img#hacker-toggle:hover {
