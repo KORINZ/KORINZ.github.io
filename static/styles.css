@@ -2195,9 +2195,10 @@ body.hacker-mode .custom-button {
 }
 
 body.hacker-mode .custom-button:hover {
-    background-color: #00ff41 !important;
-    color: #000 !important;
-    border-color: #00ff41 !important;
+    background-color: rgba(0,255,65,0.12) !important;
+    color: #00ff41 !important;
+    border-color: rgba(0,255,65,0.6) !important;
+    box-shadow: 0 0 8px rgba(0,255,65,0.3) !important;
 }
 
 body.hacker-mode #newsBox {
