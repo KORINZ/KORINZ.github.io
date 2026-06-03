@@ -90,14 +90,28 @@
         headingTargets = [];
         document.querySelectorAll('main h1, main h2, main h3').forEach(function (el) {
             var isTerminal = el.id === 'terminal-heading';
+
+            if (isTerminal) {
+                // Combine all text nodes so ">>> Hello, World!" encodes together
+                var textNodes = [];
+                var combined = '';
+                el.childNodes.forEach(function (n) {
+                    if (n.nodeType !== 3) return;
+                    textNodes.push({ node: n, original: n.nodeValue });
+                    combined += n.nodeValue;
+                });
+                if (textNodes.length > 0 && combined.trim().length > 1) {
+                    textNodes[0].node.nodeValue = combined;
+                    for (var i = 1; i < textNodes.length; i++) textNodes[i].node.nodeValue = '';
+                    headingTargets = headingTargets.concat(textNodes);
+                    encodeAnimate(textNodes[0].node, combined);
+                }
+                return;
+            }
+
             var first = true;
             el.childNodes.forEach(function (n) {
                 if (n.nodeType !== 3) return;
-                if (isTerminal && !first) {
-                    // Clear typed text directly — _terminalRestart handles restoration
-                    n.nodeValue = '';
-                    return;
-                }
                 headingTargets.push({ node: n, original: n.nodeValue });
                 if (first && n.nodeValue.trim().length > 1) {
                     encodeAnimate(n, n.nodeValue);
