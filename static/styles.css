@@ -1401,14 +1401,18 @@ body.dark #newsBox {
     transform: rotateY(360deg);
 }
 
-.theme-button:hover {
-    background-color: rgba(51, 51, 51, 0.6);
-    filter: brightness(1.1);
+@media (hover: hover) {
+    .theme-button:hover,
+    .theme-button.dark:hover {
+        background-color: rgba(51, 51, 51, 0.6);
+        filter: brightness(1.1);
+    }
 }
 
-.theme-button.dark:hover {
-    background-color: rgba(51, 51, 51, 0.6);
-    filter: brightness(1.1);
+.theme-button:focus:not(:focus-visible) {
+    outline: none;
+    background-color: black;
+    filter: none;
 }
 
 #theme-toggler .fas {
