@@ -27,14 +27,23 @@
         }).join(' ');
     }
 
-    // Matrix-decode: scramble → lock in left-to-right over 900 ms
+    // Matrix-decode: full scramble for preGlitch ms → lock in left-to-right over duration ms
     function decodeAnimate(node, original) {
         var start = null;
-        var duration = 900;
+        var preGlitch = 500;
+        var duration  = 1200;
         function frame(ts) {
             if (!active) { node.nodeValue = original; return; }
             if (!start) start = ts;
-            var p = Math.min((ts - start) / duration, 1);
+            var elapsed = ts - start;
+            if (elapsed < preGlitch) {
+                node.nodeValue = original.split('').map(function (ch) {
+                    return (ch === ' ' || ch === '\n') ? ch : rndChar();
+                }).join('');
+                requestAnimationFrame(frame);
+                return;
+            }
+            var p = Math.min((elapsed - preGlitch) / duration, 1);
             var out = '';
             for (var i = 0; i < original.length; i++) {
                 var ch = original[i];
@@ -47,15 +56,24 @@
         requestAnimationFrame(frame);
     }
 
-    // Matrix-encode: scramble → lock in binary left-to-right over 900 ms
+    // Matrix-encode: full scramble for preGlitch ms → lock in binary left-to-right over duration ms
     function encodeAnimate(node, originalText) {
         var binary = toBinary(originalText);
         var start = null;
-        var duration = 900;
+        var preGlitch = 500;
+        var duration  = 1200;
         function frame(ts) {
             if (!active) { node.nodeValue = originalText; return; }
             if (!start) start = ts;
-            var p = Math.min((ts - start) / duration, 1);
+            var elapsed = ts - start;
+            if (elapsed < preGlitch) {
+                node.nodeValue = originalText.split('').map(function (ch) {
+                    return (ch === ' ' || ch === '\n') ? ch : rndChar();
+                }).join('');
+                requestAnimationFrame(frame);
+                return;
+            }
+            var p = Math.min((elapsed - preGlitch) / duration, 1);
             var out = '';
             for (var i = 0; i < binary.length; i++) {
                 var ch = binary[i];

@@ -2060,8 +2060,9 @@ img#hacker-toggle:hover {
 body.hacker-mode {
     background-color: #000 !important;
     color: #00ff41 !important;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: background-color 1.2s ease, color 1.2s ease;
 }
+
 
 body.hacker-mode * {
     font-family: 'Courier New', Courier, monospace !important;
