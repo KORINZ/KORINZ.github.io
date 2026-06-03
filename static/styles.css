@@ -2067,7 +2067,14 @@ img#hacker-toggle {
     9%            { rotate:   0deg; }
 }
 
-img#hacker-toggle:hover {
+@media (hover: hover) {
+    img#hacker-toggle:hover {
+        filter: drop-shadow(0 0 7px rgba(0,255,65,0.85)) hue-rotate(80deg) saturate(3) brightness(1.4);
+        transform: scale(1.25) rotate(-6deg);
+    }
+}
+
+img#hacker-toggle:active {
     filter: drop-shadow(0 0 7px rgba(0,255,65,0.85)) hue-rotate(80deg) saturate(3) brightness(1.4);
     transform: scale(1.25) rotate(-6deg);
 }

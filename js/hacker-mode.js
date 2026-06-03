@@ -182,6 +182,11 @@
             applyHacker(on);
             localStorage.setItem('hackerMode', on ? 'true' : 'false');
         });
+        // On touch devices, blur the icon after tap so the synthetic :hover doesn't stick
+        icon.addEventListener('touchend', function () {
+            this.blur();
+            document.activeElement && document.activeElement.blur();
+        });
     }
 
     window.addEventListener('storage', function (e) {
