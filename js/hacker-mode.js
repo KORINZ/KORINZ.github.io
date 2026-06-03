@@ -136,12 +136,19 @@
         if (typeof window._terminalRestart === 'function') window._terminalRestart();
     }
 
+    function setPdfViewerColorScheme(on) {
+        document.querySelectorAll('.pdf-viewer').forEach(function (iframe) {
+            iframe.style.colorScheme = on ? 'light' : '';
+        });
+    }
+
     function applyHacker(on) {
         active = on;
         document.body.classList.toggle('hacker-mode', on);
         var isDark = document.body.classList.contains('dark');
         document.documentElement.style.setProperty('--bg-color', on ? '#000' : isDark ? '#333' : '#fff');
         document.documentElement.style.setProperty('--text-color', on ? '#00ff41' : isDark ? '#fff' : '#333');
+        setPdfViewerColorScheme(on);
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         if (on) startHackerText();
@@ -155,6 +162,7 @@
         var isDark = document.body.classList.contains('dark');
         document.documentElement.style.setProperty('--bg-color', '#000');
         document.documentElement.style.setProperty('--text-color', '#00ff41');
+        setPdfViewerColorScheme(true);
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
         setTimeout(startHackerText, 250);
