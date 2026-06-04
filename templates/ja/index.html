@@ -429,35 +429,84 @@
     <script src="../../js/neural-net.js"></script>
 
     <script>
-            (function () {
-                var style = document.createElement('style');
-                style.textContent = '#terminal-heading .cursor{font-weight:normal;animation:cursor-blink 1s step-end infinite}@keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}';
-                document.head.appendChild(style);
-                var el = document.getElementById('terminal-heading');
-                var text = 'Hello, World!';
-                var textNode = document.createTextNode('');
-                var cursor = document.createElement('span');
-                cursor.className = 'cursor';
-                cursor.textContent = '|';
-                el.appendChild(textNode);
-                el.appendChild(cursor);
+        (function () {
+            var style = document.createElement('style');
+            style.textContent = '#terminal-heading .cursor{font-weight:normal;animation:cursor-blink 1s step-end infinite}@keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}';
+            document.head.appendChild(style);
+
+            var el = document.getElementById('terminal-heading');
+            var textNode = document.createTextNode('');
+            var cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            cursor.textContent = '|';
+            el.appendChild(textNode);
+            el.appendChild(cursor);
+
+            var TYPE_MS = 120, DELETE_MS = 55, PAUSE_TYPED = 4000, PAUSE_DELETED = 380;
+            var loopTimer = null, running = false, lastGreeting = null;
+
+            function greetings() {
+                var h = new Date().getHours();
+                var base = ['ハロー、ワールド！', 'よろしくお願いいたします！', 'お帰りなさいませ！',
+                            'ご無沙汰しております！', 'またお会いできて光栄です！', 'お元気でいらっしゃいますか？'];
+                var timed = h >= 5 && h < 12
+                    ? ['おはようございます！']
+                    : h >= 12 && h < 17
+                    ? ['こんにちは！', 'お疲れ様でございます！']
+                    : h >= 17 && h < 21
+                    ? ['こんばんは！', 'お疲れ様でございました！']
+                    : ['おやすみなさいませ！', 'お疲れ様でございました！'];
+                return base.concat(timed);
+            }
+
+            function pick(exclude) {
+                var pool = greetings().filter(function (g) { return g !== exclude; });
+                return pool[Math.floor(Math.random() * pool.length)];
+            }
+
+            function typeText(text, done) {
                 var i = 0;
-                function type() {
-                    if (document.body.classList.contains('hacker-mode')) return;
-                    if (i < text.length) {
-                        textNode.nodeValue += text[i++];
-                        setTimeout(type, 150);
-                    }
-                }
-                window._terminalRestart = function () {
-                    textNode.nodeValue = '';
-                    i = 0;
-                    setTimeout(type, 500);
-                };
-                window._terminalTypedNode = textNode;
                 window._terminalText = text;
-                setTimeout(type, 800);
-            })();
+                (function step() {
+                    if (!running || document.body.classList.contains('hacker-mode')) return;
+                    if (i < text.length) { textNode.nodeValue += text[i++]; loopTimer = setTimeout(step, TYPE_MS); }
+                    else { loopTimer = setTimeout(done, PAUSE_TYPED); }
+                })();
+            }
+
+            function deleteText(done) {
+                (function step() {
+                    if (!running || document.body.classList.contains('hacker-mode')) return;
+                    if (textNode.nodeValue.length > 0) { textNode.nodeValue = textNode.nodeValue.slice(0, -1); loopTimer = setTimeout(step, DELETE_MS); }
+                    else { loopTimer = setTimeout(done, PAUSE_DELETED); }
+                })();
+            }
+
+            function loopNext() {
+                if (!running || document.body.classList.contains('hacker-mode')) return;
+                var g = pick(lastGreeting);
+                lastGreeting = g;
+                typeText(g, function () { deleteText(loopNext); });
+            }
+
+            function start() {
+                running = true;
+                textNode.nodeValue = '';
+                lastGreeting = null;
+                loopNext();
+            }
+
+            window._terminalRestart = function () {
+                running = false;
+                clearTimeout(loopTimer);
+                textNode.nodeValue = '';
+                setTimeout(start, 500);
+            };
+            window._terminalTypedNode = textNode;
+            window._terminalText = '';
+
+            setTimeout(start, 800);
+        })();
     </script>
 
     <!-- Google tag (gtag.js) -->
