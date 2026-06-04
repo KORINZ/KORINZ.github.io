@@ -19,24 +19,26 @@
         var h = new Date().getHours();
         if (isJa) {
             var base = ['ハロー、ワールド！', 'いらっしゃいませ！', 'ようこそいらっしゃいました！',
-                        '久しぶりの訪問ですね！', 'またのご訪問ありがとうございます！', 'いかがお過ごしですか？'];
+                        '久しぶりの訪問ですね！', 'またのご訪問ありがとうございます！', 'いかがお過ごしですか？',
+                        'ようこそ！', 'どうぞごゆっくり！', 'お越しいただきありがとうございます！'];
             var timed = h >= 5 && h < 12
-                ? ['おはようございます！']
+                ? ['おはようございます！', '今日も良い一日を！']
                 : h >= 12 && h < 17
-                ? ['こんにちは！', 'ゆっくりしていってください！']
+                ? ['こんにちは！', 'ゆっくりしていってください！', '午後もお楽しみください！']
                 : h >= 17 && h < 21
-                ? ['こんばんは！']
+                ? ['こんばんは！', '良い夕べをお過ごしください！']
                 : ['おやすみなさい！', 'ゆっくりお休みください！'];
         } else {
             var base = ['Hello, World!', 'Greetings!', 'Traveler Returns!', 'Long Time No See?!',
-                        'Welcome Back!', 'Hello Again!', "What's Up?"];
+                        'Welcome Back!', 'Hello Again!', "What's Up?", 'Hey There!',
+                        'Welcome!', 'Howdy!', 'Salutations!'];
             var timed = h >= 5 && h < 12
-                ? ['Good Morning!']
+                ? ['Good Morning!', 'Rise and Shine!']
                 : h >= 12 && h < 17
-                ? ['Good Afternoon!']
+                ? ['Good Afternoon!', 'Hope Your Day Is Going Well!']
                 : h >= 17 && h < 21
-                ? ['Good Evening!']
-                : ['Good Night!'];
+                ? ['Good Evening!', 'How Was Your Day?']
+                : ['Good Night!', 'Burning the Midnight Oil?'];
         }
         return base.concat(timed);
     }
