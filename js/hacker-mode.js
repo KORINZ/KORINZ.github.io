@@ -224,6 +224,20 @@
             this.blur();
             document.activeElement && document.activeElement.blur();
         });
+
+        // Randomly fire wiggle or flip every 8–15 s
+        function fireRandomAction() {
+            var isFlip = Math.random() < 0.5;
+            var dur    = isFlip ? 800 : 650;
+            var anim   = isFlip ? 'hacker-toggle-flip' : 'hacker-toggle-wiggle';
+            icon.style.animation = 'hacker-toggle-breathe 3s ease-in-out infinite, ' +
+                                    anim + ' ' + (dur / 1000) + 's ease-in-out 1';
+            setTimeout(function () {
+                icon.style.animation = '';
+                setTimeout(fireRandomAction, 8000 + Math.random() * 7000);
+            }, dur + 150);
+        }
+        setTimeout(fireRandomAction, 3000 + Math.random() * 5000);
     }
 
     window.addEventListener('storage', function (e) {

@@ -2058,22 +2058,25 @@ a:has(img):hover {
 img#hacker-toggle {
     cursor: pointer;
     transition: filter 0.3s ease, transform 0.25s ease;
-    animation: hacker-toggle-breathe 3s ease-in-out infinite,
-               hacker-toggle-wiggle 10s ease-in-out infinite;
+    animation: hacker-toggle-breathe 3s ease-in-out infinite;
 }
 
 @keyframes hacker-toggle-breathe {
-    0%, 100% { opacity: 0.7; scale: 0.95; }
-    50%       { opacity: 1.0; scale: 1.0;  }
+    0%, 100% { opacity: 1; scale: 0.90; }
+    50%       { opacity: 1; scale: 1.05; }
 }
 
 @keyframes hacker-toggle-wiggle {
-    0%,  9%, 100% { rotate:  0deg; }
-    1.5%          { rotate: -10deg; }
-    3.5%          { rotate:  10deg; }
-    5.5%          { rotate:  -7deg; }
-    7.5%          { rotate:   4deg; }
-    9%            { rotate:   0deg; }
+    0%, 100% { rotate:  0deg; }
+    20%      { rotate: -10deg; }
+    40%      { rotate:  10deg; }
+    60%      { rotate:  -7deg; }
+    80%      { rotate:   4deg; }
+}
+
+@keyframes hacker-toggle-flip {
+    0%   { transform: perspective(160px) rotateY(0deg);   }
+    100% { transform: perspective(160px) rotateY(360deg); }
 }
 
 @media (hover: hover) {
@@ -2165,8 +2168,7 @@ body.hacker-mode hr {
 }
 
 body.hacker-mode img#hacker-toggle {
-    animation: hacker-toggle-breathe 3s ease-in-out infinite,
-               hacker-toggle-wiggle 10s ease-in-out infinite;
+    animation: hacker-toggle-breathe 3s ease-in-out infinite;
 }
 
 body.hacker-mode code,
