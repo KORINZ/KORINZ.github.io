@@ -12,26 +12,44 @@
     el.appendChild(cursor);
 
     var TYPE_MS = 120, DELETE_MS = 55, PAUSE_TYPED = 4000, PAUSE_DELETED = 380;
-    var loopTimer = null, running = false, lastGreeting = null;
+    var loopTimer = null, running = false;
+    var pool = [], index = 0;
     var isJa = document.documentElement.lang.startsWith('ja');
 
-    function greetings() {
+    function buildPool() {
         var h = new Date().getHours();
         if (isJa) {
-            var base = ['ハロー、ワールド！', 'いらっしゃいませ！', 'ようこそいらっしゃいました！',
-                        '久しぶりの訪問ですね！', 'またのご訪問ありがとうございます！', 'いかがお過ごしですか？',
-                        'ようこそ！', 'どうぞごゆっくり！', 'お越しいただきありがとうございます！'];
+            var base = [
+                'ハロー、ワールド！',
+                'ようこそ！',
+                'いらっしゃいませ！',
+                'ようこそいらっしゃいました！',
+                'お越しいただきありがとうございます！',
+                'どうぞごゆっくり！',
+                '久しぶりの訪問ですね！',
+                'またのご訪問ありがとうございます！',
+                'いかがお過ごしですか？',
+                'お待ちしておりました！'
+            ];
             var timed = h >= 5 && h < 12
                 ? ['おはようございます！', '今日も良い一日を！']
                 : h >= 12 && h < 17
-                ? ['こんにちは！', 'ゆっくりしていってください！', '午後もお楽しみください！']
+                ? ['こんにちは！', 'ゆっくりしていってください！']
                 : h >= 17 && h < 21
                 ? ['こんばんは！', '良い夕べをお過ごしください！']
                 : ['おやすみなさい！', 'ゆっくりお休みください！'];
         } else {
-            var base = ['Hello, World!', 'Greetings!', 'Traveler Returns!', 'Long Time No See?!',
-                        'Welcome Back!', 'Hello Again!', "What's Up?", 'Hey There!',
-                        'Welcome!', 'Howdy!', 'Salutations!'];
+            var base = [
+                'Hello, World!',
+                'Welcome!',
+                'Greetings!',
+                'Hey There!',
+                'Good to See You!',
+                'Welcome Back!',
+                'Long Time No See?!',
+                'Traveler Returns!',
+                "What's Up?"
+            ];
             var timed = h >= 5 && h < 12
                 ? ['Good Morning!', 'Rise and Shine!']
                 : h >= 12 && h < 17
@@ -41,11 +59,6 @@
                 : ['Good Night!', 'Burning the Midnight Oil?'];
         }
         return base.concat(timed);
-    }
-
-    function pick(exclude) {
-        var pool = greetings().filter(function (g) { return g !== exclude; });
-        return pool[Math.floor(Math.random() * pool.length)];
     }
 
     function typeText(text, done) {
@@ -68,15 +81,16 @@
 
     function loopNext() {
         if (!running || document.body.classList.contains('hacker-mode')) return;
-        var g = pick(lastGreeting);
-        lastGreeting = g;
+        var g = pool[index % pool.length];
+        index++;
         typeText(g, function () { deleteText(loopNext); });
     }
 
     function start() {
         running = true;
         textNode.nodeValue = '';
-        lastGreeting = null;
+        pool = buildPool();
+        index = 0;
         loopNext();
     }
 
