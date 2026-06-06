@@ -2,9 +2,11 @@
     var GLITCH = '!@#$%^&*<>[]{}|/\\01~`;:.?';
     var active = false;
     var encodeTimer = null;  // guards the delayed encodeHeadings call
-    var textTargets = [];    // paragraphs: [{node, original}]
-    var headingTargets = []; // headings:   [{node, original}]
-    var sidebarTargets = []; // sidebar links: [{node, original}]
+    var textTargets = [];       // paragraphs: [{node, original}]
+    var headingTargets = [];    // headings:   [{node, original}]
+    var sidebarTargets = [];    // sidebar links: [{node, original}]
+    var figcaptionTargets = []; // figcaptions: [{node, original}]
+    var listTargets = [];       // list items: [{node, original}]
 
     function rndChar() {
         return GLITCH[Math.floor(Math.random() * GLITCH.length)];
@@ -143,6 +145,24 @@
             decodeAnimate(node, node.nodeValue);
         });
 
+        // Decode animation on figcaptions
+        figcaptionTargets = [];
+        document.querySelectorAll('main figcaption').forEach(function (el) {
+            var node = firstTextNode(el);
+            if (!node) return;
+            figcaptionTargets.push({ node: node, original: node.nodeValue });
+            decodeAnimate(node, node.nodeValue);
+        });
+
+        // Decode animation on list items
+        listTargets = [];
+        document.querySelectorAll('main li').forEach(function (el) {
+            var node = firstTextNode(el);
+            if (!node) return;
+            listTargets.push({ node: node, original: node.nodeValue });
+            decodeAnimate(node, node.nodeValue);
+        });
+
         // Binary-encode headings after the initial theme flash settles
         encodeTimer = setTimeout(encodeHeadings, 300);
 
@@ -169,6 +189,10 @@
         encodeTimer = null;
         textTargets.forEach(function (t) { t.node.nodeValue = t.original; });
         textTargets = [];
+        figcaptionTargets.forEach(function (t) { t.node.nodeValue = t.original; });
+        figcaptionTargets = [];
+        listTargets.forEach(function (t) { t.node.nodeValue = t.original; });
+        listTargets = [];
         restoreHeadings();
         stopSidebarGlitch();
         if (typeof window._terminalRestart === 'function') window._terminalRestart();
