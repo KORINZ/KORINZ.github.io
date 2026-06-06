@@ -20,6 +20,20 @@
         return null;
     }
 
+    // Recursively collect all text nodes inside inline elements, skipping <a> to preserve URLs.
+    var SKIP_INLINE = { A: 1, SCRIPT: 1, STYLE: 1, CODE: 1, PRE: 1 };
+    function collectInlineTextNodes(el) {
+        var nodes = [];
+        el.childNodes.forEach(function (n) {
+            if (n.nodeType === 3 && n.nodeValue.trim().length > 1) {
+                nodes.push(n);
+            } else if (n.nodeType === 1 && !SKIP_INLINE[n.tagName]) {
+                nodes = nodes.concat(collectInlineTextNodes(n));
+            }
+        });
+        return nodes;
+    }
+
     // Convert a string to space-separated 8-bit (ASCII) or 16-bit (non-ASCII) binary
     function toBinary(text) {
         return text.split('').map(function (ch) {
@@ -145,22 +159,22 @@
             decodeAnimate(node, node.nodeValue);
         });
 
-        // Decode animation on figcaptions
+        // Decode animation on figcaptions (all inline text nodes, including inside <strong>/<i>/<b>)
         figcaptionTargets = [];
         document.querySelectorAll('main figcaption').forEach(function (el) {
-            var node = firstTextNode(el);
-            if (!node) return;
-            figcaptionTargets.push({ node: node, original: node.nodeValue });
-            decodeAnimate(node, node.nodeValue);
+            collectInlineTextNodes(el).forEach(function (node) {
+                figcaptionTargets.push({ node: node, original: node.nodeValue });
+                decodeAnimate(node, node.nodeValue);
+            });
         });
 
-        // Decode animation on list items
+        // Decode animation on list items (all inline text nodes, skipping <a> URL text)
         listTargets = [];
         document.querySelectorAll('main li').forEach(function (el) {
-            var node = firstTextNode(el);
-            if (!node) return;
-            listTargets.push({ node: node, original: node.nodeValue });
-            decodeAnimate(node, node.nodeValue);
+            collectInlineTextNodes(el).forEach(function (node) {
+                listTargets.push({ node: node, original: node.nodeValue });
+                decodeAnimate(node, node.nodeValue);
+            });
         });
 
         // Binary-encode headings after the initial theme flash settles
