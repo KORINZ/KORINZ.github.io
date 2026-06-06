@@ -1530,12 +1530,21 @@ body.dark img {
     transform: scale(1.15);
 }
 
+@keyframes rainbow-hue {
+    0%   { filter: sepia(1) saturate(5) hue-rotate(0deg); }
+    100% { filter: sepia(1) saturate(5) hue-rotate(360deg); }
+}
+
 .home-icon {
     height: 0.9em;
     width: auto;
     vertical-align: middle;
     transition: transform 0.2s ease;
-    filter: brightness(1.0) contrast(1.0) !important;
+    filter: brightness(1.0) contrast(1.0);
+}
+
+.home-icon:hover {
+    animation: rainbow-hue 1s linear infinite !important;
 }
 
 
@@ -2169,6 +2178,10 @@ body.hacker-mode hr {
 
 body.hacker-mode img#hacker-toggle {
     animation: hacker-toggle-breathe 3s ease-in-out infinite;
+}
+
+body.hacker-mode .home-icon {
+    filter: sepia(1) saturate(5) hue-rotate(100deg) !important;
 }
 
 body.hacker-mode code,
