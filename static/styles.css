@@ -2177,6 +2177,7 @@ body.hacker-mode .command {
     background-color: #0a1a0a !important;
     color: #00ff41 !important;
     border: 1px solid #1a4d1a !important;
+    transition: none !important;
 }
 
 body.hacker-mode .highlight,
@@ -2184,6 +2185,7 @@ body.hacker-mode .code-container,
 body.hacker-mode .highlighter-rouge {
     background-color: #0a1a0a !important;
     border: 1px solid #1a4d1a !important;
+    transition: none !important;
 }
 
 body.hacker-mode .language-plaintext,
@@ -2192,6 +2194,7 @@ body.hacker-mode .language-plaintext code {
     background-color: #0a1a0a !important;
     color: #00ff41 !important;
     border-color: #1a4d1a !important;
+    transition: none !important;
 }
 
 body.hacker-mode .highlighter-rouge .highlight,
