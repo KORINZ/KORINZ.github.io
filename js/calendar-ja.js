@@ -57,10 +57,10 @@ function drawHackerClock(date) {
         }
     }
 
-    function drawColon(x, y) {
-        ctx.fillStyle = ON;
-        ctx.shadowColor = ON;
-        ctx.shadowBlur = 7;
+    function drawColon(x, y, on) {
+        ctx.fillStyle = on ? ON : OFF;
+        ctx.shadowColor = on ? ON : 'transparent';
+        ctx.shadowBlur = on ? 7 : 0;
         var r = sw * 0.55;
         ctx.beginPath();
         ctx.arc(x + colonW / 2, y + DH / 3, r, 0, 2 * Math.PI);
@@ -73,14 +73,16 @@ function drawHackerClock(date) {
     var h = date.getHours().toString().padStart(2, '0');
     var m = date.getMinutes().toString().padStart(2, '0');
     var s = date.getSeconds().toString().padStart(2, '0');
+    var blinkSeconds = date.getSeconds() % 2 === 0;
+    var blinkMinuteChange = date.getSeconds() !== 0;
     var ox = PAD, oy = PAD;
 
     drawSeg(SEGS[h[0]], ox, oy); ox += DW + intraGap;
     drawSeg(SEGS[h[1]], ox, oy); ox += DW + gap;
-    drawColon(ox, oy); ox += colonW + gap;
+    drawColon(ox, oy, blinkMinuteChange); ox += colonW + gap;
     drawSeg(SEGS[m[0]], ox, oy); ox += DW + intraGap;
     drawSeg(SEGS[m[1]], ox, oy); ox += DW + gap;
-    drawColon(ox, oy); ox += colonW + gap;
+    drawColon(ox, oy, blinkSeconds); ox += colonW + gap;
     drawSeg(SEGS[s[0]], ox, oy); ox += DW + intraGap;
     drawSeg(SEGS[s[1]], ox, oy);
 
@@ -138,12 +140,12 @@ function drawHackerLoadingBar(progress) {
 
 var hackerBootRAF = null;
 
-// Hold on the loading bar for ~5s before revealing the digital clock
+// Hold on the loading bar for ~2.5s before revealing the digital clock
 function startHackerClockBoot() {
     if (hackerBootRAF) cancelAnimationFrame(hackerBootRAF);
     document.body.classList.remove('hacker-clock-ready');
 
-    var DURATION = 5000, start = null;
+    var DURATION = 2500, start = null;
     function frame(ts) {
         if (!document.body.classList.contains('hacker-mode')) { hackerBootRAF = null; return; }
         if (!start) start = ts;
