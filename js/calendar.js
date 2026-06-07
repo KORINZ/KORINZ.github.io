@@ -87,6 +87,99 @@ function drawHackerClock(date) {
     ctx.restore();
 }
 
+// Segmented "decrypting" progress bar shown while the digital clock boots up
+function drawHackerLoadingBar(progress) {
+    var canvas = document.getElementById('hacker-clock-loading');
+    if (!canvas) return;
+
+    var dpr = window.devicePixelRatio || 1;
+    var W = 172, H = 48;
+
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+
+    var ctx = canvas.getContext('2d');
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+
+    var ON = '#00ff41', OFF = 'rgba(0,255,65,0.12)';
+    var barW = W - 28, barH = 10, bx = (W - barW) / 2, by = H / 2 - barH / 2 - 3;
+
+    ctx.strokeStyle = ON;
+    ctx.shadowColor = ON;
+    ctx.shadowBlur = 4;
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(bx + 0.5, by + 0.5, barW - 1, barH - 1);
+
+    var segs = 18, segGap = 2;
+    var segW = (barW - 4 - (segs - 1) * segGap) / segs;
+    var filled = Math.round(progress * segs);
+    for (var i = 0; i < segs; i++) {
+        var on = i < filled;
+        ctx.fillStyle = on ? ON : OFF;
+        ctx.shadowColor = on ? ON : 'transparent';
+        ctx.shadowBlur = on ? 6 : 0;
+        ctx.fillRect(bx + 2 + i * (segW + segGap), by + 2, segW, barH - 4);
+    }
+
+    ctx.shadowColor = ON;
+    ctx.shadowBlur = 4;
+    ctx.fillStyle = ON;
+    ctx.font = '9px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText('DECRYPTING TIME ' + Math.floor(progress * 100) + '%', W / 2, by + barH + 14);
+
+    ctx.restore();
+}
+
+var hackerBootRAF = null;
+
+// Hold on the loading bar for ~5s before revealing the digital clock
+function startHackerClockBoot() {
+    if (hackerBootRAF) cancelAnimationFrame(hackerBootRAF);
+    document.body.classList.remove('hacker-clock-ready');
+
+    var DURATION = 5000, start = null;
+    function frame(ts) {
+        if (!document.body.classList.contains('hacker-mode')) { hackerBootRAF = null; return; }
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / DURATION, 1);
+        drawHackerLoadingBar(p);
+        if (p < 1) {
+            hackerBootRAF = requestAnimationFrame(frame);
+        } else {
+            hackerBootRAF = null;
+            document.body.classList.add('hacker-clock-ready');
+            localStorage.setItem('hackerClockBooted', 'true');
+            drawHackerClock(new Date());
+        }
+    }
+    hackerBootRAF = requestAnimationFrame(frame);
+}
+
+function showHackerClockInstantly() {
+    if (hackerBootRAF) { cancelAnimationFrame(hackerBootRAF); hackerBootRAF = null; }
+    document.body.classList.add('hacker-clock-ready');
+    drawHackerClock(new Date());
+}
+
+// Plays the boot animation only the first time hacker mode is entered —
+// navigating between pages while it stays on shows the clock immediately.
+function revealHackerClock() {
+    if (localStorage.getItem('hackerClockBooted') === 'true') showHackerClockInstantly();
+    else startHackerClockBoot();
+}
+
+function stopHackerClockBoot() {
+    if (hackerBootRAF) { cancelAnimationFrame(hackerBootRAF); hackerBootRAF = null; }
+    document.body.classList.remove('hacker-clock-ready');
+    localStorage.removeItem('hackerClockBooted');
+}
+
 function drawAnalogClock(date) {
     let canvas = document.getElementById('analog-clock');
     if (!canvas) return;
@@ -161,6 +254,12 @@ function createCalendar() {
     hackerClockCanvas.id = 'hacker-clock';
     hackerClockCanvas.style.cssText = 'display:none;margin:6px auto 2px;';
     calendarDiv.appendChild(hackerClockCanvas);
+
+    // Create hacker-mode "decrypting" progress bar canvas (briefly shown before the clock)
+    let hackerLoadingCanvas = document.createElement('canvas');
+    hackerLoadingCanvas.id = 'hacker-clock-loading';
+    hackerLoadingCanvas.style.cssText = 'display:none;margin:6px auto 2px;';
+    calendarDiv.appendChild(hackerLoadingCanvas);
 
     // Create a table for the calendar.
     let calendarTable = document.createElement('table');

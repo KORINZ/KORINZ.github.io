@@ -2326,7 +2326,8 @@ body.hacker-mode .fa-ul .fa-square {
 }
 
 /* ───── Hacker mode: 7-segment digit clock ───── */
-#hacker-clock {
+#hacker-clock,
+#hacker-clock-loading {
     display: none;
 }
 
@@ -2338,7 +2339,16 @@ body.hacker-mode #time-row {
     display: none !important;
 }
 
-body.hacker-mode #hacker-clock {
+/* Hold on a "decrypting" progress bar before revealing the digital clock */
+body.hacker-mode #hacker-clock-loading {
+    display: block !important;
+}
+
+body.hacker-mode.hacker-clock-ready #hacker-clock-loading {
+    display: none !important;
+}
+
+body.hacker-mode.hacker-clock-ready #hacker-clock {
     display: block !important;
 }
 

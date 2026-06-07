@@ -229,8 +229,13 @@
         if (toggle) toggle.title = on ? 'Return' : '???';
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
-        if (on) startHackerText();
-        else stopHackerText();
+        if (on) {
+            if (typeof revealHackerClock === 'function') revealHackerClock();
+            startHackerText();
+        } else {
+            if (typeof stopHackerClockBoot === 'function') stopHackerClockBoot();
+            stopHackerText();
+        }
     }
 
     // Init from localStorage — theme applied instantly, text effects delayed for full visibility
@@ -245,6 +250,7 @@
         if (initToggle) initToggle.title = 'Return';
         if (typeof drawAnalogClock === 'function') drawAnalogClock(new Date());
         if (typeof drawHackerClock === 'function') drawHackerClock(new Date());
+        if (typeof revealHackerClock === 'function') revealHackerClock();
         setTimeout(startHackerText, 250);
     }
 
