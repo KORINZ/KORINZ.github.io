@@ -1517,15 +1517,20 @@ figure img:hover {
     transition: width 0.3s ease-in-out;
 }
 
-.award-img:hover {
+/* Mouse devices enlarge on hover; touch devices toggle .enlarged by tapping
+   (see js/award-zoom.js), which also blocks the link to the full-size image. */
+@media (hover: hover) {
+    .award-img:hover {
+        width: 375px;
+    }
+}
+
+.award-img.enlarged {
     width: 375px;
 }
 
-/* Touch devices: no hover, so keep the certificate at its base size and
-   make it non-tappable instead of opening the full-size image. */
 @media (hover: none) {
     .award-link {
-        pointer-events: none;
         cursor: default;
     }
 }
