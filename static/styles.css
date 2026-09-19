@@ -1521,6 +1521,15 @@ figure img:hover {
     width: 375px;
 }
 
+/* Touch devices: no hover, so keep the certificate at its base size and
+   make it non-tappable instead of opening the full-size image. */
+@media (hover: none) {
+    .award-link {
+        pointer-events: none;
+        cursor: default;
+    }
+}
+
 body.dark figure img {
     filter: brightness(0.7) contrast(0.85) !important;
 }
