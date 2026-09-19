@@ -1510,6 +1510,17 @@ figure img:hover {
     transform: scale(1.05);
 }
 
+.award-img {
+    vertical-align: top;
+    width: 250px;
+    height: auto;
+    transition: width 0.3s ease-in-out;
+}
+
+.award-img:hover {
+    width: 375px;
+}
+
 body.dark figure img {
     filter: brightness(0.7) contrast(0.85) !important;
 }
